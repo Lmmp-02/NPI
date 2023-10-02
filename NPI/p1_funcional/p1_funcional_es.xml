@@ -24,7 +24,7 @@
 		</field>
 
 		<field name="pregunta_sobre">
-            <grammar src="gramaticas/consulta_asignatura.jsgf"/>
+            <grammar src="./gramaticas/consulta_asignatura.jsgf"/>
             <prompt> Que deseas saber sobre la asignatura? </prompt> 
 
             <nomatch>
@@ -35,47 +35,49 @@
 		
 		<filled>
 
-			<if cond="asignatura == 'Nuevos Paradigmas de Interaccion' || asignatura == 'NPI'">
+			<if cond="asignatura == 'Nuevos Paradigmas de Interaccion' || asignatura == 'N P I'">
 				<if cond="pregunta_sobre == 'profesor'">
 					<prompt>El profesor de NPI es Ramon Lopez-Cozar Delgado.</prompt>
 				<elseif cond="pregunta_sobre == 'horario'"/>
 					<prompt>La asignatura se imparte los jueves de diez y media a doce y media.</prompt>
 				</if>
 				
-			<elseif cond="asignatura == 'Vision por Computador' || asignatura == 'VC'"/>
+			<elseif cond="asignatura == 'Vision por Computador' || asignatura == 'V C'"/>
 				<if cond="pregunta_sobre == 'profesor'">
 					<prompt>El profesor de VC es Pablo Mesejo Santiago.</prompt>
 				<elseif cond="pregunta_sobre == 'horario'"/>
 					<prompt>La asignatura se imparte los viernes de ocho y media a diez y media.</prompt>
 				</if>
 				
-			<elseif cond="asignatura == 'Procesadores de Lenguajes' || asignatura == 'PL'"/>
+			<elseif cond="asignatura == 'Procesadores de Lenguajes' || asignatura == 'P L'"/>
 				<if cond="pregunta_sobre == 'profesor'">
 					<prompt>El profesor de PL es Ramon Lopez-Cozar Delgado.</prompt>
 				<elseif cond="pregunta_sobre == 'horario'"/>
-					<prompt>La asignatura se imparte los viernes de doce y media a doce y media.</prompt>
+					<prompt>La asignatura se imparte los viernes de doce y media a dos y media.</prompt>
 				</if>
 				
-			<elseif cond="asignatura == 'Programacion Tecnica y Cientifica' || asignatura == 'PTC'"/>
+			<elseif cond="asignatura == 'Programacion Tecnica y Cientifica' || asignatura == 'P T C'"/>
 				<if cond="pregunta_sobre == 'profesor'">
 					<prompt>El profesor de NPI es Miguel Garcia Silvente.</prompt>
 				<elseif cond="pregunta_sobre == 'horario'"/>
 					<prompt>La asignatura se imparte los lunes de once y media a una y media.</prompt>
 				</if>
 				
-			<elseif cond="asignatura == 'Simulacion de Sistemas' || asignatura == 'SS' "/>
+			<elseif cond="asignatura == 'Simulacion de Sistemas' || asignatura == 'S S' "/>
 				<if cond="pregunta_sobre == 'profesor'">
 					<prompt>El profesor de SS es Luis Miguel de Campos Ibañez.</prompt>
 				<elseif cond="pregunta_sobre == 'horario'"/>
 					<prompt>La asignatura se imparte los martes de nueve y media a once y media.</prompt>
 				</if>
 				
-			<elseif cond="asignatura == 'Teoria de la Informacion y la Codificacion' || asignatura == 'TIC'"/>
+			<elseif cond="asignatura == 'Teoria de la Informacion y la Codificacion' || asignatura == 'T I C'"/>
 				<if cond="pregunta_sobre == 'profesor'">
-					<prompt>El profesor de TIC es Manuel Pegalajar Cuellar.</prompt>
+					<prompt>El profesor de TIC es Manuel Pegalajar Cuéllar.</prompt>
 				<elseif cond="pregunta_sobre == 'horario'"/>
 					<prompt>La asignatura se imparte los miercoles de once y media a una y media.</prompt>
 				</if>
+
+			</if>
 			
 			<!--<if cond="asignatura == 'Nuevos Paradigmas de Interaccion'">
 				<prompt>El profesor de NPI es Ramon Lopez Cozar Delgado.</prompt>	
