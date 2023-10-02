@@ -1,0 +1,10 @@
+#JSGF V1.0;
+
+grammar subjects;
+
+public <subject> = New Interaction Paradigms | N P I 
+                  | Language Processors | P L 
+                  | Technical and Scientific Programming | P T C
+                  | System Simulation | S S
+                  | Information and Coding Theory | T I C
+                  | Computer Vision | V C;
