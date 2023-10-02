@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
+
+    <form id="menu_comun_esp">
+        <field name="opcion">
+            <prompt>
+                ¿Qué información necesitas? Para asignaturas, di 'asignaturas'. Para comedor, di 'comedor'. Para secretaría, di 'secretaría'. Para cafetería, di 'cafetería'.
+            </prompt>
+            <grammar src="./gramaticas/opciones_menu_esp.jsgf"/>
+            
+            <nomatch>
+                <prompt>No entiendo esa opción.</prompt>
+                <reprompt/>
+            </nomatch>
+            
+            <filled>
+                <if cond="opcion == 'asignaturas'">
+                    <goto next="../asignaturas/asignaturas-4to-esp.vxml"/>
+                </if>
+                <elseif cond="opcion == 'comedor'"/>
+                    <goto next="../comedor/horarios-esp.vxml"/>
+                </elseif>
+                <elseif cond="opcion == 'secretaria'"/>
+                    <goto next="../secretaria/horarios-esp.vxml"/>
+                </elseif>
+                <elseif cond="opcion == 'cafeteria'"/>
+                    <goto next="../cafeteria/horarios-esp.vxml"/>
+                </elseif>
+            </filled>
+        </field>
+    </form>
+
+</vxml>
