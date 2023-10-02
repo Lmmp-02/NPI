@@ -1,22 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
-
-    <form id="menu_principal">
-        <field name="idioma">
-            <prompt>
-                Para español, di 'español'. Para inglés, di 'inglés'.
-            </prompt>
-            <grammar src="./gramaticas/idiomas.jsgf"/>
-            
-            <nomatch>
-                <prompt>No entiendo esa opción de idioma.</prompt>
-                <reprompt/>
-            </nomatch>
-            
-            <filled>
-                <goto next="./comun/comun-{idioma}.vxml"/>
-            </filled>
-        </field>
-    </form>
-
+<vxml version="2.1">
+  <form id="menu_principal">
+    <field name="idioma">
+      <prompt>
+        Para continuar en español, di "español" o pulsa 1. 
+        For English, say "English" or press 2.
+      </prompt>
+      <grammar src="./gramaticas/idioma.jsgf"/>
+      <filled>
+        <if cond="idioma == 'español'">
+          <goto next="./comun/comun-esp.vxml"/>
+        <elseif cond="idioma == 'inglés'"/>
+          <goto next="./comun/comun-ing.vxml"/>
+        </if>
+      </filled>
+    </field>
+  </form>
 </vxml>
