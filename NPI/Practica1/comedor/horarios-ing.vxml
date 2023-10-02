@@ -7,7 +7,7 @@
             <prompt bargein="true"> 
             Do you want to know the cafeteria hours? 
             </prompt> 
-            <grammar src="./gramaticas/yes_no_response.jsgf"/>
+            <grammar src="./gramaticas/respuesta_yes_no.jsgf"/>
       
             <nomatch>
                 <prompt>I didn't understand your response. Please try again.</prompt>
