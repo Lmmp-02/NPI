@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml xmlns="http://www.w3.org/2001/06/vxml" version = "2.1" xml:lang="es-ES">
+
+<link event="help">
+    <grammar src="./gramaticas/ayuda.jsgf"/>
+</link>
 	
 	<form id="pregunta_asignatura">
 		<block>
@@ -12,20 +16,56 @@
 			<prompt bargein="true"> 
 				Sobre qué asignatura deseas información? 
 			</prompt> 
+
+			<help>
+				<prompt>
+           		Di el nombre de una asignatura de cuarto de la rama de CSI, o sus siglas. 
+            	Esto es, alguna de las siguientes: Sistemas de simulacion, Vision por computador, 
+            	Nuevos Paradigmas de Interaccion, Teoria de la Informacion y la Codificacion, 
+            	Procesadores de Lenguajes, y Programacion Tecnica y Cientifica.
+        		</prompt>
+        		<reprompt/>
+			</help>
+
 			<grammar src="./gramaticas/asignatura.jsgf"/>
 			
 			<nomatch>
 				<prompt>He oído algo, pero no se trata de una asignatura conocida.</prompt>
 				<reprompt/>
 			</nomatch>
-			<filled> 
-				<prompt>Has dicho <value expr="asignatura"/>. </prompt>
-			</filled>
+
+			<filled>
+                <goto nextitem="confirmar_asignatura"/>
+            </filled>
+
 		</field>
+
+		<field name="confirmar_asignatura">
+            <grammar src="./gramaticas/confirmacion.jsgf"/>
+            <prompt>Has dicho <value expr="asignatura"/>? </prompt>
+
+            <filled>
+                <if cond="confirmar_asignatura=='si'">
+                    <prompt>Perfecto, continuemos.</prompt>
+                <else/>
+                    <prompt>De acuerdo, vamos a repetirlo.</prompt>
+                    <clear namelist="confirmar_asignatura asignatura"/>
+                    <goto nextitem="asignatura"/>
+                </if>
+            </filled>
+        </field>
 
 		<field name="pregunta_sobre">
             <grammar src="./gramaticas/consulta_asignatura.jsgf"/>
             <prompt> Que deseas saber sobre la asignatura? </prompt> 
+
+			<help>
+				<prompt>
+            	Podemos informar sobre el profesor que la imparte, y sobre los horarios de la misma.
+            	Elija una de ambas opciones.
+        		</prompt>
+        		<reprompt/>
+			</help>
 
             <nomatch>
                 <prompt>He oído algo, pero no es una opcion valida.</prompt>
@@ -58,7 +98,7 @@
 				
 			<elseif cond="asignatura == 'Programacion Tecnica y Cientifica' || asignatura == 'P T C'"/>
 				<if cond="pregunta_sobre == 'profesor'">
-					<prompt>El profesor de NPI es Miguel Garcia Silvente.</prompt>
+					<prompt>El profesor de PTC es Miguel Garcia Silvente.</prompt>
 				<elseif cond="pregunta_sobre == 'horario'"/>
 					<prompt>La asignatura se imparte los lunes de once y media a una y media.</prompt>
 				</if>
@@ -76,7 +116,6 @@
 				<elseif cond="pregunta_sobre == 'horario'"/>
 					<prompt>La asignatura se imparte los miercoles de once y media a una y media.</prompt>
 				</if>
-
 			</if>
 			
 			<!--<if cond="asignatura == 'Nuevos Paradigmas de Interaccion'">
