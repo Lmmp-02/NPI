@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="en-US">
+
+    <form id="cafeteria_info">
+    
+        <field name="cafeteria_query">
+            <prompt bargein="true"> 
+            Do you want to know the cafeteria hours? 
+            </prompt> 
+            <grammar src="./gramaticas/yes_no_response.jsgf"/>
+      
+            <nomatch>
+                <prompt>I didn't understand your response. Please try again.</prompt>
+                <reprompt/>
+            </nomatch>
+      
+            <filled>
+                <if cond="cafeteria_query == 'yes'">
+                    <prompt>The cafeteria is open from Monday to Friday, 1:00 PM to 3:30 PM.</prompt>
+                </if>
+			
+		        <prompt>Thank you for using our platform. Goodbye.</prompt>
+		        <noinput>
+			        <exit/>
+		        </noinput>
+            </filled>
+        </field>
+    </form>
+</vxml>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
+
+    <form id="info_comedor">
+    
+        <field name="consulta_comedor">
+            <prompt bargein="true"> 
+                ¿Quieres saber el horario del comedor? 
+            </prompt> 
+            <grammar src="./gramaticas/respuesta_si_no.jsgf"/>
+      
+            <nomatch>
+                <prompt>No he entendido tu respuesta. Por favor, intenta de nuevo.</prompt>
+                <reprompt/>
+            </nomatch>
+      
+            <filled>
+                <if cond="consulta_comedor == 'sí'">
+                    <prompt>El horario de apertura del comedor es de lunes a viernes de 13:00 a 15:30.</prompt>
+                </if>
+			
+		        <prompt>Muchas gracias por haber utilizado nuestra plataforma. Adiós.</prompt>
+		        <noinput>
+			        <exit/>
+		        </noinput>
+            </filled>
+        </field>
+    </form>
+</vxml>
