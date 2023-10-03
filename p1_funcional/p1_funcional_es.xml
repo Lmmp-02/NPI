@@ -81,13 +81,13 @@
 		
 		<filled>
 			<if cond="asignatura == 'Nuevos Paradigmas de Interaccion' || asignatura == 'N P I'">
-				<if cond="practicas_teoria == 'practicas">
+				<if cond="practicas_teoria == 'practicas'">
 					<if cond="pregunta_sobre == 'profesor'">
 						<prompt>Los profesores de prácticas de NPI es Ramon Lopez-Cozar Delgado para una parte de la asignatura y Marcelino José Cabrera Cuevas para la otra.</prompt>
 					<elseif cond="pregunta_sobre == 'horario'"/>
 						<prompt>La parte práctica de la asignatura se imparte los jueves de ocho y media a diez y media para el subgrupo 1 y los viernes de diez y media a doce y media para el subgrupo 2 en el aula 3 1 en ambos grupos.</prompt>
 					</if>
-				<else>
+				<else/>
 					<if cond="pregunta_sobre == 'profesor'">
 						<prompt>Los profesores de teoría de NPI es Ramon Lopez-Cozar Delgado para una parte de la asignatura y Marcelino José Cabrera Cuevas para la otra.</prompt>
 					<elseif cond="pregunta_sobre == 'horario'"/>
@@ -96,13 +96,13 @@
 				</if>
 	
 			<elseif cond="asignatura == 'Vision por Computador' || asignatura == 'V C'"/>
-				<if cond="practicas_teoria == 'practicas">
+				<if cond="practicas_teoria == 'practicas'">
 					<if cond="pregunta_sobre == 'profesor'">
 						<prompt>El profesor de prácticas de VC es Pablo Mesejo Santiago para el subgrupo 1 y Victor Alejandro Vargas Pérez para el subgrupo 2.</prompt>
 					<elseif cond="pregunta_sobre == 'horario'"/>
 						<prompt>La parte práctica de la asignatura se imparte los viernes de diez y media a doce y media para el subgrupo 1 y los jueves de doce y media a dos y media para el subgrupo 2 en el aula 2 1.</prompt>
 					</if>
-				<else>
+				<else/>
 					<if cond="pregunta_sobre == 'profesor'">
 						<prompt>El profesor de teoría de VC es Pablo Mesejo Santiago.</prompt>
 					<elseif cond="pregunta_sobre == 'horario'"/>
@@ -111,13 +111,13 @@
 				</if>
 	
 			<elseif cond="asignatura == 'Procesadores de Lenguajes' || asignatura == 'P L'"/>
-				<if cond="practicas_teoria == 'practicas">
+				<if cond="practicas_teoria == 'practicas'">
 					<if cond="pregunta_sobre == 'profesor'">
 						<prompt>El profesor de prácticas de PL es Ramón López Cózar Delgado para el subgrupo 1 y Jorge Revelles Moreno para el subgrupo 2.</prompt>
 					<elseif cond="pregunta_sobre == 'horario'"/>
 						<prompt>La parte práctica de la asignatura se imparte los jueves de doce y media a dos y media en el aula 3 1 para el subgrupo 1 y los jueves de ocho y media a diez y media en el aula 2 1 para el subgrupo 2.</prompt>
 					</if>
-				<else>
+				<else/>
 					<if cond="pregunta_sobre == 'profesor'">
 						<prompt>El profesor de teoría de PL es Ramón López Cózar Delgado.</prompt>
 					<elseif cond="pregunta_sobre == 'horario'"/>
@@ -126,13 +126,13 @@
 				</if>
 	
 			<elseif cond="asignatura == 'Programacion Tecnica y Cientifica' || asignatura == 'P T C'"/>
-				<if cond="practicas_teoria == 'practicas">
+				<if cond="practicas_teoria == 'practicas'">
 					<if cond="pregunta_sobre == 'profesor'">
 						<prompt>El profesor de prácticas de PTC es Eugenio Aguirre Molina.</prompt>
 					<elseif cond="pregunta_sobre == 'horario'"/>
 						<prompt>La parte práctica de la asignatura se imparte los miércoles de once y media a una y media en el aula 2 8.</prompt>
 					</if>
-				<else>
+				<else/>
 					<if cond="pregunta_sobre == 'profesor'">
 						<prompt>El profesor de teoría de PTC es Miguel García Silvente.</prompt>
 					<elseif cond="pregunta_sobre == 'horario'"/>
@@ -141,13 +141,13 @@
 				</if>
 	
 			<elseif cond="asignatura == 'Simulacion de Sistemas' || asignatura == 'S S' "/>
-				<if cond="practicas_teoria == 'practicas">
+				<if cond="practicas_teoria == 'practicas'">
 					<if cond="pregunta_sobre == 'profesor'">
 						<prompt>El profesor de prácticas de SS es Luis Miguel Campos Ibañez.</prompt>
 					<elseif cond="pregunta_sobre == 'horario'"/>
 						<prompt>La parte práctica de la asignatura se imparte los lunes de nueve y media a once y media en el aula 3 8.</prompt>
 					</if>
-				<else>
+				<else/>
 					<if cond="pregunta_sobre == 'profesor'">
 						<prompt>El profesor de teoría de SS es Luis Miguel Campos Ibañez.</prompt>
 					<elseif cond="pregunta_sobre == 'horario'"/>
@@ -156,13 +156,13 @@
 				</if>
 	
 			<elseif cond="asignatura == 'Teoria de la Informacion y la Codificacion' || asignatura == 'T I C'"/>
-				<if cond="practicas_teoria == 'practicas">
+				<if cond="practicas_teoria == 'practicas'">
 					<if cond="pregunta_sobre == 'profesor'">
 						<prompt>El profesor de prácticas de TIC es Manuel Pegalajar Cuéllar.</prompt>
 					<elseif cond="pregunta_sobre == 'horario'"/>
 							<prompt>La parte práctica de la asignatura se imparte los martes de once y media a una y media en el aula 2 2.</prompt>
 					</if>
-				<else>
+				<else/>
 					<if cond="pregunta_sobre == 'profesor'">
 						<prompt>El profesor de teoría de TIC es Manuel Pegalajar Cuéllar.</prompt>
 					<elseif cond="pregunta_sobre == 'horario'"/>
