@@ -1,0 +1,5 @@
+#JSGF V1.0;
+
+grammar respuesta_yes_no;
+
+public <response> = yes | no;
