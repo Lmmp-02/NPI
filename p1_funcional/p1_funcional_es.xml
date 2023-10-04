@@ -58,7 +58,6 @@
 		<field name="practicas_teoria">
             <grammar src="./gramaticas/practicas_teoria.jsgf"/>
             <prompt> Quiere información sobre las prácticas o la teoría? </prompt>
-			<!--Añadido 4/40/2023 por Luisa para probar los saltos al repetir pregs-->
 			<filled>
                 <goto nextitem="pregunta_sobre"/>
             </filled>
@@ -182,7 +181,6 @@
             <filled>
                 <if cond = "otra_consulta == 'si'">
                     <prompt> De acuerdo, vamos a realizar otra consulta.</prompt>
-                    <!-- Línea añadida para limpiar todas las variables relevantes -->
                     <clear namelist="otra_consulta asignatura confirmar_asignatura practicas_teoria pregunta_sobre"/>
                     <goto nextitem="asignatura"/>
                 <else/>
