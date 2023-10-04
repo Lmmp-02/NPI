@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml xmlns="http://www.w3.org/2001/06/vxml" version = "2.1">
-	
-	<block>
-		<prompt> 
-			We are sorry, but this language is not available yet. Try again lat 
-		</prompt>
-		<exit/>
-	</block>
+<vxml version = "2.1">
+	<form>
+		<block>
+			<prompt> 
+				We are sorry, but this language is not available yet. Try again lat 
+			</prompt>
+			<exit/>
+		</block>
+	</form>
 </vxml>
