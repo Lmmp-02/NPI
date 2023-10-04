@@ -3,7 +3,7 @@
 	<form>
 		<block>
 			<prompt> 
-				We are sorry, but this language is not available yet. Try again lat 
+				We are sorry, but this language is not available yet. Try again later.
 			</prompt>
 			<exit/>
 		</block>
