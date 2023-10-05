@@ -1,4 +1,4 @@
-<vxml version="2.1" xml:lang="es-ES">
+<vxml version="1.0" xml:lang="es-ES">
 	
 	<catch event="nomatch noinput" count ="5">
         <exit/>
