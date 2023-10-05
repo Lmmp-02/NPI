@@ -12,12 +12,12 @@
 		</prompt>
 		
 	
-		<choice dtmf="1" next="./p1_funcional_es.xml">
+		<choice dtmf="1" next="./menus/menu_es.xml">
 			Castellano
 		</choice>
 		
 		
-		<choice dtmf="2" next="./p1_funcional_en.xml">
+		<choice dtmf="2" next="./menus/menu_en.xml">
 			<grammar src="./gramaticas/elegir_ingles.jsgf"/>
 			English
 		</choice>

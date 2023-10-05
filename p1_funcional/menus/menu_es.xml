@@ -1,11 +1,13 @@
-<vxml version="1.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
+
   <form id="menu_espanol">
     <field name="opcion">
       <prompt>
         ¿Qué información necesitas? 
         Puedes decir 'asignaturas' para información sobre asignaturas, 
         'comedor' para horarios del comedor,
-        'secretaría' para horarios de la secretaría,
+        'secretaria' para horarios de la secretaría,
         y 'cafetería' para horarios de la cafetería.
         También puedes usar números: 
         Di 1 para información sobre asignaturas.
@@ -13,16 +15,16 @@
         Di 3 para horarios del comedor.
         Di 4 para horarios de la secretaría.
       </prompt>
-      <grammar src="./gramaticas/opciones_menu_esp.jsgf"/>
+      <grammar src="./gramaticas/opciones_menu_es.jsgf"/>
       <filled>
         <if cond="opcion == '1' || opcion == 'asignaturas'">
-          <goto next="./asignaturas/p1_funcional_es.xml"/>
-        <elseif cond="opcion == '2' || opcion == 'cafetería'"/>
-          <goto next="./cafeteria/horarios-esp.vxml"/>
+          <goto next="./asignaturas/asignaturas_es.xml"/>
+        <elseif cond="opcion == '2' || opcion == 'cafeteria'"/>
+          <goto next="./cafeteria/cafeteria_es.xml"/>
         <elseif cond="opcion == '3' || opcion == 'comedor'"/>
-          <goto next="./comedor/horarios-esp.vxml"/>
-        <elseif cond="opcion == '4' || opcion == 'secretaría'"/>
-          <goto next="./secretaria/horarios-esp.vxml"/>
+          <goto next="./comedor/comedor_es.xml"/>
+        <elseif cond="opcion == '4' || opcion == 'secretaria'"/>
+          <goto next="./secretaria/secretaria_es.xml"/>
         </if>
       </filled>
     </field>
