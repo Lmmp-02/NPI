@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <vxml xmlns="http://www.w3.org/2001/06/vxml" version = "2.1" xml:lang="es-ES">
 
 <link event="help">
@@ -6,11 +5,6 @@
 </link>
 	
 	<form id="pregunta_asignatura">
-		<block>
-			<prompt> 
-				Bienvenido al sistema! 
-			</prompt>
-		</block>
 		
 		<field name="asignatura">
 			<prompt bargein="true"> 
@@ -27,7 +21,7 @@
         		<reprompt/>
 			</help>
 
-			<grammar src="./gramaticas/asignatura.jsgf"/>
+			<grammar src="../gramaticas/asignatura.jsgf"/>
 			
 			<nomatch>
 				<prompt>He oído algo, pero no se trata de una asignatura conocida.</prompt>
@@ -41,8 +35,10 @@
 		</field>
 
 		<field name="confirmar_asignatura">
-            <grammar src="./gramaticas/confirmacion.jsgf"/>
-            <prompt>Has dicho <value expr="asignatura"/>? </prompt>
+            <grammar src="../gramaticas/confirmacion.jsgf"/>
+            <prompt>Has dicho
+				<value expr="asignatura"/>?
+			</prompt>
 
             <filled>
                 <if cond="confirmar_asignatura=='si'">
@@ -56,7 +52,7 @@
         </field>
 
 		<field name="practicas_teoria">
-            <grammar src="./gramaticas/practicas_teoria.jsgf"/>
+            <grammar src="../gramaticas/practicas_teoria.jsgf"/>
             <prompt> Quiere información sobre las prácticas o la teoría? </prompt>
 			<filled>
                 <goto nextitem="pregunta_sobre"/>
@@ -64,7 +60,7 @@
         </field>
 
 		<field name="pregunta_sobre">
-            <grammar src="./gramaticas/consulta_asignatura.jsgf"/>
+            <grammar src="../gramaticas/consulta_asignatura.jsgf"/>
             <prompt> Que deseas saber sobre la asignatura? </prompt> 
 
 			<help>
@@ -79,7 +75,7 @@
                 <prompt>He oído algo, pero no es una opcion valida.</prompt>
             </nomatch>
 
-        </field>
+        <!--</field>-->
 		
 		<filled>
 			<if cond="asignatura == 'Nuevos Paradigmas de Interaccion' || asignatura == 'N P I'">
@@ -174,21 +170,21 @@
 
 			</if>
 		</filled>
+		</field>
 
 		<field name = "otra_consulta">
             <prompt>¿Desea realizar otra consulta?</prompt>
-            <grammar src="./gramaticas/confirmacion.jsgf"/>
+            <grammar src="../gramaticas/confirmacion.jsgf"/>
             <filled>
                 <if cond = "otra_consulta == 'si'">
                     <prompt> De acuerdo, vamos a realizar otra consulta.</prompt>
                     <clear namelist="otra_consulta asignatura confirmar_asignatura practicas_teoria pregunta_sobre"/>
-                    <goto nextitem="asignatura"/>
+                    <goto next="../menus/menu_es.xml"/>
                 <else/>
                     <prompt>Muchas gracias por haber utilizado nuestra plataforma. Adiós</prompt>
                     <exit/>
                 </if>
             </filled>
         </field>
-
 	</form>
 </vxml>
