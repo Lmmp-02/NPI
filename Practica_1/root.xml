@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
-    <link event="help">
-        <grammar src="./gramaticas/ayuda.jsgf"/>
-    </link>
-    <link event="exit_es">
-        <grammar src="./gramaticas/salida.jsgf"/>
-    </link>
-</vxml>
-<!-- 
-<?xml version="1.0" encoding="UTF-8"?>
-<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
-
+	
 	<link event="help">
-		<grammar src="http://webhosting.voxeo.net/209167/www/p1_Modularizada/gramaticas/ayuda.jsgf"/>
+		<grammar src="./gramaticas/ayuda.jsgf"/>
 	</link>
-
+	
+	<link event="exit_es">
+		<grammar src="./gramaticas/salida.jsgf"/>
+	</link>
 </vxml>
- -->

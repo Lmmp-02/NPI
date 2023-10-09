@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version = "2.1" xml:lang="en-GB" application="../root_en.xml">
+	<form id="otra_cons_en">
+	<catch event="exit_en">
+		<goto next="../salida/salida_en.xml"/>
+	</catch>
+
+		<field name="otra_consulta_en">
+			<prompt>Would you like to make another request?</prompt>
+			<grammar src="../grammars/confirmacion_en.jsgf"/>
+			<filled>
+				<if cond="otra_consulta_en == 'yes'">
+				<prompt> Okay, let's do it.</prompt>
+				<clear namelist="otra_consulta_en "/>
+				<goto next="../menus/menu_en.xml"/>
+				<else/>
+				<prompt>Thank you very much for using our platform. Goodbye.</prompt>
+				<exit/>
+				</if>
+			</filled>
+		</field>
+	</form>
+</vxml>

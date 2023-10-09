@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
-	<catch event="nomatch noinput" count="3">
-		<prompt> No le puedo oír o entender. Pruebe a llamar de nuevo. Adios. </prompt>
-		<exit/>
-	</catch>
-	<menu accept="approximate">
-		<prompt>
-			Bienvenido a nuestro
-			<emphasis> sistema de consulta de asignaturas y horarios </emphasis>
-			. Para realizar la llamada en
-			<emphasis>castellano</emphasis>
-			, diga
-			<emphasis>castellano, español</emphasis>
-			o pulse
-			<emphasis>1</emphasis>
-			.
+<vxml xmlns="http://www.w3.org/2001/06/vxml"  version="2.1" xml:lang="es-ES">
+	
+	<catch event="nomatch noinput" count ="3">
+	<prompt>
+			No le puedo oír o entender. Pruebe a llamar de nuevo. Adios.
 		</prompt>
-		<choice dtmf="1" next="./menus/menu_es.xml"> Castellano Español </choice>
-		<choice dtmf="2" next="./menus/menu_en.xml"> English Ingles </choice>
-		<choice dtmf="3" next="./salida/salida_es.xml">
+        <exit/>
+    </catch>
+
+	<menu accept="approximate">
+
+		<prompt>
+			Bienvenido a nuestro <emphasis> sistema de consulta de asignaturas y horarios </emphasis>. Para realizar la llamada en <emphasis>castellano</emphasis>, diga <emphasis>castellano, español</emphasis> o pulse <emphasis>1</emphasis>.
+		</prompt>
+		<prompt xml:lang="en-GB">
+			Welcome to our <emphasis> subject and schedule query system </emphasis>.  To make the call in <emphasis>english</emphasis>, say <emphasis>english</emphasis> or press <emphasis>2</emphasis>.
+		</prompt>
+		<choice dtmf="1" next="./menus/menu_es.xml">
+			Castellano Español
+		</choice>
+		<choice dtmf="2" next="./menus/menu_en.xml">
+			English Ingles
+		</choice>
+		<choice next="./salida/salida_es.xml">
 			<grammar src="./gramaticas/salida.jsgf"/>
+		</choice>
+		<choice next="./salida/salida_en.xml">
+			<grammar src="./grammars/salida_en.jsgf"/>
 		</choice>
 	</menu>
 </vxml>

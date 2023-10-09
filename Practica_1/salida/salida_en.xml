@@ -5,6 +5,11 @@
 		<field name="confirmacion_salida_en">
 			<prompt>Do you want to end the call? </prompt>
 			<grammar src="../grammars/confirmacion_en.jsgf"/>
+			<nomatch>
+				<prompt>I didn't understand what you said.</prompt>
+				<reprompt/>
+			</nomatch>
+		</field>
 			<filled>
 				<if cond="confirmacion_salida_en=='no'">
 					<prompt> Okay, let's make another inquiry</prompt>
@@ -13,7 +18,6 @@
 					<prompt>Thank you very much for using our platform. Goodbye. </prompt>
 					<exit/>
 				</if>
-			</filled>
-		</field>
+			</filled>		
 	</form>
 </vxml>
