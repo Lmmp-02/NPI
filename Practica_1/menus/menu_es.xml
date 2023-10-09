@@ -1,0 +1,31 @@
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
+
+  <form id="menu_espanol">
+    <field name="opcion">
+      <prompt bargein="true">
+        ¿Qué información necesitas? 
+        Puedes decir 'asignaturas' para información sobre asignaturas, 
+        'comedor' para horarios del comedor,
+        'secretaria' para horarios de la secretaría,
+        y 'cafetería' para horarios de la cafetería.
+        También puedes usar números: 
+        Di 1 para información sobre asignaturas.
+        Di 2 para horarios de la cafetería.
+        Di 3 para horarios del comedor.
+        Di 4 para horarios de la secretaría.
+      </prompt>
+      <grammar src="../gramaticas/opciones_menu_es.jsgf"/>
+      <filled>
+        <if cond="opcion == '1' || opcion == 'asignaturas'">
+          <goto next="../asignaturas/asignaturas_es.xml"/>
+        <elseif cond="opcion == '2' || opcion == 'cafeteria'"/>
+          <goto next="../cafeteria/cafeteria_es.xml"/>
+        <elseif cond="opcion == '3' || opcion == 'comedor'"/>
+          <goto next="../comedor/comedor_es.xml"/>
+        <elseif cond="opcion == '4' || opcion == 'secretaria'"/>
+          <goto next="../secretaria/secretaria_es.xml"/>
+        </if>
+      </filled>
+    </field>
+  </form>
+</vxml>
