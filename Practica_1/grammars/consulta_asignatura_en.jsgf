@@ -1,0 +1,5 @@
+#JSGF V1.0;
+
+grammar consulta_asignatura;
+
+public <consulta_asignatura> = schedule | professor;

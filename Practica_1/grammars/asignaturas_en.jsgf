@@ -1,0 +1,10 @@
+#JSGF V1.0;
+
+grammar asignatura;
+
+public <asignatura> = New Interaction Paradigms | N P I 
+					| Language Processors | P L 
+					| Technical and Scientific Programming | P T C
+					| Simulation Systems | S S 
+					| Information Theory and Coding | T I C 
+					| Computer Vision | V C;

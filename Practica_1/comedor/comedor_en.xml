@@ -1,2 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="en-GB">
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="en-GB" application="../root_en.xml">
+<form id="comedor_en">
+<catch event="exit_en">
+	<goto next="../salida/salida_en.xml"/>
+</catch>
+<block>
+    <prompt> The canteen is available from monday to friday between one o'clock and half past three in the afternoon. Fuentenueva's canteen is also open at saturdays. </prompt>
+
+	<var name="dia"/>
+	<var name="domingo"/>
+	<var name="lunes"/>
+	<var name="martes"/>
+	<var name="miercoles"/>
+	<var name="jueves"/>
+	<var name="viernes"/>
+	<var name="sabado"/>
+            <script>
+		var dia = new Date().getDay();
+                    var domingo = 'on sundays the canteen is close';
+                    var lunes = 'bean stew, pork schnitzel accompanied by fried peppers and banana for dessert.';
+                    var martes = 'potatoes in garlic chicken, dogfish in marinade or Andalusian hake, both accompanied by salad and pineapple for dessert.';
+                    var miercoles = 'Milanese macaroni, roast chicken accompanied by fried zucchini and melon for dessert.';
+                    var jueves = 'cooked ham and cheese pizza, richelieu salad, braised loin accompanied by four delights rice and orange for dessert.';
+                    var viernes = 'Elisabeth salad, grilled garfish accompanied by vegetable stew and peach for dessert.';
+                    var sabado = 'Pork and chicken paella, seared on the back accompanied by escalibada and mandarin oranges for dessert.';
+            </script>
+
+            <if cond="dia == 0">
+                <prompt bargein="true">
+                Today is sunday, <value expr="domingo"/>. Tomorrow monday the menu is <value expr="lunes"/>
+                </prompt>
+            <elseif cond="dia == 1"/>
+                <prompt bargein="true">
+                Today is monday, the menu is <value expr="lunes"/>. Tomorrow is tuesday, the menu is <value expr="martes"/>
+                </prompt>
+            <elseif cond="dia == 2"/>
+                <prompt bargein="true">
+                Today is tuesday, the menu is <value expr="martes"/>. Tomorrow is wednesday, the menu is <value expr="miercoles"/>
+                </prompt>
+            <elseif cond="dia == 3"/>
+                <prompt bargein="true">
+                Today is wednesday, the menu is <value expr="miercoles"/>. Tomorrow is thursday, the menu is <value expr="jueves"/>
+                </prompt>
+            <elseif cond="dia == 4"/>
+                <prompt bargein="true">
+                Today is thursday, the menu is <value expr="jueves"/>. Tomorrow is friday, the menu is <value expr="viernes"/>
+                </prompt>
+            <elseif cond="dia == 5"/>
+                <prompt bargein="true">
+                Today is friday, the menu is <value expr="viernes"/>. Tomorrow is saturday, the menu is <value expr="sabado"/>
+                </prompt>
+            <elseif cond="dia == 6"/>
+                <prompt bargein="true">
+                Today is saturday, the menu is <value expr="sabado"/>. Tomorrow is sunday, <value expr="domingo"/>
+                </prompt>
+            </if>
+		<goto next="../otra_consulta/otra_consulta_en.xml"/>
+	</block>
+
+</form>
+</vxml>

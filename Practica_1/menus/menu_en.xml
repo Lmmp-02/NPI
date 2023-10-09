@@ -14,7 +14,6 @@
 	</catch>
       <grammar src="../grammars/opciones_menu_en.jsgf"/>
       <filled>
-<!--
         <if cond="option == '1' || option == 'subjects'">
           <goto next="../asignaturas/asignaturas_en.xml"/>
         <elseif cond="option == '2' || option == 'cafeteria'"/>
@@ -24,7 +23,6 @@
         <elseif cond="option == '4' || option == 'secretary'"/>
           <goto next="../secretaria/secretaria_en.xml"/>
         </if>
--->
       </filled>
     </field>
   </form>

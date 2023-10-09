@@ -3,8 +3,8 @@
 
 	<form id="pregunta_asignatura">
 		<catch event="exit_es">
-	<goto next="../salida/salida_es.xml"/>
-</catch>
+		<goto next="../salida/salida_es.xml"/>
+		</catch>
 		
 		<field name="asignatura">
 			<prompt bargein="true"> 

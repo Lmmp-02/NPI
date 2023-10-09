@@ -19,9 +19,9 @@ application="../root.xml">
             </nomatch>
             <filled>
                 <if cond="pregunta_cafeteria == 'horario'">
-                    <prompt><prosody rate="high">El horario de la cafetería es de ocho de la mañana a ocho de la tarde de lunes a viernes.</prosody></prompt>
+                    <prompt>El horario de la cafetería es de ocho de la mañana a ocho de la tarde de lunes a viernes.</prompt>
                     <elseif cond="pregunta_cafeteria == 'menu'"/>
-                    <prompt>Hay una amplia variedad de tostadas, de jamón york y queso, tomate y jamón serrano, atún con tomate, de pate. Se pueden pedir medias tostadas por un precio que ronda el euro y enteras por un precio de alrededor de 2 euros. También hay bocadillos de carne en salsa, tortilla de patata,jamón serrano, atún, por un precio de dos cincuenta euros. Además hay bollería por uno cincuenta y pizzas por tres cincuenta. El café con leche sale por un euro veinte, también hay refrescos y cervezas por dos euros. </prompt>
+                    <prompt><prosody rate="high">Hay una amplia variedad de tostadas, de jamón york y queso, tomate y jamón serrano, atún con tomate, de pate. Se pueden pedir medias tostadas por un precio que ronda el euro y enteras por un precio de alrededor de 2 euros. También hay bocadillos de carne en salsa, tortilla de patata,jamón serrano, atún, por un precio de dos cincuenta euros. Además hay bollería por uno cincuenta y pizzas por tres cincuenta. El café con leche sale por un euro veinte, también hay refrescos y cervezas por dos euros. </prosody> </prompt>
                 </if>
                 
                 <goto next="../otra_consulta/otra_consulta_es.xml"/>

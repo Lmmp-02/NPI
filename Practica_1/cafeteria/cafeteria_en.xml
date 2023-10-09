@@ -1,2 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="en-GB">
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="en-GB" application="../root_en.xml">
+
+    <form id="info_cafeteria_en">
+	<catch event="exit_en">
+	<goto next="../salida/salida_en.xml"/>
+	</catch>
+        <field name="pregunta_cafeteria_en">
+            <prompt bargein="true"> What do you want to know about the cafeteria? </prompt>
+            <grammar src="../grammars/opciones_cafeteria_en.jsgf"/>
+            <help>
+                <prompt> You can ask about the cafeteria's schedule and menu. </prompt>
+                <reprompt/>
+            </help>
+            <nomatch>
+                <prompt>I didn't understand your answer. Please try again.</prompt>
+                <reprompt/>
+            </nomatch>
+            <filled>
+                <if cond="pregunta_cafeteria_en == 'schedule'">
+                    <prompt>The cafeteria is open from eight in the morning to eight in the evening from Monday to Friday.</prompt>
+                    <elseif cond="pregunta_cafeteria_en == 'menu'"/>
+                    <prompt bargein="true" rate="high">There is a wide variety of toasts, including ham and cheese, tomato and serrano ham, tuna with tomato, and pate. Half toasts can be ordered for around one euro, and whole ones for approximately 2 euros. There are also sandwiches with meat in sauce, potato omelette, Serrano ham, and tuna, priced at two fifty euros. In addition, there are pastries for one fifty euros, and pizzas for three fifty euros. A latte is one twenty euros, and there are also soft drinks and beers available for two euros. </prompt>
+                </if>
+                
+                <goto next="../otra_consulta/otra_consulta_en.xml"/>
+            </filled>
+        </field>
+
+        
+    </form>
+</vxml>

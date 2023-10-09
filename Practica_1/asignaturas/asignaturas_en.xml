@@ -1,12 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="en-GB">
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version = "2.1" xml:lang="en-GB" application="../root_en.xml">
 
-	<form>
-		<block>
-			<prompt> 
-				We are sorry, but this language is not available yet. Try again later.
-			</prompt>
-			<exit/>
-		</block>
+	
+	<form id="pregunta_asignatura">
+		
+		<catch event="exit_en">
+		<goto next="../salida/salida_en.xml"/>
+		</catch>
+		<field name="asignatura">
+			<prompt bargein="true"> 
+				What subject are you interested in?
+			</prompt> 
+			
+			<help>
+				<prompt>
+           		Please say the name of a fourth-year CSI branch subject or its spanish abbreviation.
+                That is, one of the following: Simulation Systems or S S, Computer Vision or V C, New Interaction Paradigms or N P I, Information Theory and Coding or T I C, Language Processors or L P, Technical and Scientific Programming or P T C.
+        		</prompt>
+        		<reprompt/>
+			</help>
+
+			<grammar src="../grammars/asignatura_en.jsgf"/>
+			
+			<nomatch>
+				<prompt>I heard something, but it's not a recognized subject</prompt>
+				<reprompt/>
+			</nomatch>
+
+			<filled>
+                <goto nextitem="confirmar_asignatura"/>
+            </filled>
+
+		</field>
+
+		<field name="confirmar_asignatura">
+            <grammar src="../grammars/confirmacion_en.jsgf"/>
+            <prompt>Have you said <value expr="asignatura"/>? </prompt>
+
+            <filled>
+                <if cond="confirmar_asignatura=='yes'">
+                    <prompt>Great, let's continue.</prompt>
+                <else/>
+                    <prompt>Alright, let's repeat it.</prompt>
+                    <clear namelist="confirmar_asignatura asignatura"/>
+                    <goto nextitem="asignatura"/>
+                </if>
+            </filled>
+        </field>
+
+		<field name="practicas_teoria">
+            <grammar src="../grammars/practicas_teoria_en.jsgf"/>
+            <prompt> Do you want information about the practicals or the theory? </prompt>
+			<filled>
+                <goto nextitem="pregunta_sobre"/>
+            </filled>
+        </field>
+
+		<field name="pregunta_sobre">
+            <grammar src="../grammars/consulta_asignatura_en.jsgf"/>
+            <prompt> What do you want to know about the subject? </prompt> 
+
+			<help>
+				<prompt>
+            	We can provide information about the professor who teaches it and its schedule.
+                Choose one of these options.
+        		</prompt>
+        		<reprompt/>
+			</help>
+
+            <nomatch>
+                <prompt>I heard something, but it's not a valid option.</prompt>
+            </nomatch>
+
+		
+		<filled>
+			<if cond="asignatura == 'New Interaction Paradigms' || asignatura == 'N P I'">
+				<if cond="practicas_teoria == 'practicals'">
+					<if cond="pregunta_sobre == 'professor'">
+						<prompt>The professors for N P I practicals are Ramon Lopez-Cozar Delgado for one part of the subject and Marcelino José Cabrera Cuevas for the other part.</prompt>
+					<elseif cond="pregunta_sobre == 'schedule'"/>
+						<prompt>The practical part of the subject takes place on Thursdays from eight thirty to ten thirty for subgroup 1 and on Fridays from ten-thirty to twelve-thirty for subgroup 2 in room 3 1 for both groups.</prompt>
+					</if>
+				<else/>
+					<if cond="pregunta_sobre == 'professor'">
+						<prompt>The professors for N P I theory are Ramon Lopez-Cozar Delgado for one part of the subject and Marcelino José Cabrera Cuevas for the other part.</prompt>
+					<elseif cond="pregunta_sobre == 'schedule'"/>
+						<prompt>The theoretical part of the subject is scheduled for Thursdays from ten thirty to twelve-thirty in room 1 2.</prompt>
+					</if>
+				</if>
+	
+			<elseif cond="asignatura == 'Computer Vision' || asignatura == 'V C'"/>
+				<if cond="practicas_teoria == 'practicals'">
+					<if cond="pregunta_sobre == 'professor'">
+						<prompt>The practicals professor for V C is Pablo Mesejo Santiago for subgroup 1 and Victor Alejandro Vargas Pérez for subgroup 2.</prompt>
+					<elseif cond="pregunta_sobre == 'schedule'"/>
+						<prompt>The practical part of the subject takes place on Fridays from ten thirty to twelve thirty for subgroup 1 and on Thursdays from twelve thirty to two thirty for subgroup 2 in room 2 1.</prompt>
+					</if>
+				<else/>
+					<if cond="pregunta_sobre == 'professor'">
+						<prompt>The theory professor for V C is Pablo Mesejo Santiago.</prompt>
+					<elseif cond="pregunta_sobre == 'schedule'"/>
+						<prompt>The theoretical part of the subject is scheduled for Fridays from eight thirty to ten thirty in room 1 2.</prompt>
+					</if>
+				</if>
+	
+			<elseif cond="asignatura == 'Language Processors' || asignatura == 'P L'"/>
+				<if cond="practicas_teoria == 'practicals'">
+					<if cond="pregunta_sobre == 'professor'">
+						<prompt>The practicals professor for P L is Ramón López Cózar Delgado for subgroup 1 and Jorge Revelles Moreno for subgroup 2.</prompt>
+					<elseif cond="pregunta_sobre == 'schedule'"/>
+						<prompt>The practical part of the subject takes place on Thursdays from 12 30 PM to 2 30 PM in room 3 1 for subgroup 1 and on Thursdays from 8 30 AM to 10 30 AM in room 2 1 for subgroup 2.</prompt>
+					</if>
+				<else/>
+					<if cond="pregunta_sobre == 'professor'">
+						<prompt>The theory professor for P L is Ramón López Cózar Delgado.</prompt>
+					<elseif cond="pregunta_sobre == 'schedule'"/>
+						<prompt>The theoretical part of the subject takes place on Fridays from 12 30 PM to 2 30 PM in room 1 2.</prompt>
+					</if>
+				</if>
+	
+			<elseif cond="asignatura == 'Technical and Scientific Programming' || asignatura == 'P T C'"/>
+				<if cond="practicas_teoria == 'practicals'">
+					<if cond="pregunta_sobre == 'professor'">
+						<prompt>The practicals professor for P T C is Eugenio Aguirre Molina.</prompt>
+					<elseif cond="pregunta_sobre == 'schedule'"/>
+						<prompt>The practical part of the subject takes place on Wednesdays from 11 30 AM to 1 30 PM in room 2 8.</prompt>
+					</if>
+				<else/>
+					<if cond="pregunta_sobre == 'professor'">
+						<prompt>The theory professor for P T C is Miguel García Silvente.</prompt>
+					<elseif cond="pregunta_sobre == 'schedule'"/>
+			<prompt>The theoretical part of the subject takes place on Mondays from 11 30 AM to 1 30 PM in room 1 5.</prompt>
+					</if>
+				</if>
+	
+			<elseif cond="asignatura == 'Simulation Systems' || asignatura == 'S S' "/>
+				<if cond="practicas_teoria == 'practicals'">
+					<if cond="pregunta_sobre == 'professor'">
+						<prompt>The practicals professor for S S is Luis Miguel Campos Ibanez.</prompt>
+					<elseif cond="pregunta_sobre == 'schedule'"/>
+						<prompt>The practical part of the subject takes place on Mondays from 9 30 AM to 11 30 AM in room 3 8.</prompt>
+					</if>
+				<else/>
+					<if cond="pregunta_sobre == 'professor'">
+						<prompt>The theory professor for S S is Luis Miguel Campos Ibanez.</prompt>
+					<elseif cond="pregunta_sobre == 'schedule'"/>
+						<prompt>The theoretical part of the subject takes place on Tuesdays from 9 30 AM to 11 30 AM in room 1 1.</prompt>
+					</if>
+				</if>
+	
+			<elseif cond="asignatura == 'Information Theory and Coding' || asignatura == 'T I C'"/>
+				<if cond="practicas_teoria == 'practicals'">
+					<if cond="pregunta_sobre == 'professor'">
+						<prompt>The practicals professor for T I C is Manuel Pegalajar Cuéllar.</prompt>
+					<elseif cond="pregunta_sobre == 'schedule'"/>
+							<prompt>The practical part of the subject takes place on Tuesdays from 11 30 AM to 1 30 PM in room 2 2.</prompt>
+					</if>
+				<else/>
+					<if cond="pregunta_sobre == 'professor'">
+						<prompt>The theory professor for T I C is Manuel Pegalajar Cuéllar.</prompt>
+					<elseif cond="pregunta_sobre == 'schedule'"/>
+						<prompt>The theoretical part of the subject takes place on Wednesdays from 9 30 AM to 11 30 AM in room 1 5.</prompt>
+					</if>
+				</if>
+
+			</if>
+			<goto next="../otra_consulta/otra_consulta_en.xml"/>
+		</filled>
+		</field>
 	</form>
 </vxml>
+
