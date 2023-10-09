@@ -1,0 +1,7 @@
+#JSGF V1.0;
+
+grammar ayuda;
+
+
+public <ayuda> = I do not | help | can I have some help | I need help 
+				| explain me | how | what | options | help;

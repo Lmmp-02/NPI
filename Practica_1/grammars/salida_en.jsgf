@@ -1,0 +1,5 @@
+#JSGF V1.0;
+
+grammar salida_en;
+
+public <salida_en> = exit | stop | bye | good bye | see you | out;
