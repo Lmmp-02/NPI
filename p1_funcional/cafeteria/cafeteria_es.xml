@@ -1,0 +1,35 @@
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
+
+    <form id="info_cafeteria">
+        <field name="pregunta_cafeteria">
+            <prompt bargein="true"> ¿Que quieres saber sobre la cafeteria? </prompt>
+            <grammar src="../gramaticas/opciones_cafeteria.jsgf"/>
+            <nomatch>
+                <prompt>No he entendido tu respuesta. Por favor, intenta de nuevo.</prompt>
+                <reprompt/>
+            </nomatch>
+            <filled>
+                <if cond="pregunta_cafeteria == 'horario'">
+                    <prompt>El horario de la cafeteria es de ocho de la mañana a ocho de la tarde de lunes a viernes.</prompt>
+                    <elseif cond="pregunta_cafeteria == 'menu'"/>
+                    <prompt bargein="false">Hay una amplia variedad de tostadas, de jamon york y queso, tomate y jamon serrano, atun con tomate, de pate. Se pueden pedir medias tostadas por un precio que ronda el euro y enteras por un precio de alrededor de 2 euros. Tambien hay bocadillos de carne en salsa, tortilla de patata,jamon serrano, atun, por un precio de dos cincuenta euros. Además hay bolleria por uno cincuenta y pizzas por tres cincuenta. El cafe con leche sale por un euro veinte, tambien hay refrescos y cervezas por dos euros. </prompt>
+                </if>
+            </filled>
+        </field>
+
+        <field name="otra_consulta">
+            <prompt>¿Desea realizar otra consulta?</prompt>
+            <grammar src="../gramaticas/confirmacion.jsgf"/>
+            <filled>
+                <if cond="otra_consulta == 'si'">
+                    <prompt> De acuerdo, vamos a realizar otra consulta.</prompt>
+                    <clear namelist="otra_consulta pregunta_cafeteria"/>
+                    <goto next="../menus/menu_es.xml"/>
+                <else/>
+                    <prompt>Muchas gracias por haber utilizado nuestra plataforma. Adiós</prompt>
+                    <exit/>
+                </if>
+            </filled>
+        </field>
+    </form>
+</vxml>

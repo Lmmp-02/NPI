@@ -1,0 +1,5 @@
+#JSGF V1.0;
+
+grammar opcion;
+
+public <opcion> = asignaturas | comedor | secretaria | cafeteria | 1 | 2 | 3 | 4;

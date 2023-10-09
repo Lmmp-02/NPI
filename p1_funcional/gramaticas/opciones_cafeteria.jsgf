@@ -1,0 +1,5 @@
+#JSGF V1.0;
+
+grammar opciones_cafeteria;
+
+public <opciones_cafeteria> = horario | menu;

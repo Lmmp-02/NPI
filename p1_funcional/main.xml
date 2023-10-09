@@ -1,0 +1,27 @@
+<vxml version="1.0" xml:lang="es-ES">
+	
+	<catch event="nomatch noinput" count ="5">
+        <exit/>
+    </catch>
+	
+	<menu accept="approximate">
+		<prompt>
+			Bienvenido a nuestro sistema de consulta de asignaturas y horarios!
+			Para realizar la llamada en castellano, diga castellano o pulse 1.
+			Para realizar la llamada en ingles, diga ingles o pulse 2.
+		</prompt>
+		
+	
+		<choice dtmf="1" next="./menus/menu_es.xml">
+			Castellano
+		</choice>
+		
+		
+		<choice dtmf="2" next="./menus/menu_en.xml">
+			<grammar src="./gramaticas/elegir_ingles.jsgf"/>
+			English
+		</choice>
+		
+	</menu>
+</vxml>
+	
