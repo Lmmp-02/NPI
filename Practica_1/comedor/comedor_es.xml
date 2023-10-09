@@ -1,19 +1,13 @@
-<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="en-GB">
-<form>
-<block>
-<prompt> We are sorry, but this language is not available yet. Try again later. </prompt>
-<exit/>
-</block>
-</form>
-</vxml>
-<!--  
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES" application="../root.xml">
 
-    <form id="info_comedor">
+<form id="comedor">
+<catch event="exit_es">
+	<goto next="../salida/salida_es.xml"/>
+</catch>
 <block>
-    <prompt> El comedor esta disponible de lunes a viernes desde las una hasta las tres y media de la tarde. El comedor de Fuentenueva esta tambien abierto los sabados. </prompt>
-</block>
+    <prompt> El comedor está disponible de lunes a viernes desde las una hasta las tres y media de la tarde. El comedor de Fuentenueva está también abierto los sábados. </prompt>
+
 	<var name="dia"/>
 	<var name="domingo"/>
 	<var name="lunes"/>
@@ -25,42 +19,45 @@
             <script>
 		var dia = new Date().getDay();
                     var domingo = 'los domingos el comedor permanece cerrado';
-                    var lunes = 'estofado de judías, escalope de cerdo acompaniado de pimientos fritos, de postre banana';
-                    var martes = 'patatas en ajo pollo, cazón en adobo o merluza a la andaluza, ambos acompaniados de ensalada, de postre pinia';
-                    var miercoles = 'macarrones a la milanesa, pollo asado acompaniado de calabacín frito, de postre melón';
-                    var jueves = 'pizza de jamón cocido y queso, ensalada richelieu, lomo braseado acompaniado de arroz cuatro delicias, de postre naranja';
-                    var viernes = 'ensalada elisabeth, aguja a la parrilla acompaniada de menestra de verduras, de postre melocotón';
+                    var lunes = 'estofado de judías, escalope de cerdo acompañado de pimientos fritos, de postre banana';
+                    var martes = 'patatas en ajo pollo, cazón en adobo o merluza a la andaluza, ambos acompañados de ensalada, de postre piña';
+                    var miercoles = 'macarrones a la milanesa, pollo asado acompañado de calabacín frito, de postre melón';
+                    var jueves = 'pizza de jamón cocido y queso, ensalada richelieu, lomo braseado acompañado de arroz cuatro delicias, de postre naranja';
+                    var viernes = 'ensalada elisabeth, aguja a la parrilla acompañada de menestra de verduras, de postre melocotón';
                     var sabado = 'paella de cerdo y pollo, dorada a la espalda acompañada de escalibada, de postre mandarinas';
             </script>
 
             <if cond="dia == 0">
                 <prompt bargein="true">
-                Hoy es Domingo, <value expr="domingo"/>. Maniana lunes el menú es <value expr="lunes"/>
+                Hoy es Domingo, <value expr="domingo"/>. Mañana lunes el menú es <value expr="lunes"/>
                 </prompt>
             <elseif cond="dia == 1"/>
                 <prompt bargein="true">
-                Hoy es Lunes, el menú es <value expr="lunes"/>. Maniana martes el menú es <value expr="martes"/>
+                Hoy es Lunes, el menú es <value expr="lunes"/>. Mañana martes el menú es <value expr="martes"/>
                 </prompt>
             <elseif cond="dia == 2"/>
                 <prompt bargein="true">
-                Hoy es Martes, el menú es <value expr="martes"/>. Maniana miércoles el menú es <value expr="miercoles"/>
+                Hoy es Martes, el menú es <value expr="martes"/>. Mañana miércoles el menú es <value expr="miercoles"/>
                 </prompt>
             <elseif cond="dia == 3"/>
                 <prompt bargein="true">
-                Hoy es Miércoles, el menú es <value expr="miercoles"/>. Maniana jueves el menú es <value expr="jueves"/>
+                Hoy es Miércoles, el menú es <value expr="miercoles"/>. Mañana jueves el menú es <value expr="jueves"/>
                 </prompt>
             <elseif cond="dia == 4"/>
                 <prompt bargein="true">
-                Hoy es Jueves, el menú es <value expr="jueves"/>. Maniana viernes el menú es <value expr="viernes"/>
+                Hoy es Jueves, el menú es <value expr="jueves"/>. Mañana viernes el menú es <value expr="viernes"/>
                 </prompt>
             <elseif cond="dia == 5"/>
                 <prompt bargein="true">
-                Hoy es Viernes, el menú es <value expr="viernes"/>. Maniana sábado el menú es <value expr="sabado"/>
+                Hoy es Viernes, el menú es <value expr="viernes"/>. Mañana sábado el menú es <value expr="sabado"/>
                 </prompt>
             <elseif cond="dia == 6"/>
                 <prompt bargein="true">
-                Hoy es Sábado, el menú es <value expr="sabado"/>. Maniana es domingo, <value expr="domingo"/>
+                Hoy es Sábado, el menú es <value expr="sabado"/>. Mañana es domingo, <value expr="domingo"/>
                 </prompt>
             </if>
-    </form>
-</vxml> -->
+		<goto next="../otra_consulta/otra_consulta_es.xml"/>
+	</block>
+
+</form>
+</vxml>

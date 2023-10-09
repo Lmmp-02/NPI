@@ -1,35 +1,33 @@
-<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES"
+application="../root.xml">
+	
     <form id="info_cafeteria">
+<catch event="exit_es">
+	<goto next="../salida/salida_es.xml"/>
+</catch>
         <field name="pregunta_cafeteria">
-            <prompt bargein="true"> ¿Que quieres saber sobre la cafeteria? </prompt>
+            <prompt bargein="true"> ¿Que quieres saber sobre la cafetería? </prompt>
             <grammar src="../gramaticas/opciones_cafeteria.jsgf"/>
+            <help>
+                <prompt> Puedes consultar sobre el horario y el menu de la cafetería. </prompt>
+                <reprompt/>
+            </help>
             <nomatch>
                 <prompt>No he entendido tu respuesta. Por favor, intenta de nuevo.</prompt>
                 <reprompt/>
             </nomatch>
             <filled>
                 <if cond="pregunta_cafeteria == 'horario'">
-                    <prompt>El horario de la cafeteria es de ocho de la mañana a ocho de la tarde de lunes a viernes.</prompt>
+                    <prompt><prosody rate="high">El horario de la cafetería es de ocho de la mañana a ocho de la tarde de lunes a viernes.</prosody></prompt>
                     <elseif cond="pregunta_cafeteria == 'menu'"/>
-                    <prompt bargein="false">Hay una amplia variedad de tostadas, de jamon york y queso, tomate y jamon serrano, atun con tomate, de pate. Se pueden pedir medias tostadas por un precio que ronda el euro y enteras por un precio de alrededor de 2 euros. Tambien hay bocadillos de carne en salsa, tortilla de patata,jamon serrano, atun, por un precio de dos cincuenta euros. Además hay bolleria por uno cincuenta y pizzas por tres cincuenta. El cafe con leche sale por un euro veinte, tambien hay refrescos y cervezas por dos euros. </prompt>
+                    <prompt>Hay una amplia variedad de tostadas, de jamón york y queso, tomate y jamón serrano, atún con tomate, de pate. Se pueden pedir medias tostadas por un precio que ronda el euro y enteras por un precio de alrededor de 2 euros. También hay bocadillos de carne en salsa, tortilla de patata,jamón serrano, atún, por un precio de dos cincuenta euros. Además hay bollería por uno cincuenta y pizzas por tres cincuenta. El café con leche sale por un euro veinte, también hay refrescos y cervezas por dos euros. </prompt>
                 </if>
+                
+                <goto next="../otra_consulta/otra_consulta_es.xml"/>
             </filled>
         </field>
 
-        <field name="otra_consulta">
-            <prompt>¿Desea realizar otra consulta?</prompt>
-            <grammar src="../gramaticas/confirmacion.jsgf"/>
-            <filled>
-                <if cond="otra_consulta == 'si'">
-                    <prompt> De acuerdo, vamos a realizar otra consulta.</prompt>
-                    <clear namelist="otra_consulta pregunta_cafeteria"/>
-                    <goto next="../menus/menu_es.xml"/>
-                <else/>
-                    <prompt>Muchas gracias por haber utilizado nuestra plataforma. Adiós</prompt>
-                    <exit/>
-                </if>
-            </filled>
-        </field>
+        
     </form>
 </vxml>
