@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="en-GB">
     <link event="help_en">
         <grammar src="./grammars/ayuda_en.jsgf"/>

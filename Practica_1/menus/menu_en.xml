@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="en-GB">
-
-	<form>
-		<block>
-			<prompt> 
-				We are sorry, but this language is not available yet. Try again later.
-			</prompt>
-			<exit/>
-		</block>
-	</form>
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="en-GB" application="../root_en.xml">
+<catch event="exit_en">
+	<goto next="../salida/salida_en.xml"/>
+</catch>
+  <form id="menu_ingles">
+    <field name="option">
+      <prompt bargein="true">
+        What information do you need? You can say 'subjects' for information about subjects, 'canteen' for canteen schedules, 'secretary' for secretary hours, and 'cafeteria' for cafeteria schedules. You can also use numbers: Say 1 for information about subjects. Say 2 for canteen schedules. Say 3 for secretary hours. Say 4 for cafeteria schedules.
+      </prompt>
+	<catch event="help_en">
+	<prompt> This is the help prompt. </prompt>
+	<reprompt/>
+	</catch>
+      <grammar src="../grammars/opciones_menu_en.jsgf"/>
+      <filled>
+<!--
+        <if cond="option == '1' || option == 'subjects'">
+          <goto next="../asignaturas/asignaturas_en.xml"/>
+        <elseif cond="option == '2' || option == 'cafeteria'"/>
+          <goto next="../cafeteria/cafeteria_en.xml"/>
+        <elseif cond="option == '3' || option == 'canteen'"/>
+          <goto next="../comedor/comedor_en.xml"/>
+        <elseif cond="option == '4' || option == 'secretary'"/>
+          <goto next="../secretaria/secretaria_en.xml"/>
+        </if>
+-->
+      </filled>
+    </field>
+  </form>
 </vxml>

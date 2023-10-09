@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version = "2.1" xml:lang="es-ES" application="../root.xml">
+
+	<form id="otra_cons">
+	<catch event="exit_es">
+		<goto next="../salida/salida_es.xml"/>
+	</catch>
+		<field name="otra_consulta">
+			<prompt>¿Desea realizar otra consulta?</prompt>
+			<grammar src="../gramaticas/confirmacion.jsgf"/>
+			<filled>
+				<if cond="otra_consulta == 'si'">
+				<prompt> De acuerdo, vamos a realizar otra consulta.</prompt>
+				<clear namelist="otra_consulta pregunta_cafeteria"/>
+				<goto next="../menus/menu_es.xml"/>
+				<else/>
+				<prompt>Muchas gracias por haber utilizado nuestra plataforma. Adiós</prompt>
+				<exit/>
+				</if>
+			</filled>
+		</field>
+	</form>
+</vxml>

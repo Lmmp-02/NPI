@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
+
+	<form id="salida">
+		<field name="confirmacion_salida">
+			<prompt>Desea salir?</prompt>
+			<grammar src="../gramaticas/confirmacion.jsgf"/>
+			<nomatch>
+				<prompt>He oído algo, pero no es ni sí ni no.</prompt>
+				<reprompt/>
+			</nomatch>
+		</field>
+			<filled>
+				<if cond="confirmacion_salida=='si'">
+					<prompt>Muchas gracias por haber utilizado nuestra plataforma. Adiós. </prompt>
+					<exit/>					
+				<elseif cond="confirmacion_salida=='no'"/>
+					<prompt>De acuerdo, vamos a realizar otra consulta.</prompt>
+					<goto next="../menus/menu_es.xml"/>
+				<else/>
+					<prompt>No he entendido su respuesta. Vamos a intentar de nuevo.</prompt>
+        				<reprompt/>
+				</if>
+			</filled>
+		
+	</form>
+</vxml>

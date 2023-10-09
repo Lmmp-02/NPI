@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="en-GB" application="../root_en.xml">
+
+	<form id="salida_en">
+		<field name="confirmacion_salida_en">
+			<prompt>Do you want to end the call? </prompt>
+			<grammar src="../grammars/confirmacion_en.jsgf"/>
+			<filled>
+				<if cond="confirmacion_salida_en=='no'">
+					<prompt> Okay, let's make another inquiry</prompt>
+					<goto next="../menus/menu_en.xml"/>
+				<else/>
+					<prompt>Thank you very much for using our platform. Goodbye. </prompt>
+					<exit/>
+				</if>
+			</filled>
+		</field>
+	</form>
+</vxml>

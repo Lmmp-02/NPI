@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
 	<catch event="nomatch noinput" count="3">
 		<prompt> No le puedo oír o entender. Pruebe a llamar de nuevo. Adios. </prompt>

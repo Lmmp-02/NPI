@@ -1,6 +1,9 @@
-<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
-
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES" application="../root.xml">
+	
   <form id="menu_espanol">
+<catch event="exit_es">
+	<goto next="../salida/salida_es.xml"/>
+</catch>
     <field name="opcion">
       <prompt bargein="true">
         ¿Qué información necesitas? 
