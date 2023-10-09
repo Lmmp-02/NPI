@@ -1,27 +1,24 @@
-<vxml version="1.0" xml:lang="es-ES">
-	
-	<catch event="nomatch noinput" count ="5">
-        <exit/>
-    </catch>
-	
+<vxml xmlns="http://www.w3.org/2001/06/vxml" version="2.1" xml:lang="es-ES">
+	<catch event="nomatch noinput" count="3">
+		<prompt> No le puedo oír o entender. Pruebe a llamar de nuevo. Adios. </prompt>
+		<exit/>
+	</catch>
 	<menu accept="approximate">
 		<prompt>
-			Bienvenido a nuestro sistema de consulta de asignaturas y horarios!
-			Para realizar la llamada en castellano, diga castellano o pulse 1.
-			Para realizar la llamada en ingles, diga ingles o pulse 2.
+			Bienvenido a nuestro
+			<emphasis> sistema de consulta de asignaturas y horarios </emphasis>
+			. Para realizar la llamada en
+			<emphasis>castellano</emphasis>
+			, diga
+			<emphasis>castellano, español</emphasis>
+			o pulse
+			<emphasis>1</emphasis>
+			.
 		</prompt>
-		
-	
-		<choice dtmf="1" next="./menus/menu_es.xml">
-			Castellano
+		<choice dtmf="1" next="./menus/menu_es.xml"> Castellano Español </choice>
+		<choice dtmf="2" next="./menus/menu_en.xml"> English Ingles </choice>
+		<choice dtmf="3" next="./salida/salida_es.xml">
+			<grammar src="./gramaticas/salida.jsgf"/>
 		</choice>
-		
-		
-		<choice dtmf="2" next="./menus/menu_en.xml">
-			<grammar src="./gramaticas/elegir_ingles.jsgf"/>
-			English
-		</choice>
-		
 	</menu>
 </vxml>
-	
