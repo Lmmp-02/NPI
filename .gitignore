@@ -6,3 +6,13 @@
 /P2_NPI/build/
 /P2_NPI/nbproject/private/
 /Practica_2/dist/
+Practica_2/build.xml
+Practica_2/Leap.dll
+Practica_2/LeapJava.dll
+Practica_2/LeapJava.jar
+Practica_2/manifest.mf
+Practica_2/nbproject/build-impl.xml
+Practica_2/nbproject/genfiles.properties
+Practica_2/nbproject/project.properties
+Practica_2/nbproject/project.xml
+Practica_2/src/GUI/Menu_Principal.form
