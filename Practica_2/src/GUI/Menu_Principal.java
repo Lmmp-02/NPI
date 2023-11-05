@@ -4,8 +4,11 @@
  */
 package GUI;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -37,8 +40,29 @@ public class Menu_Principal extends javax.swing.JFrame {
         boton_profesorado.setFont(fuente_botones);
         boton_tramites.setFont(fuente_botones);
         jLabel_titulo.setFont(fuente_titulo);
-
+        
+        this.set_cursor_personalizado();
+        
         setVisible(true);
+    }
+    
+    private void set_cursor_personalizado(){
+        // Cargar una imagen para el nuevo icono del cursor
+        BufferedImage cursorImage = loadImage("./recursos/cursor_custom.png");
+        if (cursorImage != null) {
+            Cursor customCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImage, new Point(0, 0), "CustomCursor");
+            // Establece el nuevo cursor en el JFrame
+            this.setCursor(customCursor);
+        }
+    }
+    
+    private static BufferedImage loadImage(String filePath) {
+        try {
+            return ImageIO.read(new File(filePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
