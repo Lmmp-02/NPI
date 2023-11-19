@@ -17,6 +17,8 @@ import com.google.zxing.common.HybridBinarizer;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.logging.Level;
 
@@ -28,6 +30,7 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
 
     private WebcamPanel panel = null;
     private Webcam webcam = null;
+    private Executor executor = Executors.newSingleThreadExecutor(this);
     
     
     /**
@@ -61,7 +64,13 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
 
         jLabel1.setText("Lectura");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
-        jPanel1.add(campo_resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 320, -1));
+
+        campo_resultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo_resultadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(campo_resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 320, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,6 +85,10 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void campo_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_resultadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campo_resultadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,6 +142,8 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
         panel.setFPSDisplayed(true);
         
         jPanel2.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,470,300));
+        
+        executor.execute(this);
     }
     
     @Override
