@@ -16,7 +16,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
 
-public class Menu_Botones_Generico extends javax.swing.JFrame {
+public class Menu_Botones_Generico extends javax.swing.JFrame { // Cambiar a JPanel
 
     //private JPanel panel;
 

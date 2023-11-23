@@ -282,7 +282,6 @@ class SampleListener extends Listener {
         
         }
         
-        // Movimiento 
     }
     
         
@@ -298,7 +297,7 @@ class SampleListener extends Listener {
 public class P2_NPI {
 
     public static void main(String[] args) {
-        String[] nombresBotones = {"Botón A", "Botón B", "Botón C"};
+        String[] nombresBotones = {"Botón A", "Botón B", "Botón C", "Boton D"};
         Menu_Botones_Generico vista = new Menu_Botones_Generico(nombresBotones);
         vista.setVisible(true);
 
