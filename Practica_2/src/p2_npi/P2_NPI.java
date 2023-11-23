@@ -10,8 +10,8 @@ package p2_npi;
  */
 
 
-import javax.swing.*;
-import GUI.Menu_Principal;
+//import javax.swing.*;
+import GUI.Menu_Botones_Generico;
 
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.State;
@@ -38,7 +38,7 @@ class SampleListener extends Listener {
         this.MAX_NO_MOVIMIENTO_Y = 30;
         this.PROF_CLICK = -200;
         this.MOV_ENTRE_CLICKS = 50;
-        this.ALTURA_CERO = 400;
+        this.ALTURA_CERO = 200;
         this.pulsando_click = false;
         this.count = 0;
     }
@@ -167,7 +167,55 @@ class SampleListener extends Listener {
             int mov_x = (int) position.getX();
             int mov_y = (int) position.getY() - ALTURA_CERO; 
             int pos_z = (int) position.getZ(); 
-            
+            /*
+            // Verifica si no hay dedos visibles y la palma está detectada para hacer clic
+            if (hand.fingers().count() == 0 && hand.sphereRadius() > 10) {
+                if (!pulsando_click) {
+                    pulsando_click = true;
+                    System.out.println("Clic con el puño cerrado");
+                    try {
+                        Robot robot = new Robot();
+                        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+                        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else {
+                if (pulsando_click) {
+                    pulsando_click = false;
+                }
+            }
+            */
+        
+            FingerList fingers = hand.fingers();
+
+        // Calcular la distancia media de las puntas de los dedos a la palma
+        double totalDistance = 0;
+        for (Finger finger : fingers) {
+            Vector fingerTip = finger.tipPosition();
+            double distance = fingerTip.distanceTo(position);
+            totalDistance += distance;
+        }
+        double averageDistance = totalDistance / fingers.count();
+
+        // Establecer un umbral para la distancia
+        double closedFistThreshold = 60; // Ajusta este valor según sea necesario
+
+        // Verificar si la mano está en posición de puño cerrado
+        if (averageDistance < closedFistThreshold && !pulsando_click) {
+            pulsando_click = true;
+            System.out.println("Clic con el puño cerrado");
+            try {
+                Robot robot = new Robot();
+                robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+                robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (averageDistance >= closedFistThreshold && pulsando_click) {
+            pulsando_click = false;
+        }
             
             //Vemos si estamos haciendo un click
             if(pos_z < PROF_CLICK && !pulsando_click){
@@ -233,6 +281,8 @@ class SampleListener extends Listener {
             }
         
         }
+        
+        // Movimiento 
     }
     
         
@@ -248,11 +298,14 @@ class SampleListener extends Listener {
 public class P2_NPI {
 
     public static void main(String[] args) {
-        Menu_Principal vista = new Menu_Principal();
+        String[] nombresBotones = {"Botón A", "Botón B", "Botón C"};
+        Menu_Botones_Generico vista = new Menu_Botones_Generico(nombresBotones);
+        vista.setVisible(true);
+
         SampleListener listener = new SampleListener();
         Controller controller = new Controller();
         
-         // Have the sample listener receive events from the controller
+        // Have the sample listener receive events from the controller
         controller.addListener(listener);
         
         // Keep this process running until Enter is pressed
@@ -265,6 +318,5 @@ public class P2_NPI {
         
         // Elimina el listener al final
         controller.removeListener(listener);
-        
     }
 }
