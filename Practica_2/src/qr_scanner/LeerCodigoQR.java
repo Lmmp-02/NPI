@@ -127,7 +127,6 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
 
     private void initWebcam(){
         List<Webcam> lista_webcams;
-        Webcam webcam;
         Dimension size = WebcamResolution.QVGA.getSize();
         
         do{
