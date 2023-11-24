@@ -30,6 +30,8 @@ public class Menu_Localizacion extends javax.swing.JPanel {
         boton_servicios_externos = new javax.swing.JButton();
         boton_clases_despachos = new javax.swing.JButton();
         boton_espacios_comunes = new javax.swing.JButton();
+        boton_no = new javax.swing.JButton();
+        boton_si = new javax.swing.JButton();
 
         setOpaque(false);
 
@@ -60,6 +62,22 @@ public class Menu_Localizacion extends javax.swing.JPanel {
             }
         });
 
+        boton_no.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        boton_no.setText("No");
+        boton_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_noActionPerformed(evt);
+            }
+        });
+
+        boton_si.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        boton_si.setText("Si");
+        boton_si.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_siActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,7 +92,12 @@ public class Menu_Localizacion extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(boton_clases_despachos, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                             .addComponent(boton_espacios_comunes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(boton_servicios_externos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(boton_servicios_externos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(boton_no)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(boton_si)
+                                .addGap(19, 19, 19)))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -88,7 +111,11 @@ public class Menu_Localizacion extends javax.swing.JPanel {
                 .addComponent(boton_espacios_comunes, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(boton_servicios_externos, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boton_no, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boton_si, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -104,11 +131,21 @@ public class Menu_Localizacion extends javax.swing.JPanel {
         padre.botonLocalizacionEspaciosComunesPulsado();
     }//GEN-LAST:event_boton_espacios_comunesActionPerformed
 
+    private void boton_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_noActionPerformed
+        padre.anterior();
+    }//GEN-LAST:event_boton_noActionPerformed
+
+    private void boton_siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_siActionPerformed
+        padre.siguiente();
+    }//GEN-LAST:event_boton_siActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_clases_despachos;
     private javax.swing.JButton boton_espacios_comunes;
+    private javax.swing.JButton boton_no;
     private javax.swing.JButton boton_servicios_externos;
+    private javax.swing.JButton boton_si;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,6 +21,7 @@ public class Ventana extends javax.swing.JFrame {
     
     private Menu_Inicio menu_inicio;
     private Menu_Localizacion menu_localizacion;
+    private Seleccion_Clases sel_clases;
     private Carrusel_Fotos carrusel;
     private Confirmacion_Menu_Final confirmacion_fin;
     private int estado;
@@ -33,6 +34,7 @@ public class Ventana extends javax.swing.JFrame {
         //Inicializamos los diferentes JPanel
         menu_inicio = new Menu_Inicio(this);
         menu_localizacion = new Menu_Localizacion(this);
+        sel_clases = new Seleccion_Clases(this);
         carrusel = new Carrusel_Fotos(this);
         confirmacion_fin = new Confirmacion_Menu_Final(this);
         
@@ -70,15 +72,14 @@ public class Ventana extends javax.swing.JFrame {
     }
     
     public void botonLocalizacionClasesPulsado(){
-        //Por implementar - Ir a menu_seleccion_clases
-        muestraPanel(carrusel);
-        estado = 3;
+        muestraPanel(sel_clases);
+        estado = 2;
     }
     
     public void botonLocalizacionEspaciosComunesPulsado(){
-        //Por implementar - Ir a menu_seleccion_clases
+        //Por implementar - Ir a menu_seleccion_espacios_comunes (estado 5)
         muestraPanel(carrusel);
-        estado = 3;
+        estado = 3; 
     }
     
     
@@ -86,13 +87,19 @@ public class Ventana extends javax.swing.JFrame {
     public void anterior(){
         System.out.println("Anterior --> Estado " + estado );
         switch(estado){
-            case 1:
+            case 1: //Menu localizacion
                 muestraPanel(menu_inicio);
                 estado = 0;
                 break;
-            case 3:
+            case 2: //Selector clases
+                muestraPanel(menu_localizacion);
+                estado = 1;
                 break;
-            case 4:
+            case 3: //Carrusel 
+                muestraPanel(sel_clases);
+                estado = 2;
+                break;
+            case 4: //Confirmacion final
                 muestraPanel(carrusel);
                 estado = 3;
                 break;
@@ -104,13 +111,17 @@ public class Ventana extends javax.swing.JFrame {
     public void siguiente(){
         System.out.println("Siguiente --> Estado " + estado );
         switch(estado){
+            case 2:
+                muestraPanel(carrusel);
+                estado = 3;
+                break;
             case 3:
                 muestraPanel(confirmacion_fin);
                 estado = 4;
                 break;
             case 4:
-                muestraPanel(carrusel);
-                estado = 3;
+                muestraPanel(menu_inicio);
+                estado = 0;
                 break;
         }
         System.out.println(" es " + estado +"\n");
