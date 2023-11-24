@@ -15,6 +15,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
+// CAMBIAR AQUÍ PARA QUE SI SON 5 BOTONES QUE LOS MUESTRE EN DOS COLUMNAS
 
 public class Menu_Botones_Generico extends javax.swing.JFrame { // Cambiar a JPanel
 

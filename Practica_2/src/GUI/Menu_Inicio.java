@@ -15,6 +15,11 @@ public class Menu_Inicio extends javax.swing.JPanel {
      */
     public Menu_Inicio() {
         initComponents();
+        // Añadir en el panel la llamada a Menu_Botones_Generico para que
+        // muestre los 5 botones
+        String[] nombresBotones = {"Gestión", "Botón B", "Botón C", "Boton D"};
+        Menu_Botones_Generico vista = new Menu_Botones_Generico(nombresBotones);
+        vista.setVisible(true);
     }
 
     /**
@@ -54,6 +59,9 @@ public class Menu_Inicio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 
+    public static void main(String[] args) {
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
