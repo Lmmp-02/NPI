@@ -20,7 +20,7 @@ import java.awt.Insets;
 public class Menu_Botones_Generico extends javax.swing.JFrame { // Cambiar a JPanel
 
     //private JPanel panel;
-
+    private Ventana padre;
     public Menu_Botones_Generico(String[] nombresBotones) {
         initComponents();  // Llama primero al método initComponents generado por NetBeans
         myInitComponents(nombresBotones);  // Luego llama a tu método personalizado
