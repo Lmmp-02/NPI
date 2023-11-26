@@ -19,6 +19,25 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         //Usar el método setModel(<cadena strings>)
     }
     
+    // Método para manejar swipe up
+    public void swipeUp() {
+        cambiarIndiceCombox(ComBox1, -1);
+        // Agrega aquí el cambio de ComBox2 y ComBox3 si es necesario
+    }
+
+    // Método para manejar swipe down
+    public void swipeDown() {
+        cambiarIndiceCombox(ComBox1, 1);
+        // Agrega aquí el cambio de ComBox2 y ComBox3 si es necesario
+    }
+
+    // Método para cambiar el índice del JComboBox
+    private void cambiarIndiceCombox(javax.swing.JComboBox<String> combox, int delta) {
+        int index = combox.getSelectedIndex();
+        int nuevoIndice = (index + delta + combox.getItemCount()) % combox.getItemCount();
+        combox.setSelectedIndex(nuevoIndice);
+    }
+    
     private void cambioComboxRueda(javax.swing.JComboBox<String> combox, 
                                    java.awt.event.MouseWheelEvent evt){
         int index = combox.getSelectedIndex();

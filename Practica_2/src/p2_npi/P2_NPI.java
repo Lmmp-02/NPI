@@ -13,6 +13,7 @@ package p2_npi;
 //import javax.swing.*;
 //import GUI.Menu_Botones_Generico;
 import GUI.Ventana;
+import GUI.Seleccion_Clases;
 
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.State;
@@ -34,6 +35,8 @@ class SampleListener extends Listener {
     private final int MOV_ENTRE_CLICKS;
     private final int ALTURA_CERO;
     
+    private Seleccion_Clases seleccionClasesPanel;
+    
     public SampleListener(){
         this.MAX_NO_MOVIMIENTO_X = 30;
         this.MAX_NO_MOVIMIENTO_Y = 30;
@@ -42,6 +45,11 @@ class SampleListener extends Listener {
         this.ALTURA_CERO = 200;
         this.pulsando_click = false;
         this.count = 0;
+    }
+    
+    public SampleListener(Seleccion_Clases seleccionClasesPanel) {
+        this();
+        this.seleccionClasesPanel = seleccionClasesPanel;
     }
     
     @Override
@@ -135,11 +143,13 @@ class SampleListener extends Listener {
                 case TYPE_SWIPE -> {
                     SwipeGesture swipe = new SwipeGesture(gesture);
                     System.out.println("Swipe id: " + swipe.id()
-                            + ", " + swipe.state()
-                            + ", position: " + swipe.position()
-                            + ", direction: " + swipe.direction()
-                            + ", speed: " + swipe.speed());
-                    
+                        + ", " + swipe.state()
+                        + ", position: " + swipe.position()
+                        + ", direction: " + swipe.direction()
+                        + ", speed: " + swipe.speed());
+
+                    handleSwipeGesture(swipe);
+                    break;
                 }
                 
                 case TYPE_SCREEN_TAP -> {
@@ -285,6 +295,18 @@ class SampleListener extends Listener {
         
     }
     
+    private void handleSwipeGesture(SwipeGesture swipe) {
+        Vector direction = swipe.direction();
+
+        // Swipe hacia arriba
+        if (direction.getY() > 0 && swipe.state() == State.STATE_STOP) {
+            seleccionClasesPanel.swipeUp();
+        }
+        // Swipe hacia abajo
+        else if (direction.getY() < 0 && swipe.state() == State.STATE_STOP) {
+            seleccionClasesPanel.swipeDown();
+        }
+    }
         
     // Se elimina el listener de un controlador
     public void onExit(Controller controller) {
