@@ -35,6 +35,8 @@ public class Menu_Comedor extends javax.swing.JPanel {
         NO = new javax.swing.JButton();
         SI = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 204, 255));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Menú Comedores");
 

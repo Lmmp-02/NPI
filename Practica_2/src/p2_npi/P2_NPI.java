@@ -11,7 +11,8 @@ package p2_npi;
 
 
 //import javax.swing.*;
-import GUI.Menu_Botones_Generico;
+//import GUI.Menu_Botones_Generico;
+import GUI.Ventana;
 
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.State;
@@ -298,9 +299,12 @@ public class P2_NPI {
 
     public static void main(String[] args) {
         // LLamada a Menu_Principal y que muestre el panel
-        String[] nombresBotones = {"Botón A", "Botón B", "Botón C", "Boton D"};
+        /*String[] nombresBotones = {"Botón A", "Botón B", "Botón C", "Boton D"};
         Menu_Botones_Generico vista = new Menu_Botones_Generico(nombresBotones);
-        vista.setVisible(true);
+        vista.setVisible(true);*/
+        
+        Ventana ventana = new Ventana();
+        ventana.setVisible(true);
 
         SampleListener listener = new SampleListener();
         Controller controller = new Controller();
