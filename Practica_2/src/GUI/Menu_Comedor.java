@@ -108,11 +108,11 @@ public class Menu_Comedor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuAydanamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAydanamarActionPerformed
-        // TODO add your handling code here:
+        //padre.botonMenuAydanamarPulsado();
     }//GEN-LAST:event_MenuAydanamarActionPerformed
 
     private void MenuParaLLevarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuParaLLevarActionPerformed
-        // TODO add your handling code here:
+        padre.botonMenuParaLlevarPulsado();
     }//GEN-LAST:event_MenuParaLLevarActionPerformed
 
     private void NOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOActionPerformed
