@@ -26,6 +26,9 @@ public class Ventana extends javax.swing.JFrame {
     private Confirmacion_Menu_Final confirmacion_fin;
     private int estado;
     
+    // Comedor
+    private Menu_Comedor menu_comedor;
+    
     public Ventana() {
         initComponents();
         //Ponemos interfaz en pantalla completa
@@ -37,6 +40,7 @@ public class Ventana extends javax.swing.JFrame {
         sel_clases = new Seleccion_Clases(this);
         carrusel = new Carrusel_Fotos(this);
         confirmacion_fin = new Confirmacion_Menu_Final(this);
+        menu_comedor = new Menu_Comedor(this);
         
         //Activamos el cursor personalizado
         this.set_cursor_personalizado();
@@ -68,7 +72,13 @@ public class Ventana extends javax.swing.JFrame {
     
     public void botonComedorPulsado(){
         //Por implementar - Ir a menu_comedor
-        
+        muestraPanel(menu_comedor);
+        estado = 6;
+    }
+    
+    public void botonMenuAydanamarPulsado(){
+        muestraPanel(menu_comedor);
+        estado = 6;
     }
     
     public void botonLocalizacionClasesPulsado(){
@@ -103,6 +113,10 @@ public class Ventana extends javax.swing.JFrame {
                 muestraPanel(carrusel);
                 estado = 3;
                 break;
+            case 6: // Menú Comedor
+                muestraPanel(menu_inicio); //Cambiarlo pero no sé cuál es su función
+                estado = 6;
+                break;
         }
         System.out.println(" es " + estado +"\n");
     }
@@ -120,6 +134,10 @@ public class Ventana extends javax.swing.JFrame {
                 estado = 4;
                 break;
             case 4:
+                muestraPanel(menu_inicio);
+                estado = 0;
+                break;
+            case 6:
                 muestraPanel(menu_inicio);
                 estado = 0;
                 break;
