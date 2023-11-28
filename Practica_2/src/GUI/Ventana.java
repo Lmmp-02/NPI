@@ -243,6 +243,11 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(" es " + estado +"\n");
     }
    
+    //Método de transición al estado inicial
+    public void reinicio(){
+        muestraPanel(menu_inicio);
+        estado = 0;           
+    }
     
     
     
@@ -417,7 +422,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_anteriorActionPerformed
 
     private void boton_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_homeActionPerformed
-        // TODO add your handling code here:
+        reinicio();
     }//GEN-LAST:event_boton_homeActionPerformed
 
     private void boton_ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ayudaActionPerformed
