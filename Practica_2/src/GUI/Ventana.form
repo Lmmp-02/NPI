@@ -39,7 +39,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="contenedor_principal" pref="1068" max="32767" attributes="0"/>
+                      <Component id="contenedor_principal" pref="888" max="32767" attributes="0"/>
                       <Component id="botones_fin" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -52,7 +52,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="botones_fin" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="contenedor_principal" pref="1867" max="32767" attributes="0"/>
+                  <Component id="contenedor_principal" pref="1547" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -72,7 +72,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="boton_anterior" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="905" max="32767" attributes="0"/>
+                      <EmptySpace pref="725" max="32767" attributes="0"/>
                       <Component id="boton_siguiente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -128,7 +128,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1867" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="1547" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

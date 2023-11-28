@@ -302,7 +302,7 @@ public class Ventana extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botones_finLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(boton_anterior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 905, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 725, Short.MAX_VALUE)
                 .addComponent(boton_siguiente)
                 .addContainerGap())
         );
@@ -327,7 +327,7 @@ public class Ventana extends javax.swing.JFrame {
         );
         contenedor_principalLayout.setVerticalGroup(
             contenedor_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1867, Short.MAX_VALUE)
+            .addGap(0, 1547, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -337,7 +337,7 @@ public class Ventana extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
+                    .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
                     .addComponent(botones_fin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -347,7 +347,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(botones_fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1867, Short.MAX_VALUE)
+                .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1547, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
