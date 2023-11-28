@@ -47,6 +47,8 @@ public class Menu_Inicio extends javax.swing.JPanel {
         boton_tramites = new javax.swing.JButton();
         boton_localizacion = new javax.swing.JButton();
 
+        setOpaque(false);
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Menú de Inicio");
