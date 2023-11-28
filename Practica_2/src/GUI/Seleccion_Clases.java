@@ -63,8 +63,6 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         ComBox2 = new javax.swing.JComboBox<>();
         ComBox3 = new javax.swing.JComboBox<>();
         titulo = new javax.swing.JLabel();
-        boton_si = new javax.swing.JButton();
-        boton_no = new javax.swing.JButton();
 
         ComBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-1", "0", "1", "2", "3", "4", "5" }));
         ComBox1.setToolTipText("");
@@ -91,22 +89,6 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         titulo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         titulo.setText("Seleccion Clases");
 
-        boton_si.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        boton_si.setText("Sí");
-        boton_si.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_siActionPerformed(evt);
-            }
-        });
-
-        boton_no.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        boton_no.setText("No");
-        boton_no.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_noActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,12 +106,6 @@ public class Seleccion_Clases extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(titulo)
                         .addGap(50, 50, 50))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(boton_no, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(boton_si, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,11 +117,7 @@ public class Seleccion_Clases extends javax.swing.JPanel {
                     .addComponent(ComBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                     .addComponent(ComBox2)
                     .addComponent(ComBox3))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boton_si, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boton_no, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -161,21 +133,11 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         cambioComboxRueda(ComBox3, evt);
     }//GEN-LAST:event_ComBox3MouseWheelMoved
 
-    private void boton_siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_siActionPerformed
-        padre.siguiente();
-    }//GEN-LAST:event_boton_siActionPerformed
-
-    private void boton_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_noActionPerformed
-        padre.anterior();
-    }//GEN-LAST:event_boton_noActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComBox1;
     private javax.swing.JComboBox<String> ComBox2;
     private javax.swing.JComboBox<String> ComBox3;
-    private javax.swing.JButton boton_no;
-    private javax.swing.JButton boton_si;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

@@ -83,10 +83,6 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,6 +102,10 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Celiaco)
                 .addGap(134, 134, 134))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,23 +127,23 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AlmuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlmuerzoActionPerformed
-        // TODO add your handling code here:
+        padre.siguiente();
     }//GEN-LAST:event_AlmuerzoActionPerformed
 
     private void CenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CenaActionPerformed
-        // TODO add your handling code here:
+        padre.siguiente();
     }//GEN-LAST:event_CenaActionPerformed
 
     private void OvolacteovegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OvolacteovegActionPerformed
-        // TODO add your handling code here:
+        padre.siguiente();
     }//GEN-LAST:event_OvolacteovegActionPerformed
 
     private void VeganoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VeganoActionPerformed
-        // TODO add your handling code here:
+        padre.siguiente();
     }//GEN-LAST:event_VeganoActionPerformed
 
     private void CeliacoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CeliacoActionPerformed
-        // TODO add your handling code here:
+        padre.siguiente();
     }//GEN-LAST:event_CeliacoActionPerformed
 
 
