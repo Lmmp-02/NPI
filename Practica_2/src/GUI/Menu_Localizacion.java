@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import java.awt.Font;
+
 /**
  *
  * @author Usuario
@@ -15,6 +17,16 @@ public class Menu_Localizacion extends javax.swing.JPanel {
     public Menu_Localizacion(Ventana p) {
         initComponents();
         padre = p;
+        
+        // Ajustamos el texto al tamaño de ventana
+        int ancho_menu = padre.getWidth();
+        System.out.println(ancho_menu);
+        Font fuente_botones = boton_clases_despachos.getFont().deriveFont((float) ancho_menu/15);
+        Font fuente_titulo = jLabel1.getFont().deriveFont((float) ancho_menu/13);
+        boton_clases_despachos.setFont(fuente_botones);
+        boton_espacios_comunes.setFont(fuente_botones);
+        boton_servicios_externos.setFont(fuente_botones);
+        jLabel1.setFont(fuente_titulo);
     }
 
     /**
@@ -78,7 +90,7 @@ public class Menu_Localizacion extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(boton_clases_despachos, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
