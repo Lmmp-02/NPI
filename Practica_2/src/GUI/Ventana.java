@@ -24,7 +24,8 @@ public class Ventana extends javax.swing.JFrame {
     private Menu_Localizacion menu_localizacion;
     private Seleccion_Clases sel_clases;
     private Carrusel_Fotos carrusel_ruta, sel_espacios_comunes;
-    private Panel_Menu panel_menu, panel_menu_llevar;
+    private Panel_Menu panel_menu;
+    private Panel_Menu_Llevar panel_menu_llevar;
     private Confirmacion_Menu_Final confirmacion_fin;
     private int estado;
     private Seleccion_Clases pago_comida;
@@ -45,7 +46,7 @@ public class Ventana extends javax.swing.JFrame {
         carrusel_ruta = new Carrusel_Fotos(this);
         sel_espacios_comunes = new Carrusel_Fotos(this);
         panel_menu = new Panel_Menu(this);
-        panel_menu_llevar = new Panel_Menu(this);
+        panel_menu_llevar = new Panel_Menu_Llevar(this);
         confirmacion_fin = new Confirmacion_Menu_Final(this);
         menu_comedor = new Menu_Comedor(this);
         sel_tipo_menu = new Seleccion_Tipo_Menu(this);
