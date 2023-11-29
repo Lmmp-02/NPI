@@ -48,6 +48,18 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
         return "Lunes";
     }
     
+    public String getTipoMenu(){
+        switch(tipoMenu){
+            case 0: return "Almuerzo";
+            case 1: return "Cena";
+            case 2: return "Ovolactovegetariano";
+            case 3: return "Vegano";
+            case 4: return "T-celiaco";
+        }
+        
+        return "Almuerzo";
+    }
+    
     private void mostrarDiaAnterior() {
         dia = (dia - 1 + max_dia) % max_dia;
         actualizarMenu();
@@ -68,10 +80,11 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
             con = Conexion.getConexion("Comedor");
             
             //Actualizamos menú 1
-            String cmd = "SELECT * FROM Menus WHERE Dia = ? AND TipoMenu = 1;";
+            String cmd = "SELECT * FROM Menus WHERE Dia = ? AND TipoMenu = ?;";
             ps = con.prepareStatement(cmd);
             
             ps.setString(1, getDia());
+            ps.setString(2, getTipoMenu());
             
             rs = ps.executeQuery();
             
@@ -80,24 +93,6 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
                 txtSegundo.setText(rs.getString("Segundo"));
                 txtAcompaniamiento.setText(rs.getString("Acompanamiento"));
                 txtPostre.setText(rs.getString("Postre"));
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "No hay resultados validos");
-            }
-            
-            //Actualizamos menú 2
-            cmd = "SELECT * FROM Menus WHERE Dia = ? AND TipoMenu = 2;";
-            ps = con.prepareStatement(cmd);
-            
-            ps.setString(1, getDia());
-            
-            rs = ps.executeQuery();
-            
-            if(rs.next()){
-                txtPrimero1.setText(rs.getString("Primero"));
-                txtSegundo1.setText(rs.getString("Segundo"));
-                txtAcompaniamiento1.setText(rs.getString("Acompanamiento"));
-                txtPostre1.setText(rs.getString("Postre"));
             }
             else{
                 JOptionPane.showMessageDialog(null, "No hay resultados validos");
@@ -132,15 +127,6 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
         txtAcompaniamiento = new javax.swing.JTextField();
         txtPrimero = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtPostre1 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        txtSegundo1 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        txtAcompaniamiento1 = new javax.swing.JTextField();
-        txtPrimero1 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(450, 750));
 
@@ -205,48 +191,6 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
             jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             jLabel8.setText("Menú 1:");
 
-            jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-            jLabel9.setText("Postre:");
-
-            txtPostre1.setEditable(false);
-            txtPostre1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-
-            jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-            jLabel10.setText("Acompanamiento:");
-
-            jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-            jLabel11.setText("Segundo:");
-
-            txtSegundo1.setEditable(false);
-            txtSegundo1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-            txtSegundo1.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    txtSegundo1ActionPerformed(evt);
-                }
-            });
-
-            jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-            jLabel12.setText("Primero:");
-
-            txtAcompaniamiento1.setEditable(false);
-            txtAcompaniamiento1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-            txtAcompaniamiento1.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    txtAcompaniamiento1ActionPerformed(evt);
-                }
-            });
-
-            txtPrimero1.setEditable(false);
-            txtPrimero1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-            txtPrimero1.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    txtPrimero1ActionPerformed(evt);
-                }
-            });
-
-            jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-            jLabel13.setText("Menú 2:");
-
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
             this.setLayout(layout);
             layout.setHorizontalGroup(
@@ -260,9 +204,7 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
                                     .addComponent(tagTitulo))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(195, 195, 195)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(btnAbajo)
-                                        .addComponent(btnArriba))))
+                                    .addComponent(btnAbajo)))
                             .addGap(0, 0, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
@@ -285,36 +227,21 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(txtPrimero, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtSegundo, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel10)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtAcompaniamiento1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtPostre1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, Short.MAX_VALUE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtPrimero1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtSegundo1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addContainerGap())
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(193, 193, 193)
+                    .addComponent(btnArriba)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(23, 23, 23)
                     .addComponent(tagTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGap(18, 18, 18)
                     .addComponent(btnArriba, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(11, 11, 11)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                     .addComponent(jLabel8)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -332,25 +259,7 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
                         .addComponent(txtPostre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(31, 31, 31)
-                    .addComponent(jLabel13)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel12)
-                        .addComponent(txtPrimero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel11)
-                        .addComponent(txtSegundo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel10)
-                        .addComponent(txtAcompaniamiento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9)
-                        .addComponent(txtPostre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                    .addGap(130, 130, 130)
                     .addComponent(btnAbajo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(32, 32, 32))
             );
@@ -376,40 +285,19 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrimeroActionPerformed
 
-    private void txtSegundo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSegundo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSegundo1ActionPerformed
-
-    private void txtAcompaniamiento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAcompaniamiento1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAcompaniamiento1ActionPerformed
-
-    private void txtPrimero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrimero1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrimero1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbajo;
     private javax.swing.JButton btnArriba;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel tagTitulo;
     private javax.swing.JTextField txtAcompaniamiento;
-    private javax.swing.JTextField txtAcompaniamiento1;
     private javax.swing.JTextField txtPostre;
-    private javax.swing.JTextField txtPostre1;
     private javax.swing.JTextField txtPrimero;
-    private javax.swing.JTextField txtPrimero1;
     private javax.swing.JTextField txtSegundo;
-    private javax.swing.JTextField txtSegundo1;
     // End of variables declaration//GEN-END:variables
 }
