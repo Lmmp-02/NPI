@@ -48,20 +48,25 @@ public class Menu_Comedor extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 204, 255));
         setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Castellar", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 153, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Menú Comedores");
 
+        MenuAydanamar.setBackground(new java.awt.Color(255, 255, 255));
         MenuAydanamar.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         MenuAydanamar.setText("Menú Aydanamar");
+        MenuAydanamar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
         MenuAydanamar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuAydanamarActionPerformed(evt);
             }
         });
 
+        MenuParaLLevar.setBackground(new java.awt.Color(255, 255, 255));
         MenuParaLLevar.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         MenuParaLLevar.setText("Menú para llevar");
+        MenuParaLLevar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
         MenuParaLLevar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuParaLLevarActionPerformed(evt);
@@ -74,7 +79,7 @@ public class Menu_Comedor extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,11 +92,11 @@ public class Menu_Comedor extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(MenuAydanamar, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(MenuParaLLevar, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                .addGap(49, 49, 49))
+                .addGap(59, 59, 59)
+                .addComponent(MenuAydanamar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98)
+                .addComponent(MenuParaLLevar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(181, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

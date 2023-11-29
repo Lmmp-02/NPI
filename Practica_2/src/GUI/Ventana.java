@@ -47,7 +47,8 @@ public class Ventana extends javax.swing.JFrame {
         //Ponemos interfaz en pantalla completa
         //this.setExtendedState(Ventana.MAXIMIZED_BOTH);
         
-        
+        ajustarIconoBoton(boton_home, "/GUI/home.jpg");
+        ajustarIconoBoton(boton_ayuda, "/GUI/ayuda.jpg");
         
         //Inicializamos los diferentes JPanel
         menu_inicio = new Menu_Inicio(this);
@@ -83,6 +84,26 @@ public class Ventana extends javax.swing.JFrame {
         contenedor_principal.repaint();
     }
     
+    // Método para ajustar el icono de un botón
+    private void ajustarIconoBoton(JButton boton, String rutaIcono) {
+        // Obtiene el menor entre el ancho y el alto del botón para mantener la forma cuadrada
+        int size = Math.min(boton.getWidth(), boton.getHeight());
+
+        // Si el botón tiene tamaño 0, puedes asignar un tamaño predeterminado
+        if (size == 0) {
+            size = 100; // Tamaño cuadrado predeterminado
+        }
+
+        ImageIcon icon = new ImageIcon(getClass().getResource(rutaIcono));
+        boton.setIcon(resizeIcon(icon, size, size));
+    }
+
+    // Método para redimensionar el icono
+    private ImageIcon resizeIcon(ImageIcon icon, int width, int height) {
+        Image img = icon.getImage();
+        Image resizedImage = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(resizedImage);
+    }
     
     //Parte "Controlador" - Controla las transiciones entre paneles
     
@@ -297,11 +318,10 @@ public class Ventana extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        botones_fin = new javax.swing.JPanel();
-        boton_anterior = new javax.swing.JButton();
-        boton_siguiente = new javax.swing.JButton();
         contenedor_principal = new javax.swing.JPanel();
         botones_inicio = new javax.swing.JPanel();
+        boton_anterior = new javax.swing.JButton();
+        boton_siguiente = new javax.swing.JButton();
         boton_home = new javax.swing.JButton();
         boton_ayuda = new javax.swing.JButton();
 
@@ -310,8 +330,23 @@ public class Ventana extends javax.swing.JFrame {
 
         jPanel1.setOpaque(false);
 
-        botones_fin.setBackground(new java.awt.Color(255, 51, 51));
-        botones_fin.setOpaque(false);
+        contenedor_principal.setBackground(new java.awt.Color(51, 51, 255));
+        contenedor_principal.setOpaque(false);
+        contenedor_principal.setPreferredSize(new java.awt.Dimension(440, 755));
+
+        javax.swing.GroupLayout contenedor_principalLayout = new javax.swing.GroupLayout(contenedor_principal);
+        contenedor_principal.setLayout(contenedor_principalLayout);
+        contenedor_principalLayout.setHorizontalGroup(
+            contenedor_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        contenedor_principalLayout.setVerticalGroup(
+            contenedor_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 658, Short.MAX_VALUE)
+        );
+
+        botones_inicio.setBackground(new java.awt.Color(255, 51, 51));
+        botones_inicio.setOpaque(false);
 
         boton_anterior.setText("Atrás");
         boton_anterior.addActionListener(new java.awt.event.ActionListener() {
@@ -327,78 +362,49 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout botones_finLayout = new javax.swing.GroupLayout(botones_fin);
-        botones_fin.setLayout(botones_finLayout);
-        botones_finLayout.setHorizontalGroup(
-            botones_finLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botones_finLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(boton_anterior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
-                .addComponent(boton_siguiente)
-                .addContainerGap())
-        );
-        botones_finLayout.setVerticalGroup(
-            botones_finLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botones_finLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(botones_finLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boton_anterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(boton_siguiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        contenedor_principal.setBackground(new java.awt.Color(51, 51, 255));
-        contenedor_principal.setOpaque(false);
-        contenedor_principal.setPreferredSize(new java.awt.Dimension(440, 755));
-
-        javax.swing.GroupLayout contenedor_principalLayout = new javax.swing.GroupLayout(contenedor_principal);
-        contenedor_principal.setLayout(contenedor_principalLayout);
-        contenedor_principalLayout.setHorizontalGroup(
-            contenedor_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        contenedor_principalLayout.setVerticalGroup(
-            contenedor_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
-        );
-
-        botones_inicio.setBackground(new java.awt.Color(255, 51, 51));
-        botones_inicio.setOpaque(false);
-
-        boton_home.setText("Home");
-        boton_home.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_homeActionPerformed(evt);
-            }
-        });
-
-        boton_ayuda.setText("Ayuda");
-        boton_ayuda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_ayudaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout botones_inicioLayout = new javax.swing.GroupLayout(botones_inicio);
         botones_inicio.setLayout(botones_inicioLayout);
         botones_inicioLayout.setHorizontalGroup(
             botones_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botones_inicioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(boton_home)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(boton_ayuda))
+                .addGap(64, 64, 64)
+                .addComponent(boton_anterior)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addComponent(boton_siguiente)
+                .addContainerGap())
         );
         botones_inicioLayout.setVerticalGroup(
             botones_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(botones_inicioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(botones_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boton_home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(boton_ayuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(boton_anterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(boton_siguiente))
                 .addContainerGap())
         );
+
+        boton_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/home.jpg"))); // NOI18N
+        boton_home.setText("Home");
+        boton_home.setBorderPainted(false);
+        boton_home.setContentAreaFilled(false);
+        boton_home.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        boton_home.setPreferredSize(new java.awt.Dimension(123, 111));
+        boton_home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_homeActionPerformed(evt);
+            }
+        });
+
+        boton_ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ayuda.jpg"))); // NOI18N
+        boton_ayuda.setBorderPainted(false);
+        boton_ayuda.setContentAreaFilled(false);
+        boton_ayuda.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        boton_ayuda.setOpaque(true);
+        boton_ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_ayudaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -407,20 +413,29 @@ public class Ventana extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
-                    .addComponent(botones_fin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botones_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botones_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(72, 72, 72))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(boton_home, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(boton_ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(botones_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botones_fin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contenedor_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(boton_home, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boton_ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -485,7 +500,6 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton boton_ayuda;
     private javax.swing.JButton boton_home;
     private javax.swing.JButton boton_siguiente;
-    private javax.swing.JPanel botones_fin;
     private javax.swing.JPanel botones_inicio;
     private javax.swing.JPanel contenedor_principal;
     private javax.swing.JPanel jPanel1;
