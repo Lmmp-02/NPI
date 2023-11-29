@@ -480,7 +480,7 @@ public class Ventana extends javax.swing.JFrame {
         
         @Override
         public void paint(Graphics g){
-            imagen = new ImageIcon(getClass().getResource("fondo_etsiit.jpg")).getImage();
+            imagen = new ImageIcon(getClass().getResource("fondo_principal.jpg")).getImage();
             
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
             setOpaque(false);
