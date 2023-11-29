@@ -17,7 +17,7 @@ public class Conexion {
         String conexionUrl = "jdbc:sqlserver://localhost:1433;"
                 + "database="+database+";"
                 + "user=sa;"
-                + "password=Ja16112002;"
+                + "password=123;"
                 + "loginTimeout=30;"
                 + "TrustServerCertificate=True;";
         

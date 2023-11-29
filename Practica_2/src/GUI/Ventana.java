@@ -43,8 +43,8 @@ public class Ventana extends javax.swing.JFrame {
         //Ponemos interfaz en pantalla completa
         //this.setExtendedState(Ventana.MAXIMIZED_BOTH);
         
-        ajustarIconoBoton(boton_home, "/GUI/home.jpg");
-        ajustarIconoBoton(boton_ayuda, "/GUI/ayuda.jpg");
+        ajustarIconoBoton(boton_home, "../Images/home.jpg");
+        ajustarIconoBoton(boton_ayuda, "../Images/ayuda.jpg");
         
         //Inicializamos los diferentes JPanel
         menu_inicio = new Menu_Inicio(this);
@@ -526,7 +526,7 @@ public class Ventana extends javax.swing.JFrame {
         
         @Override
         public void paint(Graphics g){
-            imagen = new ImageIcon(getClass().getResource("fondo_principal.jpg")).getImage();
+            imagen = new ImageIcon(getClass().getResource("../Images/Inicio.png")).getImage();
             
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
             setOpaque(false);
