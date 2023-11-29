@@ -36,43 +36,57 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
         Vegano = new javax.swing.JButton();
         Celiaco = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Castellar", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 153, 51));
         jLabel1.setText("¿Qué menú desea?");
 
+        Almuerzo.setBackground(new java.awt.Color(255, 255, 255));
         Almuerzo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Almuerzo.setText("Almuerzo");
+        Almuerzo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
         Almuerzo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AlmuerzoActionPerformed(evt);
             }
         });
 
+        Cena.setBackground(new java.awt.Color(255, 255, 255));
         Cena.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Cena.setText("Cena");
+        Cena.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
         Cena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CenaActionPerformed(evt);
             }
         });
 
+        Ovolactoveg.setBackground(new java.awt.Color(255, 255, 255));
         Ovolactoveg.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Ovolactoveg.setText("Ovolactovegetariano");
+        Ovolactoveg.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
         Ovolactoveg.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OvolactovegActionPerformed(evt);
             }
         });
 
+        Vegano.setBackground(new java.awt.Color(255, 255, 255));
         Vegano.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Vegano.setText("Vegano");
+        Vegano.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
         Vegano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VeganoActionPerformed(evt);
             }
         });
 
+        Celiaco.setBackground(new java.awt.Color(255, 255, 255));
         Celiaco.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Celiaco.setText("T-Celiaco");
+        Celiaco.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
         Celiaco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CeliacoActionPerformed(evt);
@@ -83,46 +97,34 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 72, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Almuerzo)
-                        .addGap(135, 135, 135))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Cena)
-                        .addGap(166, 166, 166))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Ovolactoveg)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Vegano)
-                        .addGap(143, 143, 143))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Celiaco)
-                .addGap(134, 134, 134))
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Celiaco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(Vegano, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Ovolactoveg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Cena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Almuerzo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(54, 54, 54)
                 .addComponent(jLabel1)
-                .addGap(56, 56, 56)
-                .addComponent(Almuerzo)
-                .addGap(58, 58, 58)
-                .addComponent(Cena)
-                .addGap(52, 52, 52)
-                .addComponent(Ovolactoveg)
-                .addGap(61, 61, 61)
-                .addComponent(Vegano)
-                .addGap(51, 51, 51)
-                .addComponent(Celiaco)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(Almuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(Cena, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(Ovolactoveg, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(Vegano, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(Celiaco, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(120, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

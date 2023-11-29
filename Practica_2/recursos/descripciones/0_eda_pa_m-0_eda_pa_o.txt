@@ -1,0 +1,1 @@
+Recorra el pasillo hacia la derecha, allí encontrará la escaleras de subida y las aulas 0.7 y 0.8

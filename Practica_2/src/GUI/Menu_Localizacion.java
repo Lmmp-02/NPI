@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import java.awt.Font;
+
 /**
  *
  * @author Usuario
@@ -15,6 +17,16 @@ public class Menu_Localizacion extends javax.swing.JPanel {
     public Menu_Localizacion(Ventana p) {
         initComponents();
         padre = p;
+        
+        // Ajustamos el texto al tamaño de ventana
+        int ancho_menu = padre.getWidth();
+        System.out.println(ancho_menu);
+        Font fuente_botones = boton_clases_despachos.getFont().deriveFont((float) ancho_menu/15);
+        Font fuente_titulo = jLabel1.getFont().deriveFont((float) ancho_menu/13);
+        boton_clases_despachos.setFont(fuente_botones);
+        boton_espacios_comunes.setFont(fuente_botones);
+        boton_servicios_externos.setFont(fuente_botones);
+        jLabel1.setFont(fuente_titulo);
     }
 
     /**
@@ -33,27 +45,36 @@ public class Menu_Localizacion extends javax.swing.JPanel {
 
         setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Menú de Localización");
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Castellar", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Localización");
 
+        boton_servicios_externos.setBackground(new java.awt.Color(255, 255, 255));
         boton_servicios_externos.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_servicios_externos.setText("Servicios Externos");
+        boton_servicios_externos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
         boton_servicios_externos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_servicios_externosActionPerformed(evt);
             }
         });
 
+        boton_clases_despachos.setBackground(new java.awt.Color(255, 255, 255));
         boton_clases_despachos.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_clases_despachos.setText("Clases y Despachos");
+        boton_clases_despachos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
         boton_clases_despachos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_clases_despachosActionPerformed(evt);
             }
         });
 
+        boton_espacios_comunes.setBackground(new java.awt.Color(255, 255, 255));
         boton_espacios_comunes.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_espacios_comunes.setText("Espacios Comunes");
+        boton_espacios_comunes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
         boton_espacios_comunes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_espacios_comunesActionPerformed(evt);
@@ -65,30 +86,31 @@ public class Menu_Localizacion extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(boton_clases_despachos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(boton_espacios_comunes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(boton_clases_despachos, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                            .addComponent(boton_espacios_comunes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(boton_servicios_externos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(17, Short.MAX_VALUE))
+                        .addComponent(boton_servicios_externos, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 8, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(boton_clases_despachos, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(boton_espacios_comunes, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(boton_servicios_externos, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boton_clases_despachos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(boton_espacios_comunes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addComponent(boton_servicios_externos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
