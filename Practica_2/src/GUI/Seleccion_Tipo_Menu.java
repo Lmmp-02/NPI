@@ -32,7 +32,7 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         Almuerzo = new javax.swing.JButton();
         Cena = new javax.swing.JButton();
-        Ovolacteoveg = new javax.swing.JButton();
+        Ovolactoveg = new javax.swing.JButton();
         Vegano = new javax.swing.JButton();
         Celiaco = new javax.swing.JButton();
 
@@ -55,11 +55,11 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
             }
         });
 
-        Ovolacteoveg.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        Ovolacteoveg.setText("Ovolacteovegetariano");
-        Ovolacteoveg.addActionListener(new java.awt.event.ActionListener() {
+        Ovolactoveg.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        Ovolactoveg.setText("Ovolactovegetariano");
+        Ovolactoveg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OvolacteovegActionPerformed(evt);
+                OvolactovegActionPerformed(evt);
             }
         });
 
@@ -84,7 +84,7 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 53, Short.MAX_VALUE)
+                .addGap(0, 72, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Almuerzo)
@@ -93,7 +93,7 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
                         .addComponent(Cena)
                         .addGap(166, 166, 166))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Ovolacteoveg)
+                        .addComponent(Ovolactoveg)
                         .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Vegano)
@@ -117,7 +117,7 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
                 .addGap(58, 58, 58)
                 .addComponent(Cena)
                 .addGap(52, 52, 52)
-                .addComponent(Ovolacteoveg)
+                .addComponent(Ovolactoveg)
                 .addGap(61, 61, 61)
                 .addComponent(Vegano)
                 .addGap(51, 51, 51)
@@ -127,23 +127,23 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AlmuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlmuerzoActionPerformed
-        padre.siguiente();
+        padre.botonAlmuerzoPulsado();
     }//GEN-LAST:event_AlmuerzoActionPerformed
 
     private void CenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CenaActionPerformed
-        padre.siguiente();
+        padre.botonCenaPulsado();
     }//GEN-LAST:event_CenaActionPerformed
 
-    private void OvolacteovegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OvolacteovegActionPerformed
-        padre.siguiente();
-    }//GEN-LAST:event_OvolacteovegActionPerformed
+    private void OvolactovegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OvolactovegActionPerformed
+        padre.botonOvolactovegPulsado();
+    }//GEN-LAST:event_OvolactovegActionPerformed
 
     private void VeganoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VeganoActionPerformed
-        padre.siguiente();
+        padre.botonVeganoPulsado();
     }//GEN-LAST:event_VeganoActionPerformed
 
     private void CeliacoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CeliacoActionPerformed
-        padre.siguiente();
+        padre.botonCeliacoPulsado();
     }//GEN-LAST:event_CeliacoActionPerformed
 
 
@@ -151,7 +151,7 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
     private javax.swing.JButton Almuerzo;
     private javax.swing.JButton Celiaco;
     private javax.swing.JButton Cena;
-    private javax.swing.JButton Ovolacteoveg;
+    private javax.swing.JButton Ovolactoveg;
     private javax.swing.JButton Vegano;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

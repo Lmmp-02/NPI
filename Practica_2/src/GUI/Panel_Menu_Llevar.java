@@ -23,10 +23,13 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
     private Ventana padre;
     
     private int dia;
-    private static int max_dia = 6;
+    private static int max_dia = 5;
     
-    public Panel_Menu_Llevar(Ventana p) {
+    private int tipoMenu;
+    
+    public Panel_Menu_Llevar(Ventana p, int tipoMenu) {
         this.padre = p;
+        this.tipoMenu = tipoMenu;
         this.dia = 0;
         
         initComponents();
@@ -40,7 +43,6 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
             case 2: return "Miercoles";
             case 3: return "Jueves";
             case 4: return "Viernes";
-            case 5: return "Sabado";
         }
         
         return "Lunes";

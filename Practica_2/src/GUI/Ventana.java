@@ -46,7 +46,6 @@ public class Ventana extends javax.swing.JFrame {
         carrusel_ruta = new Carrusel_Fotos(this);
         sel_espacios_comunes = new Carrusel_Fotos(this);
         panel_menu = new Panel_Menu(this);
-        panel_menu_llevar = new Panel_Menu_Llevar(this);
         confirmacion_fin = new Confirmacion_Menu_Final(this);
         menu_comedor = new Menu_Comedor(this);
         sel_tipo_menu = new Seleccion_Tipo_Menu(this);
@@ -93,6 +92,36 @@ public class Ventana extends javax.swing.JFrame {
     public void botonMenuParaLlevarPulsado(){
         muestraPanel(sel_tipo_menu);
         estado = 8;
+    }
+    
+    public void botonAlmuerzoPulsado(){
+        panel_menu_llevar = new Panel_Menu_Llevar(this, 0);
+        muestraPanel(panel_menu_llevar);
+        estado = 9;
+    }
+    
+    public void botonCenaPulsado(){
+        panel_menu_llevar = new Panel_Menu_Llevar(this, 1);
+        muestraPanel(panel_menu_llevar);
+        estado = 9;
+    }
+    
+    public void botonOvolactovegPulsado(){
+        panel_menu_llevar = new Panel_Menu_Llevar(this, 2);
+        muestraPanel(panel_menu_llevar);
+        estado = 9;
+    }
+    
+    public void botonVeganoPulsado(){
+        panel_menu_llevar = new Panel_Menu_Llevar(this, 3);
+        muestraPanel(panel_menu_llevar);
+        estado = 9;
+    }
+    
+    public void botonCeliacoPulsado(){
+        panel_menu_llevar = new Panel_Menu_Llevar(this, 4);
+        muestraPanel(panel_menu_llevar);
+        estado = 9;
     }
     
     public void botonLocalizacionClasesPulsado(){
