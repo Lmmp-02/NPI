@@ -13,6 +13,10 @@
 0_edp_pa_pr 8 Secretaria
 0_edp_pa_pr 5 0_edp_pa_lat
 0_edp_pa_pr 10 1_edp_pa
+0_edp_pa_pr 20 2_edp_pa
+0_edp_pa_pr 30 3_edp_pa
+0_edp_pa_pr 40 4_edp_pa
+0_edp_pa_pr 50 5_edp_pa
 0_edp_pa_lat 10 -1_edp_pa
 0_edp_pa_lat 5 0_edp_pa_pr
 0_edp_pa_lat 5 SalonDeGrados

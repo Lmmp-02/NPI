@@ -203,6 +203,18 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         cambioComboxRueda(ComBox3, evt);
     }//GEN-LAST:event_ComBox3MouseWheelMoved
 
+    public String destino() {
+    	String sel1 = (String) ComBox2.getSelectedItem();
+    	String sel2 = (String) ComBox1.getSelectedItem();
+    	String sel3 = (String) ComBox3.getSelectedItem();
+    	
+    	if(sel1.equals("Clase")) {
+    		return sel2 + "." + sel3;
+    	}
+    	else{
+    		return "D" + sel2 + "." + sel3;
+    	}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComBox1;

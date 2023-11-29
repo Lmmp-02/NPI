@@ -16,6 +16,10 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.*;
 
+import java.util.List;
+
+import p2_npi.Caminos;
+
 /**
  *
  * @author Usuario
@@ -186,6 +190,18 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println("Siguiente --> Estado " + estado );
         switch(estado){
             case 2: //Selector clases-despachos
+            	Caminos cams = new Caminos("./recursos/locs.txt", "./recursos/cams.txt");
+            	List<List<String>> rutas = cams.calculaRutaArch("0_totem", sel_clases.destino());
+            	
+            	String[] prim = new String[rutas.size()];
+            	
+            	for (int i = 0; i < rutas.size(); i++) {
+                    prim[i] = "./recursos/imagenes/" + rutas.get(i).get(0);
+                    System.out.print(prim[i]+" ");
+                }
+            	
+        
+            	carrusel_ruta.cargaImagenes(prim);
                 muestraPanel(carrusel_ruta);
                 estado = 41;
                 break;
