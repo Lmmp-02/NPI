@@ -4,6 +4,13 @@
  */
 package GUI;
 
+import SQL.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -23,6 +30,7 @@ public class Panel_Menu extends javax.swing.JPanel {
         this.dia = 0;
         
         initComponents();
+        actualizarMenu();
     }
     
     public String getDia(){
@@ -40,12 +48,62 @@ public class Panel_Menu extends javax.swing.JPanel {
     
     private void mostrarDiaAnterior() {
         dia = (dia - 1 + max_dia) % max_dia;
-        //actualizarImagen();
+        actualizarMenu();
     }
 
     private void mostrarDiaSiguiente() {
         dia = (dia + 1) % max_dia;
-        //actualizarImagen();
+        actualizarMenu();
+    }
+    
+    public void actualizarMenu(){
+        Connection con = null;
+        
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try{
+            con = Conexion.getConexion("Comedor");
+            
+            //Actualizamos menú 1
+            String cmd = "SELECT * FROM Menus WHERE Dia = ? AND TipoMenu = 1;";
+            ps = con.prepareStatement(cmd);
+            
+            ps.setString(1, getDia());
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                txtPrimero.setText(rs.getString("Primero"));
+                txtSegundo.setText(rs.getString("Segundo"));
+                txtAcompaniamiento.setText(rs.getString("Acompanamiento"));
+                txtPostre.setText(rs.getString("Postre"));
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No hay resultados validos");
+            }
+            
+            //Actualizamos menú 2
+            cmd = "SELECT * FROM Menus WHERE Dia = ? AND TipoMenu = 2;";
+            ps = con.prepareStatement(cmd);
+            
+            ps.setString(1, getDia());
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                txtPrimero1.setText(rs.getString("Primero"));
+                txtSegundo1.setText(rs.getString("Segundo"));
+                txtAcompaniamiento1.setText(rs.getString("Acompanamiento"));
+                txtPostre1.setText(rs.getString("Postre"));
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No hay resultados validos");
+            }
+
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
     }
 
     /**
@@ -103,6 +161,7 @@ public class Panel_Menu extends javax.swing.JPanel {
             jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             jLabel5.setText("Postre:");
 
+            txtPostre.setEditable(false);
             txtPostre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
             jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -111,6 +170,7 @@ public class Panel_Menu extends javax.swing.JPanel {
             jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             jLabel4.setText("Segundo:");
 
+            txtSegundo.setEditable(false);
             txtSegundo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             txtSegundo.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +181,7 @@ public class Panel_Menu extends javax.swing.JPanel {
             jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             jLabel7.setText("Primero:");
 
+            txtAcompaniamiento.setEditable(false);
             txtAcompaniamiento.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             txtAcompaniamiento.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +189,7 @@ public class Panel_Menu extends javax.swing.JPanel {
                 }
             });
 
+            txtPrimero.setEditable(false);
             txtPrimero.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             txtPrimero.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +203,7 @@ public class Panel_Menu extends javax.swing.JPanel {
             jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             jLabel9.setText("Postre:");
 
+            txtPostre1.setEditable(false);
             txtPostre1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
             jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -149,6 +212,7 @@ public class Panel_Menu extends javax.swing.JPanel {
             jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             jLabel11.setText("Segundo:");
 
+            txtSegundo1.setEditable(false);
             txtSegundo1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             txtSegundo1.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +223,7 @@ public class Panel_Menu extends javax.swing.JPanel {
             jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             jLabel12.setText("Primero:");
 
+            txtAcompaniamiento1.setEditable(false);
             txtAcompaniamiento1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             txtAcompaniamiento1.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,6 +231,7 @@ public class Panel_Menu extends javax.swing.JPanel {
                 }
             });
 
+            txtPrimero1.setEditable(false);
             txtPrimero1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             txtPrimero1.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
