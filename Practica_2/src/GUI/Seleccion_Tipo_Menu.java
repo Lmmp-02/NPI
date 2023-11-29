@@ -32,7 +32,7 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         Almuerzo = new javax.swing.JButton();
         Cena = new javax.swing.JButton();
-        Ovolacteoveg = new javax.swing.JButton();
+        Ovolactoveg = new javax.swing.JButton();
         Vegano = new javax.swing.JButton();
         Celiaco = new javax.swing.JButton();
 
@@ -62,13 +62,14 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
             }
         });
 
-        Ovolacteoveg.setBackground(new java.awt.Color(255, 255, 255));
-        Ovolacteoveg.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        Ovolacteoveg.setText("Ovolacteovegetariano");
-        Ovolacteoveg.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
-        Ovolacteoveg.addActionListener(new java.awt.event.ActionListener() {
+        Ovolactoveg.setBackground(new java.awt.Color(255, 255, 255));
+        Ovolactoveg.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        Ovolactoveg.setText("Ovolactovegetariano");
+        Ovolactoveg.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
+        Ovolactoveg.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OvolacteovegActionPerformed(evt);
+                OvolactovegActionPerformed(evt);
             }
         });
 
@@ -103,7 +104,7 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(Vegano, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Ovolacteoveg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Ovolactoveg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Cena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Almuerzo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(47, Short.MAX_VALUE))
@@ -118,7 +119,7 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
                 .addGap(39, 39, 39)
                 .addComponent(Cena, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(Ovolacteoveg, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Ovolactoveg, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(Vegano, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
@@ -128,23 +129,23 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AlmuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlmuerzoActionPerformed
-        padre.siguiente();
+        padre.botonAlmuerzoPulsado();
     }//GEN-LAST:event_AlmuerzoActionPerformed
 
     private void CenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CenaActionPerformed
-        padre.siguiente();
+        padre.botonCenaPulsado();
     }//GEN-LAST:event_CenaActionPerformed
 
-    private void OvolacteovegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OvolacteovegActionPerformed
-        padre.siguiente();
-    }//GEN-LAST:event_OvolacteovegActionPerformed
+    private void OvolactovegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OvolactovegActionPerformed
+        padre.botonOvolactovegPulsado();
+    }//GEN-LAST:event_OvolactovegActionPerformed
 
     private void VeganoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VeganoActionPerformed
-        padre.siguiente();
+        padre.botonVeganoPulsado();
     }//GEN-LAST:event_VeganoActionPerformed
 
     private void CeliacoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CeliacoActionPerformed
-        padre.siguiente();
+        padre.botonCeliacoPulsado();
     }//GEN-LAST:event_CeliacoActionPerformed
 
 
@@ -152,7 +153,7 @@ public class Seleccion_Tipo_Menu extends javax.swing.JPanel {
     private javax.swing.JButton Almuerzo;
     private javax.swing.JButton Celiaco;
     private javax.swing.JButton Cena;
-    private javax.swing.JButton Ovolacteoveg;
+    private javax.swing.JButton Ovolactoveg;
     private javax.swing.JButton Vegano;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

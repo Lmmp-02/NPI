@@ -28,10 +28,10 @@ public class Ventana extends javax.swing.JFrame {
     private Menu_Localizacion menu_localizacion;
     private Seleccion_Clases sel_clases;
     private Carrusel_Fotos carrusel_ruta, sel_espacios_comunes;
-    private Panel_Menu panel_menu, panel_menu_llevar;
+    private Panel_Menu panel_menu;
+    private Panel_Menu_Llevar panel_menu_llevar;
     private Confirmacion_Menu_Final confirmacion_fin;
     private int estado;
-    private Seleccion_Clases pago_comida;
     
     // Comedor
     private Menu_Comedor menu_comedor;
@@ -53,13 +53,10 @@ public class Ventana extends javax.swing.JFrame {
         carrusel_ruta = new Carrusel_Fotos(this);
         sel_espacios_comunes = new Carrusel_Fotos(this);
         panel_menu = new Panel_Menu(this);
-        panel_menu_llevar = new Panel_Menu(this);
         confirmacion_fin = new Confirmacion_Menu_Final(this);
         menu_comedor = new Menu_Comedor(this);
         sel_tipo_menu = new Seleccion_Tipo_Menu(this);
-        pago_comida = new Seleccion_Clases(this);
-        
-        
+
         //Activamos el cursor personalizado
         this.set_cursor_personalizado();
         
@@ -124,6 +121,41 @@ public class Ventana extends javax.swing.JFrame {
         estado = 8;
     }
     
+    public void botonAlmuerzoPulsado(){
+        panel_menu_llevar = new Panel_Menu_Llevar(this, 0);
+        muestraPanel(panel_menu_llevar);
+        estado = 9;
+    }
+    
+    public void botonCenaPulsado(){
+        panel_menu_llevar = new Panel_Menu_Llevar(this, 1);
+        muestraPanel(panel_menu_llevar);
+        estado = 9;
+    }
+    
+    public void botonOvolactovegPulsado(){
+        panel_menu_llevar = new Panel_Menu_Llevar(this, 2);
+        muestraPanel(panel_menu_llevar);
+        estado = 9;
+    }
+    
+    public void botonVeganoPulsado(){
+        panel_menu_llevar = new Panel_Menu_Llevar(this, 3);
+        muestraPanel(panel_menu_llevar);
+        estado = 9;
+    }
+    
+    public void botonCeliacoPulsado(){
+        panel_menu_llevar = new Panel_Menu_Llevar(this, 4);
+        muestraPanel(panel_menu_llevar);
+        estado = 9;
+    }
+    
+    public void botonReservarPulsado(){
+        muestraPanel(panel_menu_llevar);
+        estado = 10;
+    }
+    
     public void botonLocalizacionClasesPulsado(){
         muestraPanel(sel_clases);
         estado = 2;
@@ -175,7 +207,7 @@ public class Ventana extends javax.swing.JFrame {
                 estado = 7;
                 break;
             case 54: //Confirmacion fin desde pedido para llevar
-                muestraPanel(pago_comida);
+                muestraPanel(panel_menu_llevar);
                 estado = 9;
                 break;
             case 6: //Menú Comedor
@@ -252,8 +284,8 @@ public class Ventana extends javax.swing.JFrame {
                 break;
             case 9: // Seleccion de menu para llevar
                 //Hacer panel_menu_llevar.mostrar(menú indicado)
-                muestraPanel(pago_comida);
-                estado = 10;
+                //muestraPanel(pago_comida);
+                //estado = 10;
                 break;
             case 10: // Seleccion de menu para llevar
                 //Hacer panel_menu_llevar.mostrar(menú indicado)
