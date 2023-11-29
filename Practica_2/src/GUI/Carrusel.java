@@ -22,7 +22,6 @@ public class Carrusel extends javax.swing.JPanel {
     private int tam_imagen_x, tam_imagen_y;
     private int indiceImagenActual = 0;
     private BufferedImage[] imagenes;
-    private String rutaImagenes = "./recursos/foto_defecto/";
     private Carrusel_Fotos padre;
     
     public Carrusel(Carrusel_Fotos padre, int tam_x, int tam_y) {
@@ -34,10 +33,8 @@ public class Carrusel extends javax.swing.JPanel {
         imagenLabel = new JLabel();
         //imagenLabel.setPreferredSize(new Dimension(tam_imagen_x,tam_imagen_y));
         
-        imagenes = getImages(rutaImagenes);
         ImageIcon flecha_arriba=new ImageIcon("./recursos/iconos/flecha_arriba.png");
         ImageIcon flecha_abajo=new ImageIcon("./recursos/iconos/flecha_abajo.png");
-        actualizarImagen();
 
         // Crear botones de navegación
         JButton anteriorButton = new JButton(flecha_arriba);
@@ -68,7 +65,7 @@ public class Carrusel extends javax.swing.JPanel {
         add(panelBotonesIZQ, BorderLayout.NORTH);
         add(panelBotonesDER, BorderLayout.SOUTH);
     }
-
+    
     private void mostrarImagenAnterior() {
         indiceImagenActual = (indiceImagenActual - 1 + imagenes.length) % imagenes.length;
         actualizarImagen();
@@ -78,27 +75,23 @@ public class Carrusel extends javax.swing.JPanel {
         indiceImagenActual = (indiceImagenActual + 1) % imagenes.length;
         actualizarImagen();
     }
-    public static BufferedImage[] getImages(String folderPath) {
-        File folder = new File(folderPath);
-        File[] imageFiles = folder.listFiles();
+    
+    public void cargaImagenes(String[] rutasImagenes) {
+        BufferedImage[] images = new BufferedImage[rutasImagenes.length];
 
-        if (imageFiles == null) {
-            System.err.println("No se encontraron archivos en la carpeta especificada.");
-            return null;
-        }
-
-        BufferedImage[] images = new BufferedImage[imageFiles.length];
-
-        for (int i = 0; i < imageFiles.length; i++) {
+        for (int i = 0; i < rutasImagenes.length; ++i) {
             try {
-                images[i] = ImageIO.read(imageFiles[i]);
+                File file = new File(rutasImagenes[i]);
+                images[i] = ImageIO.read(file);
             } catch (IOException e) {
-                System.err.println("Error al cargar la imagen: " + imageFiles[i].getName());
+                System.err.println("Error al cargar la imagen: " + rutasImagenes[i]);
                 e.printStackTrace();
             }
         }
 
-        return images;
+        this.imagenes = images;
+        
+        actualizarImagen();
     }
 
     private void actualizarImagen() {

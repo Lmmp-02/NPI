@@ -29,7 +29,7 @@ public class Ayuda extends javax.swing.JPanel {
         panelAyuda = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         jLabel1.setText("Introducir Menú Ayuda");
 
@@ -50,7 +50,8 @@ public class Ayuda extends javax.swing.JPanel {
                 .addContainerGap(257, Short.MAX_VALUE))
         );
 
-        add(panelAyuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 470));
+        panelAyuda.setBounds(0, 0, 380, 470);
+        add(panelAyuda);
     }// </editor-fold>//GEN-END:initComponents
 
 

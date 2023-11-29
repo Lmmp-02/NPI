@@ -57,20 +57,24 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 370, 230));
+        jPanel2.setLayout(null);
+        jPanel1.add(jPanel2, null);
 
         jLabel1.setText("Lectura");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        jLabel1.setBounds(20, 270, jLabel1.getPreferredSize().width, jLabel1.getPreferredSize().height);
+        jPanel1.add(jLabel1);
+
 
         campo_resultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campo_resultadoActionPerformed(evt);
             }
         });
-        jPanel1.add(campo_resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 320, -1));
+        
+        campo_resultado.setBounds(70, 260, 320, jPanel1.getPreferredSize().height);
+        jPanel1.add(campo_resultado);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,7 +144,8 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
         panel.setPreferredSize(size);
         panel.setFPSDisplayed(true);
         
-        jPanel2.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,470,300));
+        panel.setBounds(0,0,470,300);
+        jPanel2.add(panel);
         
         executor.execute(this);
     }

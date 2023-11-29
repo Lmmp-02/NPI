@@ -32,11 +32,6 @@ public class Carrusel_Fotos extends javax.swing.JPanel {
         panel_carrusel.repaint();
     }
     
-    
-    
-    
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -104,6 +99,9 @@ public class Carrusel_Fotos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 
+    public void cargaImagenes(String[] rutasImagenes) {
+    	carrusel.cargaImagenes(rutasImagenes);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
