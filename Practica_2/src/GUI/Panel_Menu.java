@@ -355,11 +355,11 @@ public class Panel_Menu extends javax.swing.JPanel {
         }// </editor-fold>//GEN-END:initComponents
 
     private void btnArribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArribaActionPerformed
-        mostrarDiaSiguiente();
+        mostrarDiaAnterior();
     }//GEN-LAST:event_btnArribaActionPerformed
 
     private void btnAbajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbajoActionPerformed
-        mostrarDiaAnterior();
+        mostrarDiaSiguiente();
     }//GEN-LAST:event_btnAbajoActionPerformed
 
     private void txtSegundoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSegundoActionPerformed
