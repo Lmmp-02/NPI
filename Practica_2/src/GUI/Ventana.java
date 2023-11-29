@@ -40,6 +40,7 @@ public class Ventana extends javax.swing.JFrame {
     // Comedor
     private Menu_Comedor menu_comedor;
     private Seleccion_Tipo_Menu sel_tipo_menu;
+    private Localizacion_Profesorado localizacion_profes;
     
     public Ventana() {
         this.setContentPane(fondo);
@@ -60,6 +61,7 @@ public class Ventana extends javax.swing.JFrame {
         confirmacion_fin = new Confirmacion_Menu_Final(this);
         menu_comedor = new Menu_Comedor(this);
         sel_tipo_menu = new Seleccion_Tipo_Menu(this);
+        localizacion_profes = new Localizacion_Profesorado(this);
 
         //Activamos el cursor personalizado
         this.set_cursor_personalizado();
@@ -110,7 +112,6 @@ public class Ventana extends javax.swing.JFrame {
     }
     
     public void botonComedorPulsado(){
-        //Por implementar - Ir a menu_comedor
         muestraPanel(menu_comedor);
         estado = 6;
     }
@@ -169,6 +170,11 @@ public class Ventana extends javax.swing.JFrame {
         //Por implementar - Ir a menu_seleccion_espacios_comunes (estado 5)
         muestraPanel(sel_espacios_comunes);
         estado = 3; 
+    }
+    
+    public void botonProfesoradoPulsado(){ /***********************************************/
+        muestraPanel(localizacion_profes);
+        estado = 11;
     }
     
     

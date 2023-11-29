@@ -147,7 +147,7 @@ public class Menu_Inicio extends javax.swing.JPanel {
     }//GEN-LAST:event_boton_docenciaActionPerformed
 
     private void boton_profesoradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_profesoradoActionPerformed
-        // TODO add your handling code here:
+        padre.botonProfesoradoPulsado();
     }//GEN-LAST:event_boton_profesoradoActionPerformed
 
     private void boton_comedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_comedorActionPerformed
