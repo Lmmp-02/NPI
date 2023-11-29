@@ -104,6 +104,9 @@ public class Panel_Menu extends javax.swing.JPanel {
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, ex.toString());
         }
+        
+        //Actualiza también el título
+        tagTitulo.setText(getDia());
     }
 
     /**
@@ -116,8 +119,8 @@ public class Panel_Menu extends javax.swing.JPanel {
     private void initComponents() {
 
         tagTitulo = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnArriba = new javax.swing.JButton();
+        btnAbajo = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtPostre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -142,19 +145,19 @@ public class Panel_Menu extends javax.swing.JPanel {
         tagTitulo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         tagTitulo.setText(getDia());
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jButton1.setText("/\\");
-            jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnArriba.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        btnArriba.setText("/\\");
+            btnArriba.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton1ActionPerformed(evt);
+                    btnArribaActionPerformed(evt);
                 }
             });
 
-            jButton2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-            jButton2.setText("\\/");
-            jButton2.addActionListener(new java.awt.event.ActionListener() {
+            btnAbajo.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+            btnAbajo.setText("\\/");
+            btnAbajo.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton2ActionPerformed(evt);
+                    btnAbajoActionPerformed(evt);
                 }
             });
 
@@ -256,8 +259,8 @@ public class Panel_Menu extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(195, 195, 195)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jButton2)
-                                        .addComponent(jButton1))))
+                                        .addComponent(btnAbajo)
+                                        .addComponent(btnArriba))))
                             .addGap(0, 0, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
@@ -308,7 +311,7 @@ public class Panel_Menu extends javax.swing.JPanel {
                     .addGap(23, 23, 23)
                     .addComponent(tagTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnArriba, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(11, 11, 11)
                     .addComponent(jLabel8)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -346,18 +349,18 @@ public class Panel_Menu extends javax.swing.JPanel {
                         .addComponent(jLabel9)
                         .addComponent(txtPostre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAbajo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(32, 32, 32))
             );
         }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnArribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArribaActionPerformed
+        mostrarDiaSiguiente();
+    }//GEN-LAST:event_btnArribaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnAbajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbajoActionPerformed
+        mostrarDiaAnterior();
+    }//GEN-LAST:event_btnAbajoActionPerformed
 
     private void txtSegundoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSegundoActionPerformed
         // TODO add your handling code here:
@@ -385,8 +388,8 @@ public class Panel_Menu extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAbajo;
+    private javax.swing.JButton btnArriba;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
