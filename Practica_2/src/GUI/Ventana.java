@@ -240,6 +240,10 @@ public class Ventana extends javax.swing.JFrame {
                 muestraPanel(sel_tipo_menu);
                 estado = 8;
                 break;
+            case 11: // Menú Profesorado
+                muestraPanel(menu_inicio);
+                estado = 0;
+                break;
         }
         System.out.println(" es " + estado +"\n");
     }
