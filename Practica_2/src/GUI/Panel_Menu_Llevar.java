@@ -189,7 +189,7 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
             });
 
             jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-            jLabel8.setText("Menú 1:");
+            jLabel8.setText(getTipoMenu());
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
             this.setLayout(layout);

@@ -201,7 +201,7 @@ public class Panel_Menu extends javax.swing.JPanel {
             });
 
             jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-            jLabel8.setText("Menú 1:");
+            jLabel8.setText("Menú 1");
 
             jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
             jLabel9.setText("Postre:");
