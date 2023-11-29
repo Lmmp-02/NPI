@@ -14,18 +14,20 @@ package p2_npi;
 //import GUI.Menu_Botones_Generico;
 import GUI.Ventana;
 import GUI.Seleccion_Clases;
-
+/*
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.State;
 import static com.leapmotion.leap.Gesture.Type.TYPE_CIRCLE;
 import static com.leapmotion.leap.Gesture.Type.TYPE_KEY_TAP;
 import static com.leapmotion.leap.Gesture.Type.TYPE_SCREEN_TAP;
-import static com.leapmotion.leap.Gesture.Type.TYPE_SWIPE;
+import static com.leapmotion.leap.Gesture.Type.TYPE_SWIPE;*/
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 
 import java.io.IOException;
 
+
+/*
 class SampleListener extends Listener {
     private int count;
     private boolean pulsando_click;
@@ -178,7 +180,7 @@ class SampleListener extends Listener {
             int mov_x = (int) position.getX();
             int mov_y = (int) position.getY() - ALTURA_CERO; 
             int pos_z = (int) position.getZ(); 
-            /*
+            
             // Verifica si no hay dedos visibles y la palma está detectada para hacer clic
             if (hand.fingers().count() == 0 && hand.sphereRadius() > 10) {
                 if (!pulsando_click) {
@@ -197,7 +199,7 @@ class SampleListener extends Listener {
                     pulsando_click = false;
                 }
             }
-            */
+            
         
             FingerList fingers = hand.fingers();
 
@@ -316,6 +318,7 @@ class SampleListener extends Listener {
        
     
 }
+*/
 
 public class P2_NPI {
 
@@ -328,11 +331,11 @@ public class P2_NPI {
         Ventana ventana = new Ventana();
         ventana.setVisible(true);
 
-        SampleListener listener = new SampleListener();
-        Controller controller = new Controller();
+        //SampleListener listener = new SampleListener();
+        //Controller controller = new Controller();
         
         // Have the sample listener receive events from the controller
-        controller.addListener(listener);
+        //controller.addListener(listener);
         
         // Keep this process running until Enter is pressed
         System.out.println("Press Enter to quit...");
@@ -343,6 +346,6 @@ public class P2_NPI {
         }
         
         // Elimina el listener al final
-        controller.removeListener(listener);
+        //controller.removeListener(listener);
     }
 }
