@@ -49,44 +49,56 @@ public class Menu_Inicio extends javax.swing.JPanel {
 
         setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Castellar", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 153, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Menú de Inicio");
 
+        boton_docencia.setBackground(new java.awt.Color(255, 255, 255));
         boton_docencia.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_docencia.setText("Docencia");
+        boton_docencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51), 4));
         boton_docencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_docenciaActionPerformed(evt);
             }
         });
 
+        boton_profesorado.setBackground(new java.awt.Color(255, 255, 255));
         boton_profesorado.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_profesorado.setText("Profesorado");
+        boton_profesorado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51), 4));
         boton_profesorado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_profesoradoActionPerformed(evt);
             }
         });
 
+        boton_comedor.setBackground(new java.awt.Color(255, 255, 255));
         boton_comedor.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_comedor.setText("Comedor");
+        boton_comedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51), 4));
         boton_comedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_comedorActionPerformed(evt);
             }
         });
 
+        boton_tramites.setBackground(new java.awt.Color(255, 255, 255));
         boton_tramites.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_tramites.setText("Trámites");
+        boton_tramites.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51), 4));
         boton_tramites.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_tramitesActionPerformed(evt);
             }
         });
 
+        boton_localizacion.setBackground(new java.awt.Color(255, 255, 255));
         boton_localizacion.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_localizacion.setText("Localización");
+        boton_localizacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 4, true));
         boton_localizacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_localizacionActionPerformed(evt);
@@ -99,7 +111,7 @@ public class Menu_Inicio extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
@@ -109,24 +121,24 @@ public class Menu_Inicio extends javax.swing.JPanel {
                     .addComponent(boton_tramites, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
                     .addComponent(boton_comedor, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
                     .addComponent(boton_localizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 65, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(boton_docencia, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(34, 34, 34)
                 .addComponent(boton_profesorado, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(38, 38, 38)
                 .addComponent(boton_tramites, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(43, 43, 43)
                 .addComponent(boton_comedor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(boton_localizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+                .addGap(78, 78, 78))
         );
     }// </editor-fold>//GEN-END:initComponents
 
