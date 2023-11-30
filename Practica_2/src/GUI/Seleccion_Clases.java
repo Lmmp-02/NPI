@@ -13,7 +13,6 @@ import javax.swing.DefaultComboBoxModel;
 public class Seleccion_Clases extends javax.swing.JPanel {
 
     private Ventana padre;
-	int a = 0;
     
     public Seleccion_Clases(Ventana p) {
         initComponents();
