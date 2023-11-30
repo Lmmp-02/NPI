@@ -126,6 +126,7 @@ public class Seleccion_Clases extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cambiaOpciones() {
+    	ComBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {""}));
     	// Cambia los mostrado en el tercer selector en fucnión de los escogido en el segundo y el primero
         ComBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,8 +172,7 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         });
         
         ComBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Clase", "Despacho" }));
-        
-     // Cambia los mostrado en el segundo selector en fucnión de los escogido en el primero
+        // Cambia los mostrado en el segundo selector en fucnión de los escogido en el primero
         ComBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DefaultComboBoxModel<String> model1 = (DefaultComboBoxModel<String>) ComBox1.getModel();
@@ -196,6 +196,8 @@ public class Seleccion_Clases extends javax.swing.JPanel {
                 }
             }
         });
+        
+        ComBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ""}));
     }
     
     private void ComBox2MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_ComBox2MouseWheelMoved
