@@ -7,6 +7,7 @@ package GUI;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -21,16 +22,27 @@ public class Menu_Docencia extends javax.swing.JPanel {
     public Menu_Docencia(Ventana p) {
         initComponents();
         padre = p;
-        // Configura el fondo de PanelAdvertencia
-        Image imagenFondo = new ImageIcon(getClass().getResource("../Images/Advertencia.png")).getImage();
-        PanelAdvertencia = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
-            }
-        };
-        PanelAdvertencia.setOpaque(false);
+        ajustarIconoBotonAdvertencia(botonAdvert, "../Images/advertencia.png");
+    }
+    
+    private void ajustarIconoBotonAdvertencia(JButton boton, String rutaIcono) {
+        // Obtiene el menor entre el ancho y el alto del botón para mantener la forma cuadrada
+        int size = Math.min(boton.getWidth(), boton.getHeight());
+
+        // Si el botón tiene tamaño 0, puedes asignar un tamaño predeterminado
+        if (size == 0) {
+            size = 150; // Tamaño cuadrado predeterminado
+        }
+
+        ImageIcon icon = new ImageIcon(getClass().getResource(rutaIcono));
+        boton.setIcon(redimIcono(icon, size, size));
+    }
+    
+    // Método para redimensionar el icono
+    private ImageIcon redimIcono(ImageIcon icon, int width, int height) {
+        Image img = icon.getImage();
+        Image resizedImage = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(resizedImage);
     }
 
     /**
@@ -45,7 +57,7 @@ public class Menu_Docencia extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        PanelAdvertencia = new javax.swing.JPanel();
+        botonAdvert = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -58,16 +70,11 @@ public class Menu_Docencia extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("y asignaturas matriculadas tiene que identificarse");
 
-        javax.swing.GroupLayout PanelAdvertenciaLayout = new javax.swing.GroupLayout(PanelAdvertencia);
-        PanelAdvertencia.setLayout(PanelAdvertenciaLayout);
-        PanelAdvertenciaLayout.setHorizontalGroup(
-            PanelAdvertenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 201, Short.MAX_VALUE)
-        );
-        PanelAdvertenciaLayout.setVerticalGroup(
-            PanelAdvertenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 170, Short.MAX_VALUE)
-        );
+        botonAdvert.setBackground(new java.awt.Color(255, 255, 255));
+        botonAdvert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/advertencia.png"))); // NOI18N
+        botonAdvert.setBorderPainted(false);
+        botonAdvert.setContentAreaFilled(false);
+        botonAdvert.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -82,18 +89,17 @@ public class Menu_Docencia extends javax.swing.JPanel {
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel2))))
+                            .addComponent(jLabel2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(botonAdvert, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(PanelAdvertencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(122, 122, 122))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
-                .addComponent(PanelAdvertencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(116, Short.MAX_VALUE)
+                .addComponent(botonAdvert, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -106,7 +112,7 @@ public class Menu_Docencia extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelAdvertencia;
+    private javax.swing.JButton botonAdvert;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
