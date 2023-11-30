@@ -37,13 +37,13 @@ public class Ventana extends javax.swing.JFrame {
     private Confirmacion_Menu_Final confirmacion_fin;
     private Confirmacion_Pago confirmacion_pago;
     private LeerCodigoQR escanerQR;
-    
-    private int estado;
-    
-    // Comedor
     private Menu_Comedor menu_comedor;
     private Seleccion_Tipo_Menu sel_tipo_menu;
     private Localizacion_Profesorado localizacion_profes;
+    private Menu_Docencia menu_docencia;
+    
+    private int estado;
+    
     
     public Ventana() {
         this.setContentPane(fondo);
@@ -66,6 +66,7 @@ public class Ventana extends javax.swing.JFrame {
         sel_tipo_menu = new Seleccion_Tipo_Menu(this);
         localizacion_profes = new Localizacion_Profesorado(this);
         confirmacion_pago = new Confirmacion_Pago(this);
+        menu_docencia = new Menu_Docencia(this);
 
         //Activamos el cursor personalizado
         this.set_cursor_personalizado();
@@ -216,6 +217,11 @@ public class Ventana extends javax.swing.JFrame {
         estado = 11;
     }
     
+    public void botonDocenciaPulsado(){
+        muestraPanel(menu_docencia);
+        estado = 12;
+    }
+    
     
     //Método de transición cuando se haga swipe a la izquierda
     public void anterior(){
@@ -278,6 +284,10 @@ public class Ventana extends javax.swing.JFrame {
             case 10: //Confirmacion de pago
                 break;
             case 11: // Menú Profesorado
+                muestraPanel(menu_inicio);
+                estado = 0;
+                break;
+            case 12:
                 muestraPanel(menu_inicio);
                 estado = 0;
                 break;
