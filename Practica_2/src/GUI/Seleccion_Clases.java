@@ -16,6 +16,7 @@ public class Seleccion_Clases extends javax.swing.JPanel {
     
     public Seleccion_Clases(Ventana p) {
         initComponents();
+        cambiaOpciones();
         padre = p;
         //Hace falta limitar los valores que toman los combox
         //Usar el método setModel(<cadena strings>)
@@ -65,15 +66,78 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         ComBox3 = new javax.swing.JComboBox<>();
         titulo = new javax.swing.JLabel();
 
-        ComBox1.setModel(new javax.swing.DefaultComboBoxModel<>());
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        ComBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ComBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-1", "0", "1", "2", "3", "4", "5" }));
         ComBox1.setToolTipText("");
         ComBox1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
                 ComBox1MouseWheelMoved(evt);
             }
         });
-        
-        // Cambia los mostrado en el tercer selector en fucnión de los escogido en el segundo y el primero
+
+        ComBox2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ComBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clase", "Despacho" }));
+        ComBox2.setOpaque(false);
+        ComBox2.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                ComBox2MouseWheelMoved(evt);
+            }
+        });
+        ComBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComBox2ActionPerformed(evt);
+            }
+        });
+
+        ComBox3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ComBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        ComBox3.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                ComBox3MouseWheelMoved(evt);
+            }
+        });
+
+        titulo.setBackground(new java.awt.Color(255, 255, 255));
+        titulo.setFont(new java.awt.Font("Castellar", 1, 36)); // NOI18N
+        titulo.setForeground(new java.awt.Color(255, 153, 51));
+        titulo.setText("Seleccion Clases");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(ComBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ComBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ComBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(titulo)
+                .addGap(35, 35, 35))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(titulo)
+                .addGap(143, 143, 143)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ComBox1)
+                    .addComponent(ComBox2)
+                    .addComponent(ComBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(350, Short.MAX_VALUE))
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void cambiaOpciones() {
+    	ComBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {""}));
+    	// Cambia los mostrado en el tercer selector en fucnión de los escogido en el segundo y el primero
         ComBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DefaultComboBoxModel<String> model3 = (DefaultComboBoxModel<String>) ComBox3.getModel();
@@ -116,14 +180,8 @@ public class Seleccion_Clases extends javax.swing.JPanel {
                 }
             }
         });
-
-        ComBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Clase", "Despacho" }));
-        ComBox2.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
-            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
-                ComBox2MouseWheelMoved(evt);
-            }
-        });
         
+        ComBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Clase", "Despacho" }));
         // Cambia los mostrado en el segundo selector en fucnión de los escogido en el primero
         ComBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,49 +206,10 @@ public class Seleccion_Clases extends javax.swing.JPanel {
                 }
             }
         });
-
-        ComBox3.setModel(new javax.swing.DefaultComboBoxModel<>());
-        ComBox3.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
-            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
-                ComBox3MouseWheelMoved(evt);
-            }
-        });
-
-        titulo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        titulo.setText("Seleccion Clases");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ComBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ComBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ComBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(titulo)
-                        .addGap(50, 50, 50))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(titulo)
-                .addGap(135, 135, 135)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ComBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addComponent(ComBox2)
-                    .addComponent(ComBox3))
-                .addContainerGap(348, Short.MAX_VALUE))
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
+        
+        ComBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ""}));
+    }
+    
     private void ComBox2MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_ComBox2MouseWheelMoved
         cambioComboxRueda(ComBox2, evt);
     }//GEN-LAST:event_ComBox2MouseWheelMoved
@@ -202,6 +221,10 @@ public class Seleccion_Clases extends javax.swing.JPanel {
     private void ComBox3MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_ComBox3MouseWheelMoved
         cambioComboxRueda(ComBox3, evt);
     }//GEN-LAST:event_ComBox3MouseWheelMoved
+
+    private void ComBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComBox2ActionPerformed
 
     public String destino() {
     	String sel1 = (String) ComBox2.getSelectedItem();
