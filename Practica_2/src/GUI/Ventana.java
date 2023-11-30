@@ -35,7 +35,7 @@ public class Ventana extends javax.swing.JFrame {
     private Panel_Menu panel_menu;
     private Panel_Menu_Llevar panel_menu_llevar;
     private Confirmacion_Menu_Final confirmacion_fin;
-    
+    private Confirmacion_Pago confirmacion_pago;
     private LeerCodigoQR escanerQR;
     
     private int estado;
@@ -65,6 +65,7 @@ public class Ventana extends javax.swing.JFrame {
         menu_comedor = new Menu_Comedor(this);
         sel_tipo_menu = new Seleccion_Tipo_Menu(this);
         localizacion_profes = new Localizacion_Profesorado(this);
+        confirmacion_pago = new Confirmacion_Pago(this);
 
         //Activamos el cursor personalizado
         this.set_cursor_personalizado();
@@ -118,6 +119,7 @@ public class Ventana extends javax.swing.JFrame {
     
     public void codigoLeido(String codigo){
         System.out.println(codigo);
+        confirmacion_pago.setCodigo(codigo);
         escanerQR.dispose();
         siguiente();
     }
@@ -275,7 +277,7 @@ public class Ventana extends javax.swing.JFrame {
                 muestraPanel(sel_tipo_menu);
                 estado = 8;
                 break;
-            case 10: //Pago con QR
+            case 10: //Confirmacion de pago
                 muestraPanel(sel_tipo_menu);
                 estado = 8;
                 break;
@@ -348,13 +350,13 @@ public class Ventana extends javax.swing.JFrame {
                 estado = 9;
                 break;
             case 9: // Seleccion de menu para llevar
-                //muestraPanel(pago_confirmado); //No hecho
+                muestraPanel(pago_confirmado); //No hecho
                 estado = 10;
                 break;
             case 10: // Seleccion de menu para llevar
                 //Hacer panel_menu_llevar.mostrar(menú indicado)
-                muestraPanel(confirmacion_fin);
-                estado = 54;
+                muestraPanel(menu_inicio);
+                estado = 0;
                 break;
         }
         System.out.println(" es " + estado +"\n");
