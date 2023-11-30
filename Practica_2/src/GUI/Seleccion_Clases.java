@@ -65,33 +65,98 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         ComBox3 = new javax.swing.JComboBox<>();
         titulo = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
-        ComBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-1", "0", "1", "2", "3", "4", "5" }));
+        ComBox1.setModel(new javax.swing.DefaultComboBoxModel<>());
         ComBox1.setToolTipText("");
         ComBox1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
                 ComBox1MouseWheelMoved(evt);
             }
         });
+        
+        // Cambia los mostrado en el tercer selector en fucnión de los escogido en el segundo y el primero
+        ComBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DefaultComboBoxModel<String> model3 = (DefaultComboBoxModel<String>) ComBox3.getModel();
+                model3.removeAllElements();
 
-        ComBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clase", "Despacho" }));
+                String sel1 = (String) ComBox2.getSelectedItem();
+                String sel2 = (String) ComBox1.getSelectedItem();
+                
+                // Muy importante este if, por si se cambia el contenido del primer selector después de tener los demás
+                if(sel2 != null) {
+	                // Si se ha seleecionado clase
+	                if (sel1.equals("Clase")){
+	                	String[] elems;
+	
+	                	// Si es planta -1, A o B
+	                    if(sel2.equals("-1") || sel2.equals("A") || sel2.equals("B")) {
+	                    	elems = new String[]{"", "1", "2"};
+	                    }
+	                    else {	// Si es planta 0, 1, 2 o 3
+	                    	elems = new String[]{"", "1", "2", "3", "4", "5", "6", "7", "8"};
+	                    }
+	                    
+	                    for (String e : elems) {
+	                        model3.addElement(e);
+	                    }
+	                } 
+	                else if (sel1.equals("Despacho")){	//Si se ha seleccionado despacho 
+	                	model3.addElement("");
+	                	
+	                	// Si la planta el la 5
+	                    if(sel2.equals("5")){
+	                    	model3.addElement("1");
+	                    }
+	                    else{	// Si la planta es la 2, 3 o 4
+	                    	for(int i=1; i<41; ++i) {
+	                    		model3.addElement(String.valueOf(i));
+	                    	}
+	                    }
+	                }
+                }
+            }
+        });
+
+        ComBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Clase", "Despacho" }));
         ComBox2.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
                 ComBox2MouseWheelMoved(evt);
             }
         });
+        
+        // Cambia los mostrado en el segundo selector en fucnión de los escogido en el primero
+        ComBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DefaultComboBoxModel<String> model1 = (DefaultComboBoxModel<String>) ComBox1.getModel();
+                model1.removeAllElements();
 
-        ComBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+                String sel = (String) ComBox2.getSelectedItem();
+
+                if (sel.equals("Clase")){
+                    String[] elems = new String[]{"", "-1", "0", "1", "2", "3", "A", "B"};
+
+                    for (String e : elems) {
+                        model1.addElement(e);
+                    }
+                } 
+                else if (sel.equals("Despacho")){
+                    String[] elems = new String[]{"", "2", "3", "4", "5"};
+
+                    for (String e : elems) {
+                        model1.addElement(e);
+                    }
+                }
+            }
+        });
+
+        ComBox3.setModel(new javax.swing.DefaultComboBoxModel<>());
         ComBox3.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
                 ComBox3MouseWheelMoved(evt);
             }
         });
 
-        titulo.setBackground(new java.awt.Color(255, 255, 255));
-        titulo.setFont(new java.awt.Font("Castellar", 1, 36)); // NOI18N
-        titulo.setForeground(new java.awt.Color(255, 153, 51));
+        titulo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         titulo.setText("Seleccion Clases");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -99,29 +164,30 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(ComBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ComBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ComBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addComponent(titulo)
-                .addGap(35, 35, 35))
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ComBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ComBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ComBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(titulo)
+                        .addGap(50, 50, 50))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
+                .addGap(70, 70, 70)
                 .addComponent(titulo)
-                .addGap(143, 143, 143)
+                .addGap(135, 135, 135)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ComBox1)
+                    .addComponent(ComBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                     .addComponent(ComBox2)
-                    .addComponent(ComBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(350, Short.MAX_VALUE))
+                    .addComponent(ComBox3))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
