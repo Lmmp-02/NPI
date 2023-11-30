@@ -16,6 +16,7 @@ public class Seleccion_Clases extends javax.swing.JPanel {
     
     public Seleccion_Clases(Ventana p) {
         initComponents();
+        cambiaOpciones();
         padre = p;
         //Hace falta limitar los valores que toman los combox
         //Usar el método setModel(<cadena strings>)
@@ -73,81 +74,14 @@ public class Seleccion_Clases extends javax.swing.JPanel {
             }
         });
         
-        // Cambia los mostrado en el tercer selector en fucnión de los escogido en el segundo y el primero
-        ComBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DefaultComboBoxModel<String> model3 = (DefaultComboBoxModel<String>) ComBox3.getModel();
-                model3.removeAllElements();
-
-                String sel1 = (String) ComBox2.getSelectedItem();
-                String sel2 = (String) ComBox1.getSelectedItem();
-                
-                // Muy importante este if, por si se cambia el contenido del primer selector después de tener los demás
-                if(sel2 != null) {
-	                // Si se ha seleecionado clase
-	                if (sel1.equals("Clase")){
-	                	String[] elems;
-	
-	                	// Si es planta -1, A o B
-	                    if(sel2.equals("-1") || sel2.equals("A") || sel2.equals("B")) {
-	                    	elems = new String[]{"", "1", "2"};
-	                    }
-	                    else {	// Si es planta 0, 1, 2 o 3
-	                    	elems = new String[]{"", "1", "2", "3", "4", "5", "6", "7", "8"};
-	                    }
-	                    
-	                    for (String e : elems) {
-	                        model3.addElement(e);
-	                    }
-	                } 
-	                else if (sel1.equals("Despacho")){	//Si se ha seleccionado despacho 
-	                	model3.addElement("");
-	                	
-	                	// Si la planta el la 5
-	                    if(sel2.equals("5")){
-	                    	model3.addElement("1");
-	                    }
-	                    else{	// Si la planta es la 2, 3 o 4
-	                    	for(int i=1; i<41; ++i) {
-	                    		model3.addElement(String.valueOf(i));
-	                    	}
-	                    }
-	                }
-                }
-            }
-        });
-
-        ComBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Clase", "Despacho" }));
+        
         ComBox2.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
                 ComBox2MouseWheelMoved(evt);
             }
         });
         
-        // Cambia los mostrado en el segundo selector en fucnión de los escogido en el primero
-        ComBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DefaultComboBoxModel<String> model1 = (DefaultComboBoxModel<String>) ComBox1.getModel();
-                model1.removeAllElements();
-
-                String sel = (String) ComBox2.getSelectedItem();
-
-                if (sel.equals("Clase")){
-                    String[] elems = new String[]{"", "-1", "0", "1", "2", "3", "A", "B"};
-
-                    for (String e : elems) {
-                        model1.addElement(e);
-                    }
-                } 
-                else if (sel.equals("Despacho")){
-                    String[] elems = new String[]{"", "2", "3", "4", "5"};
-
-                    for (String e : elems) {
-                        model1.addElement(e);
-                    }
-                }
-            }
-        });
+        
 
         ComBox3.setModel(new javax.swing.DefaultComboBoxModel<>());
         ComBox3.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
@@ -191,6 +125,79 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cambiaOpciones() {
+    	// Cambia los mostrado en el tercer selector en fucnión de los escogido en el segundo y el primero
+        ComBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DefaultComboBoxModel<String> model3 = (DefaultComboBoxModel<String>) ComBox3.getModel();
+                model3.removeAllElements();
+
+                String sel1 = (String) ComBox2.getSelectedItem();
+                String sel2 = (String) ComBox1.getSelectedItem();
+                
+                // Muy importante este if, por si se cambia el contenido del primer selector después de tener los demás
+                if(sel2 != null) {
+	                // Si se ha seleecionado clase
+	                if (sel1.equals("Clase")){
+	                	String[] elems;
+	
+	                	// Si es planta -1, A o B
+	                    if(sel2.equals("-1") || sel2.equals("A") || sel2.equals("B")) {
+	                    	elems = new String[]{"", "1", "2"};
+	                    }
+	                    else {	// Si es planta 0, 1, 2 o 3
+	                    	elems = new String[]{"", "1", "2", "3", "4", "5", "6", "7", "8"};
+	                    }
+	                    
+	                    for (String e : elems) {
+	                        model3.addElement(e);
+	                    }
+	                } 
+	                else if (sel1.equals("Despacho")){	//Si se ha seleccionado despacho 
+	                	model3.addElement("");
+	                	
+	                	// Si la planta el la 5
+	                    if(sel2.equals("5")){
+	                    	model3.addElement("1");
+	                    }
+	                    else{	// Si la planta es la 2, 3 o 4
+	                    	for(int i=1; i<41; ++i) {
+	                    		model3.addElement(String.valueOf(i));
+	                    	}
+	                    }
+	                }
+                }
+            }
+        });
+        
+        ComBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Clase", "Despacho" }));
+        
+     // Cambia los mostrado en el segundo selector en fucnión de los escogido en el primero
+        ComBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DefaultComboBoxModel<String> model1 = (DefaultComboBoxModel<String>) ComBox1.getModel();
+                model1.removeAllElements();
+
+                String sel = (String) ComBox2.getSelectedItem();
+
+                if (sel.equals("Clase")){
+                    String[] elems = new String[]{"", "-1", "0", "1", "2", "3", "A", "B"};
+
+                    for (String e : elems) {
+                        model1.addElement(e);
+                    }
+                } 
+                else if (sel.equals("Despacho")){
+                    String[] elems = new String[]{"", "2", "3", "4", "5"};
+
+                    for (String e : elems) {
+                        model1.addElement(e);
+                    }
+                }
+            }
+        });
+    }
+    
     private void ComBox2MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_ComBox2MouseWheelMoved
         cambioComboxRueda(ComBox2, evt);
     }//GEN-LAST:event_ComBox2MouseWheelMoved
