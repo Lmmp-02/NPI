@@ -24,6 +24,7 @@ public class Confirmacion_Pago extends javax.swing.JPanel {
     
     public void setCodigo(String c){
         this.codigo = c;
+        txtfCodigo.setText(c);
     }
     
     /**
@@ -57,6 +58,7 @@ public class Confirmacion_Pago extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Código:");
 
+        txtfCodigo.setEditable(false);
         txtfCodigo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

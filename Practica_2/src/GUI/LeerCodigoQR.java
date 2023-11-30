@@ -153,6 +153,16 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
         executor.execute(this);
     }
     
+    public void closeWebcam() {
+        // Detén la ejecución del hilo que está capturando la imagen de la webcam
+        //executor.shutdownNow();
+
+        // Detén la webcam
+        if (webcam.isOpen()) {
+            webcam.close();
+        }
+    }
+    
     @Override
     public void run(){
         do{

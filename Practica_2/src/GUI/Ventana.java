@@ -114,14 +114,17 @@ public class Ventana extends javax.swing.JFrame {
         escanerQR = new LeerCodigoQR(this);
         
         escanerQR.setVisible(true);
-        
     }
     
     public void codigoLeido(String codigo){
         System.out.println(codigo);
         confirmacion_pago.setCodigo(codigo);
+        
+        escanerQR.closeWebcam();
         escanerQR.dispose();
-        siguiente();
+        
+        muestraPanel(confirmacion_pago); 
+        estado = 10;
     }
     
     // Método para ajustar el icono de un botón
@@ -195,11 +198,6 @@ public class Ventana extends javax.swing.JFrame {
         panel_menu_llevar = new Panel_Menu_Llevar(this, 4);
         muestraPanel(panel_menu_llevar);
         estado = 9;
-    }
-    
-    public void botonReservarPulsado(){
-        muestraPanel(panel_menu_llevar);
-        estado = 10;
     }
     
     public void botonLocalizacionClasesPulsado(){
@@ -278,8 +276,6 @@ public class Ventana extends javax.swing.JFrame {
                 estado = 8;
                 break;
             case 10: //Confirmacion de pago
-                muestraPanel(sel_tipo_menu);
-                estado = 8;
                 break;
             case 11: // Menú Profesorado
                 muestraPanel(menu_inicio);
@@ -345,13 +341,8 @@ public class Ventana extends javax.swing.JFrame {
                 estado = 53;
                 break;
             case 8: // Seleccion de menu para llevar
-                //Hacer panel_menu_llevar.mostrar(menú indicado)
-                muestraPanel(panel_menu);
-                estado = 9;
                 break;
-            case 9: // Seleccion de menu para llevar
-                muestraPanel(pago_confirmado); //No hecho
-                estado = 10;
+            case 9: // Mostrar menu para llevar + escaner qr
                 break;
             case 10: // Seleccion de menu para llevar
                 //Hacer panel_menu_llevar.mostrar(menú indicado)
