@@ -35,6 +35,9 @@ public class Ventana extends javax.swing.JFrame {
     private Panel_Menu panel_menu;
     private Panel_Menu_Llevar panel_menu_llevar;
     private Confirmacion_Menu_Final confirmacion_fin;
+    
+    private LeerCodigoQR escanerQR;
+    
     private int estado;
     
     // Comedor
@@ -81,6 +84,42 @@ public class Ventana extends javax.swing.JFrame {
         contenedor_principal.add(p);
         contenedor_principal.revalidate();
         contenedor_principal.repaint();
+    }
+    //inicio pago con qr
+    public void pagoConQR(){
+        // Set the Nimbus look and feel 
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(LeerCodigoQR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(LeerCodigoQR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(LeerCodigoQR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(LeerCodigoQR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        escanerQR = new LeerCodigoQR(this);
+        
+        escanerQR.setVisible(true);
+        
+    }
+    
+    public void codigoLeido(String codigo){
+        System.out.println(codigo);
+        escanerQR.dispose();
+        siguiente();
     }
     
     // Método para ajustar el icono de un botón
@@ -172,7 +211,7 @@ public class Ventana extends javax.swing.JFrame {
         estado = 3; 
     }
     
-    public void botonProfesoradoPulsado(){ /***********************************************/
+    public void botonProfesoradoPulsado(){ 
         muestraPanel(localizacion_profes);
         estado = 11;
     }
@@ -309,9 +348,8 @@ public class Ventana extends javax.swing.JFrame {
                 estado = 9;
                 break;
             case 9: // Seleccion de menu para llevar
-                //Hacer panel_menu_llevar.mostrar(menú indicado)
-                //muestraPanel(pago_comida);
-                //estado = 10;
+                //muestraPanel(pago_confirmado); //No hecho
+                estado = 10;
                 break;
             case 10: // Seleccion de menu para llevar
                 //Hacer panel_menu_llevar.mostrar(menú indicado)

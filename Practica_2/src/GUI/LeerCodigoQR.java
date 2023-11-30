@@ -32,13 +32,21 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
     private Webcam webcam = null;
     private Executor executor = Executors.newSingleThreadExecutor(this);
     
+    private Ventana padre;
+    
     
     /**
      * Creates new form LeerCodigoQR
      */
-    public LeerCodigoQR() {
+    public LeerCodigoQR(Ventana p) {
+        this.padre = p;
+        
         initComponents();
         initWebcam();
+    }
+    
+    public String getLectura(){
+        return campo_resultado.getText();
     }
 
     /**
@@ -94,7 +102,7 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        // Set the Nimbus look and feel 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -117,10 +125,10 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        // Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LeerCodigoQR().setVisible(true);
+                //new LeerCodigoQR().setVisible(true);
             }
         });
     }
@@ -174,6 +182,7 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
             
             if(resultado != null){
                 campo_resultado.setText(resultado.getText());
+                padre.codigoLeido(resultado.getText());
             }
             
         }while(true);

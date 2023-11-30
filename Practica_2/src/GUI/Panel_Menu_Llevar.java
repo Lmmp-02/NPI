@@ -299,7 +299,7 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPrimeroActionPerformed
 
     private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
-        // TODO add your handling code here:
+        padre.pagoConQR();
     }//GEN-LAST:event_btnReservarActionPerformed
 
 
