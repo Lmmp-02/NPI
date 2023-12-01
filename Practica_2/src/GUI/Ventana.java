@@ -37,13 +37,13 @@ public class Ventana extends javax.swing.JFrame {
     private Confirmacion_Menu_Final confirmacion_fin;
     private Confirmacion_Pago confirmacion_pago;
     private LeerCodigoQR escanerQR;
-    
-    private int estado;
-    
-    // Comedor
     private Menu_Comedor menu_comedor;
     private Seleccion_Tipo_Menu sel_tipo_menu;
     private Localizacion_Profesorado localizacion_profes;
+    private Menu_Docencia menu_docencia;
+    
+    private int estado;
+    
     
     public Ventana() {
         this.setContentPane(fondo);
@@ -66,6 +66,7 @@ public class Ventana extends javax.swing.JFrame {
         sel_tipo_menu = new Seleccion_Tipo_Menu(this);
         localizacion_profes = new Localizacion_Profesorado(this);
         confirmacion_pago = new Confirmacion_Pago(this);
+        menu_docencia = new Menu_Docencia(this);
 
         //Activamos el cursor personalizado
         this.set_cursor_personalizado();
@@ -216,6 +217,11 @@ public class Ventana extends javax.swing.JFrame {
         estado = 11;
     }
     
+    public void botonDocenciaPulsado(){
+        muestraPanel(menu_docencia);
+        estado = 12;
+    }
+    
     
     //Método de transición cuando se haga swipe a la izquierda
     public void anterior(){
@@ -281,6 +287,10 @@ public class Ventana extends javax.swing.JFrame {
                 muestraPanel(menu_inicio);
                 estado = 0;
                 break;
+            case 12:
+                muestraPanel(menu_inicio);
+                estado = 0;
+                break;
         }
         System.out.println(" es " + estado +"\n");
     }
@@ -293,15 +303,19 @@ public class Ventana extends javax.swing.JFrame {
             	Caminos cams = new Caminos("./recursos/locs.txt", "./recursos/cams.txt");
             	List<List<String>> rutas = cams.calculaRutaArch("0_totem", sel_clases.destino());
             
-            	// No tenemos en cuenta la última imagen indicada
-            	String[] prim = new String[rutas.size()-1];
+            	// No tenemos en cuenta la última imagen ni descripción indicadas
+            	int tam = rutas.size() - 1;
             	
-            	for (int i = 0; i < (rutas.size()-1); i++) {
-                    prim[i] = "./recursos/imagenes/" + rutas.get(i).get(0);
-                    System.out.print(prim[i]+" ");
+            	String[] ims = new String[tam];
+            	String[] des = new String[tam];
+            	
+            	for (int i = 0; i < tam; i++) {
+                    ims[i] = "./recursos/imagenes/" + rutas.get(i).get(0);
+                    des[i] = "./recursos/descripciones/" + rutas.get(i).get(1);
                 }
         
-            	carrusel_ruta.cargaImagenes(prim);
+            	carrusel_ruta.cargaImagenes(ims, des);
+            	
                 muestraPanel(carrusel_ruta);
                 estado = 41;
                 break;
