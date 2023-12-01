@@ -169,7 +169,7 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ex) {
-                java.util.logging.Logger.getLogger(LeerCodigoQR.class.getName()).log(Level.SEVERE, null, ex);
+                //java.util.logging.Logger.getLogger(LeerCodigoQR.class.getName()).log(Level.SEVERE, null, ex);
             }
             Result resultado = null;
             BufferedImage imagen = null;
@@ -187,7 +187,7 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
             try {
                 resultado = new MultiFormatReader().decode(bitmap);
             } catch (NotFoundException ex) {
-                java.util.logging.Logger.getLogger(LeerCodigoQR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                //java.util.logging.Logger.getLogger(LeerCodigoQR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
             
             if(resultado != null){
