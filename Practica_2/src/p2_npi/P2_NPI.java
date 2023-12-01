@@ -14,20 +14,20 @@ package p2_npi;
 //import GUI.Menu_Botones_Generico;
 import GUI.Ventana;
 import GUI.Seleccion_Clases;
-/*
+
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.State;
 import static com.leapmotion.leap.Gesture.Type.TYPE_CIRCLE;
 import static com.leapmotion.leap.Gesture.Type.TYPE_KEY_TAP;
 import static com.leapmotion.leap.Gesture.Type.TYPE_SCREEN_TAP;
-import static com.leapmotion.leap.Gesture.Type.TYPE_SWIPE;*/
+import static com.leapmotion.leap.Gesture.Type.TYPE_SWIPE;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 
 import java.io.IOException;
 
 
-/*
+
 class SampleListener extends Listener {
     private int count;
     private boolean pulsando_click;
@@ -77,6 +77,7 @@ class SampleListener extends Listener {
         //Feedback de lo que va detectando Leap cada 60 frames
         if(count % 60 == 0){
             int s = count / 60;
+            /*
             System.out.println("Muestra "+s);
             System.out.println("Frame id: " + frame.id()
                       + ", timestamp: " + frame.timestamp()
@@ -84,7 +85,7 @@ class SampleListener extends Listener {
                       + ", fingers: " + frame.fingers().count()
                       + ", tools: " + frame.tools().count()
                       + ", gestures " + frame.gestures().count());
-            
+            */
             // Vamos a examinar la primera mano
             if (!frame.hands().isEmpty()) {
             // Obtiene el objeto mano
@@ -318,24 +319,21 @@ class SampleListener extends Listener {
        
     
 }
-*/
+
 
 public class P2_NPI {
 
     public static void main(String[] args) {
         // LLamada a Menu_Principal y que muestre el panel
-        /*String[] nombresBotones = {"Botón A", "Botón B", "Botón C", "Boton D"};
-        Menu_Botones_Generico vista = new Menu_Botones_Generico(nombresBotones);
-        vista.setVisible(true);*/
         
         Ventana ventana = new Ventana();
         ventana.setVisible(true);
 
-        //SampleListener listener = new SampleListener();
-        //Controller controller = new Controller();
+        SampleListener listener = new SampleListener();
+        Controller controller = new Controller();
         
         // Have the sample listener receive events from the controller
-        //controller.addListener(listener);
+        controller.addListener(listener);
         
         // Keep this process running until Enter is pressed
         System.out.println("Press Enter to quit...");
@@ -346,6 +344,6 @@ public class P2_NPI {
         }
         
         // Elimina el listener al final
-        //controller.removeListener(listener);
+        controller.removeListener(listener);
     }
 }
