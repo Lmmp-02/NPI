@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  *
@@ -22,6 +25,7 @@ public class Carrusel_Fotos extends javax.swing.JPanel {
     private Ventana padre;
     private int indiceImagenActual;
     private BufferedImage[] imagenes;
+    private String[] textos;
     private int tam_imagen_x, tam_imagen_y;
     
     public Carrusel_Fotos(Ventana p) {
@@ -148,26 +152,36 @@ public class Carrusel_Fotos extends javax.swing.JPanel {
         actualizarImagen();
     }
     
-    public void cargaImagenes(String[] rutasImagenes) {
-        BufferedImage[] images = new BufferedImage[rutasImagenes.length];
+    public void cargaImagenes(String[] rutasImagenes, String[] rutasDesc) {
+    	indiceImagenActual=0;
+    	
+        if(rutasImagenes.length != rutasDesc.length) {
+        	System.out.print("cargaImagenes: el tamaño de los vectores no coincide");
+        }
+    	
+    	this.imagenes = new BufferedImage[rutasImagenes.length];
+    	this.textos = new String[rutasDesc.length];
 
         for (int i = 0; i < rutasImagenes.length; ++i) {
             try {
                 File file = new File(rutasImagenes[i]);
-                images[i] = ImageIO.read(file);
+                imagenes[i] = ImageIO.read(file);
             } catch (IOException e) {
-                System.err.println("Error al cargar la imagen: " + rutasImagenes[i]);
+                System.err.println("Error al cargar la imagen : " + rutasImagenes[i]);
+                e.printStackTrace();
+            }
+            
+            try {
+                textos[i] = Files.readString(Paths.get(rutasDesc[i]));
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
-        this.imagenes = images;
-        
+  
         actualizarImagen();
     }
 
     private void actualizarImagen() {
-        
         BufferedImage imagenIcon = imagenes[indiceImagenActual];
         
         BufferedImage imagenEscalada = new BufferedImage(tam_imagen_x, tam_imagen_y, TYPE_INT_ARGB);
@@ -177,6 +191,8 @@ public class Carrusel_Fotos extends javax.swing.JPanel {
         ImageIcon ImagenIcon = new ImageIcon(imagenEscalada);
         
         imagenLabel.setIcon(ImagenIcon);
+        
+        jTextField1.setText(textos[indiceImagenActual]);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

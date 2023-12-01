@@ -303,15 +303,19 @@ public class Ventana extends javax.swing.JFrame {
             	Caminos cams = new Caminos("./recursos/locs.txt", "./recursos/cams.txt");
             	List<List<String>> rutas = cams.calculaRutaArch("0_totem", sel_clases.destino());
             
-            	// No tenemos en cuenta la última imagen indicada
-            	String[] prim = new String[rutas.size()-1];
+            	// No tenemos en cuenta la última imagen ni descripción indicadas
+            	int tam = rutas.size() - 1;
             	
-            	for (int i = 0; i < (rutas.size()-1); i++) {
-                    prim[i] = "./recursos/imagenes/" + rutas.get(i).get(0);
-                    System.out.print(prim[i]+" ");
+            	String[] ims = new String[tam];
+            	String[] des = new String[tam];
+            	
+            	for (int i = 0; i < tam; i++) {
+                    ims[i] = "./recursos/imagenes/" + rutas.get(i).get(0);
+                    des[i] = "./recursos/descripciones/" + rutas.get(i).get(1);
                 }
         
-            	carrusel_ruta.cargaImagenes(prim);
+            	carrusel_ruta.cargaImagenes(ims, des);
+            	
                 muestraPanel(carrusel_ruta);
                 estado = 41;
                 break;
