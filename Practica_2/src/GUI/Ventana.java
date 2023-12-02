@@ -222,7 +222,6 @@ public class Ventana extends javax.swing.JFrame {
         estado = 12;
     }
     
-    
     public void gestoSwipeRight(){
         siguiente();
     }
