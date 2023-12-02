@@ -223,6 +223,47 @@ public class Ventana extends javax.swing.JFrame {
     }
     
     
+    public void gestoSwipeRight(){
+        siguiente();
+    }
+    
+    public void gestoSwipeLeft(){
+        anterior();
+    }
+    
+    public void gestoSwipeUp(){
+        switch(estado){
+            case 41: 
+            case 42:
+                carrusel_ruta.mostrarImagenAnterior();
+                break;
+            case 7: //Panel de menus
+                panel_menu.mostrarDiaAnterior();
+                break;
+            
+            case 9: //Panel de menus para llevar
+                panel_menu_llevar.mostrarDiaAnterior();
+                break;
+        }
+    }
+    
+    public void gestoSwipeDown(){
+        switch(estado){
+            case 41: 
+            case 42:
+                carrusel_ruta.mostrarSiguienteImagen();
+                break;
+            case 7: //Panel de menus
+                panel_menu.mostrarDiaSiguiente();
+                break;
+            
+            case 9: //Panel de menus para llevar
+                panel_menu_llevar.mostrarDiaSiguiente();
+                break;
+        }
+    }
+    
+    
     //Método de transición cuando se haga swipe a la izquierda
     public void anterior(){
         System.out.println("Anterior --> Estado " + estado );

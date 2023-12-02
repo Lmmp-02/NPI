@@ -142,12 +142,12 @@ public class Carrusel_Fotos extends javax.swing.JPanel {
     }//GEN-LAST:event_boton_anteriorActionPerformed
 
 
-     private void mostrarImagenAnterior() {
+    public void mostrarImagenAnterior() {
         indiceImagenActual = (indiceImagenActual - 1 + imagenes.length) % imagenes.length;
         actualizarImagen();
     }
 
-    private void mostrarSiguienteImagen() {
+    public void mostrarSiguienteImagen() {
         indiceImagenActual = (indiceImagenActual + 1) % imagenes.length;
         actualizarImagen();
     }

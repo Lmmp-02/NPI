@@ -15,13 +15,13 @@ package p2_npi;
 import GUI.Ventana;
 import GUI.Seleccion_Clases;
 
-/*
+
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.State;
 import static com.leapmotion.leap.Gesture.Type.TYPE_CIRCLE;
 import static com.leapmotion.leap.Gesture.Type.TYPE_KEY_TAP;
 import static com.leapmotion.leap.Gesture.Type.TYPE_SCREEN_TAP;
-import static com.leapmotion.leap.Gesture.Type.TYPE_SWIPE;*/
+import static com.leapmotion.leap.Gesture.Type.TYPE_SWIPE;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 
@@ -37,10 +37,13 @@ class SampleListener extends Listener {
     private final int PROF_CLICK;
     private final int MOV_ENTRE_CLICKS;
     private final int ALTURA_CERO;
+    private final double SENSIBILIDAD_SWIPE;
+    private final Ventana ventana;
+    private int frames_ultimo_gesto;
     
     private Seleccion_Clases seleccionClasesPanel;
     
-    public SampleListener(){
+    public SampleListener(Ventana v){
         this.MAX_NO_MOVIMIENTO_X = 30;
         this.MAX_NO_MOVIMIENTO_Y = 30;
         this.PROF_CLICK = -200;
@@ -48,20 +51,19 @@ class SampleListener extends Listener {
         this.ALTURA_CERO = 200;
         this.pulsando_click = false;
         this.count = 0;
+        this.frames_ultimo_gesto = 200;
+        this.SENSIBILIDAD_SWIPE = 0.7;
+        this.ventana = v;
     }
     
-    public SampleListener(Seleccion_Clases seleccionClasesPanel) {
-        this();
-        this.seleccionClasesPanel = seleccionClasesPanel;
-    }
     
     @Override
     public void onConnect(Controller controller) {
         System.out.println("Connected");
         controller.enableGesture(Gesture.Type.TYPE_SWIPE);
-        controller.enableGesture(Gesture.Type.TYPE_CIRCLE);
-        controller.enableGesture(Gesture.Type.TYPE_SCREEN_TAP);
-        controller.enableGesture(Gesture.Type.TYPE_KEY_TAP);
+        //controller.enableGesture(Gesture.Type.TYPE_CIRCLE);
+        //controller.enableGesture(Gesture.Type.TYPE_SCREEN_TAP);
+        //controller.enableGesture(Gesture.Type.TYPE_KEY_TAP);
     }
     
     // Desconectamos Leap software o hardware
@@ -73,12 +75,13 @@ class SampleListener extends Listener {
     @Override
     public void onFrame(Controller controller) {
         
-        count += 1;
+        frames_ultimo_gesto += 1;
         Frame frame = controller.frame();
         //Feedback de lo que va detectando Leap cada 60 frames
+        /*
         if(count % 60 == 0){
             int s = count / 60;
-            /*
+            
             System.out.println("Muestra "+s);
             System.out.println("Frame id: " + frame.id()
                       + ", timestamp: " + frame.timestamp()
@@ -86,7 +89,7 @@ class SampleListener extends Listener {
                       + ", fingers: " + frame.fingers().count()
                       + ", tools: " + frame.tools().count()
                       + ", gestures " + frame.gestures().count());
-            */
+            
             // Vamos a examinar la primera mano
             if (!frame.hands().isEmpty()) {
             // Obtiene el objeto mano
@@ -108,13 +111,16 @@ class SampleListener extends Listener {
                     Vector normal = hand.palmNormal();
                     Vector direction = hand.direction();
                     // Calcula los de la mano, devuelve radianes y se pasan a grados
+                    
                     System.out.println(
                         "Hand pitch: " + Math.toDegrees(direction.pitch()) + ", " // Eje X
                         + "roll: " + Math.toDegrees(normal.roll()) + ", "         // Eje Y
                         + "yaw: " + Math.toDegrees(direction.yaw()));             // Eje Z
-                }
+                    
+                    }
             }        
         }
+        */
         // La lista contiene objetos de tipo Gesture, debemos convertir
             // ese objeto a la instancia de la subclase.
             // No se puede hacer Type Casting, usamos los constructores
@@ -123,9 +129,13 @@ class SampleListener extends Listener {
         
         // Recorremos la lista de gestos
         GestureList gestures = frame.gestures();
+        if(!gestures.isEmpty()){
+            frames_ultimo_gesto=0;
+        }
         for (int i = 0; i < gestures.count(); i++) {
             Gesture gesture = gestures.get(i);
             switch (gesture.type()) {
+                /*
                 case TYPE_CIRCLE -> {
                     CircleGesture circle = new CircleGesture(gesture);
                     // Calcula la dirección usando el ángulo entre la normal y el pointable
@@ -144,15 +154,20 @@ class SampleListener extends Listener {
                             + ", progress: " + circle.progress() + ", radius: " + circle.radius()
                             + ", angle: " + Math.toDegrees(sweptAngle) + ", " + clockwiseness);
                 }
+                */
                 case TYPE_SWIPE -> {
+                    
                     SwipeGesture swipe = new SwipeGesture(gesture);
+                    
                     System.out.println("Swipe id: " + swipe.id()
                         + ", " + swipe.state()
                         + ", position: " + swipe.position()
                         + ", direction: " + swipe.direction()
                         + ", speed: " + swipe.speed());
-
-                    handleSwipeGesture(swipe);
+                    
+                    if(swipe.state() == Gesture.State.STATE_STOP){
+                        handleSwipeGesture(swipe);
+                    }
                     break;
                 }
                 
@@ -176,7 +191,7 @@ class SampleListener extends Listener {
         }
         
         //Movimiento del cursor con la palma de la mano
-        if (!frame.hands().isEmpty()) {
+        if (!frame.hands().isEmpty() && frames_ultimo_gesto > 30) {
             Hand hand = frame.hands().get(0);
             Vector position = hand.palmPosition();
             int mov_x = (int) position.getX();
@@ -215,7 +230,7 @@ class SampleListener extends Listener {
         double averageDistance = totalDistance / fingers.count();
 
         // Establecer un umbral para la distancia
-        double closedFistThreshold = 60; // Ajusta este valor según sea necesario
+        double closedFistThreshold = 80; // Ajusta este valor según sea necesario
 
         // Verificar si la mano está en posición de puño cerrado
         if (averageDistance < closedFistThreshold && !pulsando_click) {
@@ -231,28 +246,6 @@ class SampleListener extends Listener {
         } else if (averageDistance >= closedFistThreshold && pulsando_click) {
             pulsando_click = false;
         }
-            /*
-            //Vemos si estamos haciendo un click
-            if(pos_z < PROF_CLICK && !pulsando_click){
-                pulsando_click = true;
-                System.out.println("Click ini");
-                // Simula un clic izquierdo del ratón
-                try {
-                    Robot robot = new Robot();
-                    robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-                    robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            //Vemos si estamos dejando de hacer click
-            else{
-                if(pos_z > PROF_CLICK + MOV_ENTRE_CLICKS && pulsando_click){
-                    System.out.println("Click fin");
-                    pulsando_click = false;
-                }
-            }
-            */
             
             //Si alguna de las componentes es baja, supondremos que no queremos
             //que el cursor se mueva en dicha direccion
@@ -302,14 +295,28 @@ class SampleListener extends Listener {
     
     private void handleSwipeGesture(SwipeGesture swipe) {
         Vector direction = swipe.direction();
-
+        System.out.println("DireccionX"+direction.getX());
+        System.out.println("DireccionY"+direction.getY());
+        System.out.println("DireccionZ"+direction.getZ());
         // Swipe hacia arriba
-        if (direction.getY() > 0 && swipe.state() == State.STATE_STOP) {
-            seleccionClasesPanel.swipeUp();
+        if (direction.getY() > SENSIBILIDAD_SWIPE && swipe.state() == State.STATE_STOP) {
+            ventana.gestoSwipeUp();
+            System.out.println("Swipe hacia arriba :)");
         }
         // Swipe hacia abajo
-        else if (direction.getY() < 0 && swipe.state() == State.STATE_STOP) {
-            seleccionClasesPanel.swipeDown();
+        else if (direction.getY() < -SENSIBILIDAD_SWIPE && swipe.state() == State.STATE_STOP) {
+            ventana.gestoSwipeDown();
+            System.out.println("Swipe hacia abajo :)");
+        }
+        // Swipe hacia izquierda
+        else if (direction.getX() < -SENSIBILIDAD_SWIPE && swipe.state() == State.STATE_STOP) {
+            ventana.gestoSwipeLeft();
+            System.out.println("Swipe hacia izquierda :)");
+        }
+        // Swipe hacia izquierda
+        else if (direction.getX() > SENSIBILIDAD_SWIPE && swipe.state() == State.STATE_STOP) {
+            ventana.gestoSwipeRight();
+            System.out.println("Swipe hacia derecha :)");
         }
     }
         
@@ -331,7 +338,7 @@ public class P2_NPI {
         Ventana ventana = new Ventana();
         ventana.setVisible(true);
 
-        SampleListener listener = new SampleListener();
+        SampleListener listener = new SampleListener(ventana);
         Controller controller = new Controller();
         
         // Have the sample listener receive events from the controller
