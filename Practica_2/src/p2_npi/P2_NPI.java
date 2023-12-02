@@ -15,12 +15,13 @@ package p2_npi;
 import GUI.Ventana;
 import GUI.Seleccion_Clases;
 
+/*
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.State;
 import static com.leapmotion.leap.Gesture.Type.TYPE_CIRCLE;
 import static com.leapmotion.leap.Gesture.Type.TYPE_KEY_TAP;
 import static com.leapmotion.leap.Gesture.Type.TYPE_SCREEN_TAP;
-import static com.leapmotion.leap.Gesture.Type.TYPE_SWIPE;
+import static com.leapmotion.leap.Gesture.Type.TYPE_SWIPE;*/
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 
