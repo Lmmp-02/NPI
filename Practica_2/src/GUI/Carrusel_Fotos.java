@@ -57,6 +57,7 @@ public class Carrusel_Fotos extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 153, 51));
         jLabel1.setText("Carrusel Imágenes");
 
+        jTextField1.setEditable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);

@@ -76,6 +76,7 @@ class SampleListener extends Listener {
     public void onFrame(Controller controller) {
         
         frames_ultimo_gesto += 1;
+        System.out.println(frames_ultimo_gesto);
         Frame frame = controller.frame();
         //Feedback de lo que va detectando Leap cada 60 frames
         /*
@@ -129,69 +130,32 @@ class SampleListener extends Listener {
         
         // Recorremos la lista de gestos
         GestureList gestures = frame.gestures();
-        if(!gestures.isEmpty()){
-            frames_ultimo_gesto=0;
-        }
-        for (int i = 0; i < gestures.count(); i++) {
-            Gesture gesture = gestures.get(i);
-            switch (gesture.type()) {
-                /*
-                case TYPE_CIRCLE -> {
-                    CircleGesture circle = new CircleGesture(gesture);
-                    // Calcula la dirección usando el ángulo entre la normal y el pointable
-                    String clockwiseness;
-                    if (circle.pointable().direction().angleTo(circle.normal()) <= Math.PI/4) {
-                        clockwiseness = "clockwise"; // Si es menor que 90 grados
-                    } else { clockwiseness = "counterclockwise"; }
-                    // Calcula el ángulo desplazado desde el último Frame
-                    double sweptAngle = 0;
-                    if (circle.state() != State.STATE_START) {
-                        CircleGesture previousUpdate =
-                                new CircleGesture(controller.frame(1).gesture(circle.id()));
-                        sweptAngle = (circle.progress() - previousUpdate.progress()) *2*Math.PI;
+        if( frames_ultimo_gesto > 100){
+            for (int i = 0; i < 1; i++) {
+                Gesture gesture = gestures.get(i);
+                switch (gesture.type()) {
+                  
+                    case TYPE_SWIPE -> {
+
+                        SwipeGesture swipe = new SwipeGesture(gesture);
+
+                        System.out.println("Swipe id: " + swipe.id()
+                            + ", " + swipe.state()
+                            + ", position: " + swipe.position()
+                            + ", direction: " + swipe.direction()
+                            + ", speed: " + swipe.speed());
+
+                        if(swipe.state() == Gesture.State.STATE_STOP){
+                            handleSwipeGesture(swipe);
+                        }
+                        break;
                     }
-                    System.out.println("Circle id: " + circle.id() + ", " + circle.state()
-                            + ", progress: " + circle.progress() + ", radius: " + circle.radius()
-                            + ", angle: " + Math.toDegrees(sweptAngle) + ", " + clockwiseness);
-                }
-                */
-                case TYPE_SWIPE -> {
-                    
-                    SwipeGesture swipe = new SwipeGesture(gesture);
-                    
-                    System.out.println("Swipe id: " + swipe.id()
-                        + ", " + swipe.state()
-                        + ", position: " + swipe.position()
-                        + ", direction: " + swipe.direction()
-                        + ", speed: " + swipe.speed());
-                    
-                    if(swipe.state() == Gesture.State.STATE_STOP){
-                        handleSwipeGesture(swipe);
-                    }
-                    break;
-                }
-                
-                case TYPE_SCREEN_TAP -> {
-                    ScreenTapGesture screenTap =
-                            new ScreenTapGesture(gesture);
-                    System.out.println("Screen Tap id: " + screenTap.id()
-                            + ", " + screenTap.state()
-                            + ", position: " + screenTap.position()
-                            + ", direction: " + screenTap.direction());
-                }
-                
-                case TYPE_KEY_TAP -> {
-                    KeyTapGesture keyTap = new KeyTapGesture(gesture);
-                    System.out.println("Key Tap id: " + keyTap.id()
-                            + ", " + keyTap.state()
-                            + ", position: " + keyTap.position()
-                            + ", direction: " + keyTap.direction());
+
                 }
             }
         }
-        
         //Movimiento del cursor con la palma de la mano
-        if (!frame.hands().isEmpty() && frames_ultimo_gesto > 30) {
+        if (!frame.hands().isEmpty() && frames_ultimo_gesto > 100) {
             Hand hand = frame.hands().get(0);
             Vector position = hand.palmPosition();
             int mov_x = (int) position.getX();
@@ -230,7 +194,7 @@ class SampleListener extends Listener {
         double averageDistance = totalDistance / fingers.count();
 
         // Establecer un umbral para la distancia
-        double closedFistThreshold = 80; // Ajusta este valor según sea necesario
+        double closedFistThreshold = 80; 
 
         // Verificar si la mano está en posición de puño cerrado
         if (averageDistance < closedFistThreshold && !pulsando_click) {
@@ -318,6 +282,8 @@ class SampleListener extends Listener {
             ventana.gestoSwipeRight();
             System.out.println("Swipe hacia derecha :)");
         }
+        
+        frames_ultimo_gesto=0;
     }
         
     // Se elimina el listener de un controlador
