@@ -6,6 +6,8 @@ package GUI;
 
 import java.awt.Cursor;
 import java.awt.Graphics;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -44,7 +46,6 @@ public class Ventana extends javax.swing.JFrame {
     
     private int estado;
     
-    
     public Ventana() {
         this.setContentPane(fondo);
         initComponents();
@@ -75,6 +76,14 @@ public class Ventana extends javax.swing.JFrame {
         //Añadimos al contenedor principal el primer panel e inicializamos el estado
         muestraPanel(menu_inicio);
         estado = 0;
+        
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice gd = ge.getDefaultScreenDevice();
+        
+        dispose();
+        setUndecorated(true);
+        gd.setFullScreenWindow(this);
+        setVisible(true);
     }
     
     //Método para mostrar cierto panel en el contenedor principal
