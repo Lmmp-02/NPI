@@ -181,7 +181,7 @@ class SampleListener extends Listener {
             int mov_x = (int) position.getX();
             int mov_y = (int) position.getY() - ALTURA_CERO; 
             int pos_z = (int) position.getZ(); 
-            
+            /*
             // Verifica si no hay dedos visibles y la palma está detectada para hacer clic
             if (hand.fingers().count() == 0 && hand.sphereRadius() > 10) {
                 if (!pulsando_click) {
@@ -200,7 +200,7 @@ class SampleListener extends Listener {
                     pulsando_click = false;
                 }
             }
-            
+            */
         
             FingerList fingers = hand.fingers();
 
@@ -230,7 +230,7 @@ class SampleListener extends Listener {
         } else if (averageDistance >= closedFistThreshold && pulsando_click) {
             pulsando_click = false;
         }
-            
+            /*
             //Vemos si estamos haciendo un click
             if(pos_z < PROF_CLICK && !pulsando_click){
                 pulsando_click = true;
@@ -251,6 +251,7 @@ class SampleListener extends Listener {
                     pulsando_click = false;
                 }
             }
+            */
             
             //Si alguna de las componentes es baja, supondremos que no queremos
             //que el cursor se mueva en dicha direccion
