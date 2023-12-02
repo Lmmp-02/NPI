@@ -41,7 +41,7 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         combox.setSelectedIndex(nuevoIndice);
     }
     
-    private void cambioComboxRueda(javax.swing.JComboBox<String> combox, 
+    public void cambioComboxRueda(javax.swing.JComboBox<String> combox, 
                                    java.awt.event.MouseWheelEvent evt){
         int index = combox.getSelectedIndex();
         int delta = evt.getWheelRotation();
@@ -50,6 +50,54 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         index = (index - delta + combox.getItemCount()) % combox.getItemCount();
         
         combox.setSelectedIndex(index);
+    }
+    
+    public void cambioComboxRueda(int estado, 
+                                   int delta){
+        javax.swing.JComboBox<String> combox;
+        
+        if(estado == 21){
+            combox = ComBox2;
+        }
+        else if(estado == 22){
+            combox = ComBox1;
+        }
+        else{
+            combox = ComBox3;
+        }
+        
+        int index = combox.getSelectedIndex();
+
+        // Ajusta el índice seleccionado según el desplazamiento de la rueda del ratón
+        index = (index - delta + combox.getItemCount()) % combox.getItemCount();
+        
+        combox.setSelectedIndex(index);
+    }
+    
+    public void cambioComboxCaja(int estado){
+        javax.swing.JComboBox<String> combox;
+        
+        if(estado == 21){
+            combox = ComBox2;
+            
+            combox.setBackground(new java.awt.Color(255, 153, 51));
+            ComBox1.setBackground(new java.awt.Color(255, 255, 255));
+            ComBox3.setBackground(new java.awt.Color(255, 255, 255));
+        }
+        else if(estado == 22){
+            combox = ComBox1;
+            
+            combox.setBackground(new java.awt.Color(255, 153, 51));
+            ComBox2.setBackground(new java.awt.Color(255, 255, 255));
+            ComBox3.setBackground(new java.awt.Color(255, 255, 255));
+        }
+        else{
+            combox = ComBox3;
+            
+            combox.setBackground(new java.awt.Color(255, 153, 51));
+            ComBox1.setBackground(new java.awt.Color(255, 255, 255));
+            ComBox2.setBackground(new java.awt.Color(255, 255, 255));
+        }
     }
 
     /**
@@ -77,6 +125,7 @@ public class Seleccion_Clases extends javax.swing.JPanel {
             }
         });
 
+        ComBox2.setBackground(new java.awt.Color(255, 153, 51));
         ComBox2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ComBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clase", "Despacho" }));
         ComBox2.setOpaque(false);
@@ -128,10 +177,10 @@ public class Seleccion_Clases extends javax.swing.JPanel {
                 .addComponent(titulo)
                 .addGap(143, 143, 143)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ComBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                     .addComponent(ComBox1)
-                    .addComponent(ComBox2)
-                    .addComponent(ComBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(350, Short.MAX_VALUE))
+                    .addComponent(ComBox3))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

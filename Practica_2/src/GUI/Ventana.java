@@ -203,7 +203,8 @@ public class Ventana extends javax.swing.JFrame {
     
     public void botonLocalizacionClasesPulsado(){
         muestraPanel(sel_clases);
-        estado = 2;
+        estado = 21;
+        sel_clases.cambioComboxCaja(estado);
     }
     
     public void botonLocalizacionEspaciosComunesPulsado(){
@@ -232,6 +233,15 @@ public class Ventana extends javax.swing.JFrame {
     
     public void gestoSwipeUp(){
         switch(estado){
+            case 21:
+                sel_clases.cambioComboxRueda(21, -1);
+                break;
+            case 22:
+                sel_clases.cambioComboxRueda(22, -1);
+                break;
+            case 23:
+                sel_clases.cambioComboxRueda(23, -1);
+                break;
             case 41: 
             case 42:
                 carrusel_ruta.mostrarImagenAnterior();
@@ -248,6 +258,15 @@ public class Ventana extends javax.swing.JFrame {
     
     public void gestoSwipeDown(){
         switch(estado){
+            case 21:
+                sel_clases.cambioComboxRueda(21, 1);
+                break;
+            case 22:
+                sel_clases.cambioComboxRueda(22, 1);
+                break;
+            case 23:
+                sel_clases.cambioComboxRueda(23, 1);
+                break;
             case 41: 
             case 42:
                 carrusel_ruta.mostrarSiguienteImagen();
@@ -273,9 +292,17 @@ public class Ventana extends javax.swing.JFrame {
                 muestraPanel(menu_inicio);
                 estado = 0;
                 break;
-            case 2: //Selector clases-despachos
+            case 21: //Selector clases-despachos
                 muestraPanel(menu_localizacion);
                 estado = 1;
+                break;
+            case 22:
+                estado = 21;
+                sel_clases.cambioComboxCaja(estado);
+                break;
+            case 23:
+                estado = 22;
+                sel_clases.cambioComboxCaja(estado);
                 break;
             case 3: //Seleccion espacios comunes
                 muestraPanel(menu_localizacion);
@@ -283,7 +310,8 @@ public class Ventana extends javax.swing.JFrame {
                 break;
             case 41: //Carrusel ruta desde clases-despachos
                 muestraPanel(sel_clases);
-                estado = 2;
+                estado = 23;
+                sel_clases.cambioComboxCaja(estado);
                 break;
             case 42: //Carrusel ruta desde espacios comunes
                 muestraPanel(sel_espacios_comunes);
@@ -339,7 +367,15 @@ public class Ventana extends javax.swing.JFrame {
     public void siguiente(){
         System.out.println("Siguiente --> Estado " + estado );
         switch(estado){
-            case 2: //Selector clases-despachos
+            case 21:
+                estado = 22;
+                sel_clases.cambioComboxCaja(estado);
+                break;
+            case 22:
+                estado = 23;
+                sel_clases.cambioComboxCaja(estado);
+                break;
+            case 23: //Selector clases-despachos
             	Caminos cams = new Caminos("./recursos/locs.txt", "./recursos/cams.txt");
             	List<List<String>> rutas = cams.calculaRutaArch("0_totem", sel_clases.destino());
             
