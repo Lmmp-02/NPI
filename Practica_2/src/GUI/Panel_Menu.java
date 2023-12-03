@@ -30,7 +30,7 @@ public class Panel_Menu extends javax.swing.JPanel {
         this.dia = 0;
         
         initComponents();
-        actualizarMenu();
+        //actualizarMenu();
     }
     
     public String getDia(){
