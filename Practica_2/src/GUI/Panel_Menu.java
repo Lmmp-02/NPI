@@ -30,7 +30,7 @@ public class Panel_Menu extends javax.swing.JPanel {
         this.dia = 0;
         
         initComponents();
-        actualizarMenu();
+        //actualizarMenu();
     }
     
     public String getDia(){
@@ -46,12 +46,12 @@ public class Panel_Menu extends javax.swing.JPanel {
         return "Lunes";
     }
     
-    private void mostrarDiaAnterior() {
+    public void mostrarDiaAnterior() {
         dia = (dia - 1 + max_dia) % max_dia;
         actualizarMenu();
     }
 
-    private void mostrarDiaSiguiente() {
+    public void mostrarDiaSiguiente() {
         dia = (dia + 1) % max_dia;
         actualizarMenu();
     }

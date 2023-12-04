@@ -60,12 +60,12 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
         return "Almuerzo";
     }
     
-    private void mostrarDiaAnterior() {
+    public void mostrarDiaAnterior() {
         dia = (dia - 1 + max_dia) % max_dia;
         actualizarMenu();
     }
 
-    private void mostrarDiaSiguiente() {
+    public void mostrarDiaSiguiente() {
         dia = (dia + 1) % max_dia;
         actualizarMenu();
     }

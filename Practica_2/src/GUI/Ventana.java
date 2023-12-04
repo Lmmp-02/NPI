@@ -6,6 +6,8 @@ package GUI;
 
 import java.awt.Cursor;
 import java.awt.Graphics;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -44,7 +46,6 @@ public class Ventana extends javax.swing.JFrame {
     
     private int estado;
     
-    
     public Ventana() {
         this.setContentPane(fondo);
         initComponents();
@@ -75,6 +76,15 @@ public class Ventana extends javax.swing.JFrame {
         //Añadimos al contenedor principal el primer panel e inicializamos el estado
         muestraPanel(menu_inicio);
         estado = 0;
+        
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice gd = ge.getDefaultScreenDevice();
+        
+        dispose();
+        setUndecorated(true);
+        gd.setFullScreenWindow(this);
+        
+        setVisible(true);
     }
     
     //Método para mostrar cierto panel en el contenedor principal
@@ -203,7 +213,8 @@ public class Ventana extends javax.swing.JFrame {
     
     public void botonLocalizacionClasesPulsado(){
         muestraPanel(sel_clases);
-        estado = 2;
+        estado = 21;
+        sel_clases.cambioComboxCaja(estado);
     }
     
     public void botonLocalizacionEspaciosComunesPulsado(){
@@ -222,6 +233,64 @@ public class Ventana extends javax.swing.JFrame {
         estado = 12;
     }
     
+    public void gestoSwipeRight(){
+        siguiente();
+    }
+    
+    public void gestoSwipeLeft(){
+        anterior();
+    }
+    
+    public void gestoSwipeUp(){
+        switch(estado){
+            case 21:
+                sel_clases.cambioComboxRueda(21, -1);
+                break;
+            case 22:
+                sel_clases.cambioComboxRueda(22, -1);
+                break;
+            case 23:
+                sel_clases.cambioComboxRueda(23, -1);
+                break;
+            case 41: 
+            case 42:
+                carrusel_ruta.mostrarImagenAnterior();
+                break;
+            case 7: //Panel de menus
+                panel_menu.mostrarDiaAnterior();
+                break;
+            
+            case 9: //Panel de menus para llevar
+                panel_menu_llevar.mostrarDiaAnterior();
+                break;
+        }
+    }
+    
+    public void gestoSwipeDown(){
+        switch(estado){
+            case 21:
+                sel_clases.cambioComboxRueda(21, 1);
+                break;
+            case 22:
+                sel_clases.cambioComboxRueda(22, 1);
+                break;
+            case 23:
+                sel_clases.cambioComboxRueda(23, 1);
+                break;
+            case 41: 
+            case 42:
+                carrusel_ruta.mostrarSiguienteImagen();
+                break;
+            case 7: //Panel de menus
+                panel_menu.mostrarDiaSiguiente();
+                break;
+            
+            case 9: //Panel de menus para llevar
+                panel_menu_llevar.mostrarDiaSiguiente();
+                break;
+        }
+    }
+    
     
     //Método de transición cuando se haga swipe a la izquierda
     public void anterior(){
@@ -233,9 +302,17 @@ public class Ventana extends javax.swing.JFrame {
                 muestraPanel(menu_inicio);
                 estado = 0;
                 break;
-            case 2: //Selector clases-despachos
+            case 21: //Selector clases-despachos
                 muestraPanel(menu_localizacion);
                 estado = 1;
+                break;
+            case 22:
+                estado = 21;
+                sel_clases.cambioComboxCaja(estado);
+                break;
+            case 23:
+                estado = 22;
+                sel_clases.cambioComboxCaja(estado);
                 break;
             case 3: //Seleccion espacios comunes
                 muestraPanel(menu_localizacion);
@@ -243,7 +320,8 @@ public class Ventana extends javax.swing.JFrame {
                 break;
             case 41: //Carrusel ruta desde clases-despachos
                 muestraPanel(sel_clases);
-                estado = 2;
+                estado = 23;
+                sel_clases.cambioComboxCaja(estado);
                 break;
             case 42: //Carrusel ruta desde espacios comunes
                 muestraPanel(sel_espacios_comunes);
@@ -299,7 +377,15 @@ public class Ventana extends javax.swing.JFrame {
     public void siguiente(){
         System.out.println("Siguiente --> Estado " + estado );
         switch(estado){
-            case 2: //Selector clases-despachos
+            case 21:
+                estado = 22;
+                sel_clases.cambioComboxCaja(estado);
+                break;
+            case 22:
+                estado = 23;
+                sel_clases.cambioComboxCaja(estado);
+                break;
+            case 23: //Selector clases-despachos
             	Caminos cams = new Caminos("./recursos/locs.txt", "./recursos/cams.txt");
             	List<List<String>> rutas = cams.calculaRutaArch("0_totem", sel_clases.destino());
             
@@ -409,6 +495,7 @@ public class Ventana extends javax.swing.JFrame {
         botones_inicio = new javax.swing.JPanel();
         boton_anterior = new javax.swing.JButton();
         boton_siguiente = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         boton_home = new javax.swing.JButton();
         boton_ayuda = new javax.swing.JButton();
 
@@ -429,10 +516,10 @@ public class Ventana extends javax.swing.JFrame {
         );
         contenedor_principalLayout.setVerticalGroup(
             contenedor_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGap(0, 1600, Short.MAX_VALUE)
         );
 
-        botones_inicio.setBackground(new java.awt.Color(255, 51, 51));
+        botones_inicio.setBackground(new java.awt.Color(255, 153, 0));
         botones_inicio.setOpaque(false);
 
         boton_anterior.setText("Atrás");
@@ -453,27 +540,30 @@ public class Ventana extends javax.swing.JFrame {
         botones_inicio.setLayout(botones_inicioLayout);
         botones_inicioLayout.setHorizontalGroup(
             botones_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botones_inicioLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(boton_anterior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                .addComponent(boton_siguiente)
-                .addContainerGap())
+            .addGroup(botones_inicioLayout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(boton_anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 415, Short.MAX_VALUE)
+                .addComponent(boton_siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(174, 174, 174))
         );
         botones_inicioLayout.setVerticalGroup(
             botones_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(botones_inicioLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(56, 56, 56)
                 .addGroup(botones_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boton_anterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(boton_anterior)
                     .addComponent(boton_siguiente))
-                .addContainerGap())
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        jPanel2.setOpaque(false);
+
         boton_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/home.jpg"))); // NOI18N
-        boton_home.setText("Home");
+        boton_home.setAlignmentY(0.9F);
         boton_home.setBorderPainted(false);
         boton_home.setContentAreaFilled(false);
+        boton_home.setDefaultCapable(false);
         boton_home.setMargin(new java.awt.Insets(0, 0, 0, 0));
         boton_home.setPreferredSize(new java.awt.Dimension(123, 111));
         boton_home.addActionListener(new java.awt.event.ActionListener() {
@@ -486,12 +576,32 @@ public class Ventana extends javax.swing.JFrame {
         boton_ayuda.setBorderPainted(false);
         boton_ayuda.setContentAreaFilled(false);
         boton_ayuda.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        boton_ayuda.setOpaque(true);
         boton_ayuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_ayudaActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(boton_home, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(boton_ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(boton_home, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                    .addComponent(boton_ayuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -500,30 +610,20 @@ public class Ventana extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(botones_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(72, 72, 72))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(boton_home, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(boton_ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addComponent(botones_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE))
+                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(botones_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contenedor_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(boton_home, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boton_ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addComponent(botones_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(contenedor_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 1600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -590,6 +690,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JPanel botones_inicio;
     private javax.swing.JPanel contenedor_principal;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
     
     class FondoPantalla extends JPanel{
