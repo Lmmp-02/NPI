@@ -46,6 +46,7 @@ public class Ventana extends javax.swing.JFrame {
     
     private int estado;
     
+    
     public Ventana() {
         this.setContentPane(fondo);
         initComponents();
