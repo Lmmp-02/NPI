@@ -39,7 +39,12 @@ class SampleListener extends Listener {
     private final int ALTURA_CERO;
     private final double SENSIBILIDAD_SWIPE;
     private final Ventana ventana;
+    
     private int frames_ultimo_gesto;
+    private int estado_salida;
+    private int contador_salida;
+    
+    private int frames_gesto_salida;
     
     private Seleccion_Clases seleccionClasesPanel;
     
@@ -52,6 +57,9 @@ class SampleListener extends Listener {
         this.pulsando_click = false;
         this.count = 0;
         this.frames_ultimo_gesto = 200;
+        this.frames_gesto_salida = 0;
+        this.estado_salida = 0;
+        this.contador_salida = 0;
         this.SENSIBILIDAD_SWIPE = 0.7;
         this.ventana = v;
     }
@@ -70,6 +78,86 @@ class SampleListener extends Listener {
     public void onDisconnect(Controller controller) {
         System.out.println("Disconnected");
     }
+    
+    //Gesto customizado para salirse de la app
+    private void gestoSalir(Frame frame){
+        contador_salida++;
+        
+        if(contador_salida > 100){
+            switch(estado_salida){
+                case 0:
+                    if(frame.fingers().count() == 1){
+                        estado_salida = 1;
+                        contador_salida = 0;
+                    }
+                    else{
+                        estado_salida = 0;
+                        contador_salida = 0;
+                    }
+                    
+                    break;
+                case 1:
+                    if(frame.fingers().count() == 2){
+                        estado_salida = 2;
+                        contador_salida = 0;
+                    }
+                    else{
+                        estado_salida = 0;
+                        contador_salida = 0;
+                    }
+                    
+                    break;
+                case 2:
+                    if(frame.fingers().count() == 3){
+                        estado_salida = 3;
+                        contador_salida = 0;
+                    }
+                    else{
+                        estado_salida = 0;
+                        contador_salida = 0;
+                    }
+                    
+                    break;
+                case 3:
+                    if(frame.fingers().count() == 4){
+                        estado_salida = 4;
+                        contador_salida = 0;
+                    }
+                    else{
+                        estado_salida = 0;
+                        contador_salida = 0;
+                    }
+                    
+                    break;
+                case 4:
+                    if(frame.fingers().count() == 5){
+                        estado_salida = 5;
+                        contador_salida = 0;
+                    }
+                    else{
+                        estado_salida = 0;
+                        contador_salida = 0;
+                    }
+                    
+                    break;
+                    
+                case 5:
+                    if(frame.fingers().count() == 0){
+                        estado_salida = 6;
+                        contador_salida = 0;
+                    }
+                    else{
+                        estado_salida = 0;
+                        contador_salida = 0;
+                    }
+                    
+                    break;
+                    
+                case 6:
+                    System.exit(0);
+            }
+        }
+    }
 
    
     @Override
@@ -78,6 +166,9 @@ class SampleListener extends Listener {
         frames_ultimo_gesto += 1;
         System.out.println(frames_ultimo_gesto);
         Frame frame = controller.frame();
+        
+        //Gesto customizado para salirse de la app
+        gestoSalir(frame);
         //Feedback de lo que va detectando Leap cada 60 frames
         /*
         if(count % 60 == 0){
