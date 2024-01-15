@@ -1,6 +1,10 @@
 package com.example.qrgen;
 
 import android.graphics.Bitmap;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,9 +19,13 @@ import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class MainActivity extends AppCompatActivity {
+    private SensorManager sensorManager;
+    private Sensor pressure;
+
     EditText edit_input;
     Button bt_generate;
     ImageView iv_qr;
+    EditText presion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -32,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             generateQR();
         });
     }
+
 
     private void generateQR() {
         String text = edit_input.getText().toString().trim();
