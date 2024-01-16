@@ -1,31 +1,43 @@
 package com.example.qrgen;
 
-import android.graphics.Bitmap;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
-
 public class MainActivity extends AppCompatActivity {
+
+    TextView titulo;
+    Button boton_oral, boton_pago, boton_localizacion;
+
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+
+        //Vamos a la ventana de inicio de sesión
+        Intent iniciar_sesion = new Intent(MainActivity.this, EligeSesion.class);
+        startActivity(iniciar_sesion);
+    }
+
+    protected void onStart(){
+        super.onStart();
+
+
+        setContentView(R.layout.activity_main);
+        titulo = findViewById(R.id.titulo);
+        boton_oral = findViewById(R.id.boton_inicio_invitado);
+        boton_pago = findViewById(R.id.boton_inicio_registrarse);
+        boton_localizacion = findViewById(R.id.boton_inicio_iniciar_sesion);
+    }
+    /*
+    ///Codigo creacion QR
     private SensorManager sensorManager;
     private Sensor pressure;
 
     EditText edit_input;
     Button bt_generate;
     ImageView iv_qr;
-    EditText presion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -56,4 +68,6 @@ public class MainActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
     }
+    */
+
 }

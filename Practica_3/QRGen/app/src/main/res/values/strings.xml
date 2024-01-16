@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">QRGen</string>
+
+    <string name="bienvenida">Bienvenido :)</string>
+    <string name="text_inicio_descripcion">Puedes registrarse, iniciar como invitado, o iniciar sesión si ya tienes una cuenta.</string>
+    <string name="text_inicio_registrarse">Registrarse</string>
+    <string name="text_inicio_invitado">Acceder como invitado</string>
+
+    <string name="titulo_principal">APP ETSIIT</string>
+    <string name="text_main_pago">Pagar comedor</string>
+    <string name="text_main_localizacion">Localización</string>
+    <string name="text_main_oral">Interfaz oral</string>
+    <string name="text_main_iniciar_sesion">Iniciar sesión</string>
+    <string name="text_main_cerrar_sesion">Cerrar sesión</string>
 </resources>
