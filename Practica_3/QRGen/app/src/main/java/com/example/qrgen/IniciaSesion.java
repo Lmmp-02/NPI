@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,7 +20,7 @@ public class IniciaSesion extends AppCompatActivity {
     Button boton;
     EditText usuario, password;
     FirebaseAuth auth;
-    String emailRegex = "^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+    String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +38,8 @@ public class IniciaSesion extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 //Obtenemos el texto introducido por el usuario
-                String username = usuario.getText().ToString();
-                String pass = password.getText().ToString();
+                String username = usuario.getText().toString();
+                String pass = password.getText().toString();
 
                 //Comprobamos que los campos esten rellenados correctamente
                 if(TextUtils.isEmpty(username)){
@@ -44,7 +47,7 @@ public class IniciaSesion extends AppCompatActivity {
                 }else if(TextUtils.isEmpty(pass)){
                     Toast.makeText(IniciaSesion.this, "Introduzca la contraseña.", Toast.LENGTH_SHORT).show();
                 }else if(!username.matches(emailRegex)){
-                    username.setError("Correo no válido.");
+                    usuario.setError("Correo no válido.");
                     Toast.makeText(IniciaSesion.this, "Introduzca una dirección de correo válida.", Toast.LENGTH_LONG).show();
                 }else if(pass.length()<6){
                     password.setError("Contraseña demasiado corta");
@@ -63,7 +66,7 @@ public class IniciaSesion extends AppCompatActivity {
                                         startActivity(intent);
                                         finish();
                                     }catch (Exception e){
-                                        Toast.makeTest(IniciaSesion.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(IniciaSesion.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                                 //Si no, mostramos el error por pantalla
