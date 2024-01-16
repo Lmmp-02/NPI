@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "525408617466",
+    "project_id": "qrgen-7cd84",
+    "storage_bucket": "qrgen-7cd84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525408617466:android:abd39ad70a489231c39a43",
+        "android_client_info": {
+          "package_name": "com.example.qrgen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7U-D3FWr9xQ1iLqiQ9plGJaR5hnHw_g4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
