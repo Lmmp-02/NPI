@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,6 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class IniciaSesion extends AppCompatActivity {
+    TextView boton_registro;
     Button boton;
     EditText usuario, password;
     FirebaseAuth auth;
@@ -32,7 +34,7 @@ public class IniciaSesion extends AppCompatActivity {
         boton = findViewById(R.id.boton_entrar);
         usuario = findViewById(R.id.editTextNombre);
         password = findViewById(R.id.editTextPassword);
-
+        boton_registro = findViewById(R.id.textoRegistro);
         //Al pulsar el boton de iniciar sesion
         boton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -77,11 +79,7 @@ public class IniciaSesion extends AppCompatActivity {
                         }
                     );
                 }
-
-
             }
-                                 }
-
-        );
+        });
     }
 }

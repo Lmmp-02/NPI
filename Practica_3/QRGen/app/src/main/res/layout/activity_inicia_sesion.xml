@@ -42,7 +42,7 @@
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
         android:text="@string/usuario"
-        android:textColor="@color/black"
+        android:textColor="#FF5722"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +50,7 @@
         app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.584" />
+        app:layout_constraintVertical_bias="0.548" />
 
     <TextView
         android:id="@+id/textView7"
@@ -59,7 +59,7 @@
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
         android:text="@string/contrase_a"
-        android:textColor="@color/black"
+        android:textColor="#FF5722"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +67,7 @@
         app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.741" />
+        app:layout_constraintVertical_bias="0.697" />
 
     <EditText
         android:id="@+id/editTextNombre"
@@ -79,6 +79,9 @@
         android:hint="@string/nombre_de_usuario"
         android:inputType="text"
         android:textStyle="bold"
+        android:textColor="@color/black"
+        android:backgroundTint="#303030"
+        android:textColorHint="#505050"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView6"
@@ -94,6 +97,9 @@
         android:hint="@string/contrase_a"
         android:inputType="textPassword"
         android:textStyle="bold"
+        android:textColor="@color/black"
+        android:backgroundTint="#303030"
+        android:textColorHint="#505050"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -103,14 +109,43 @@
         android:id="@+id/boton_entrar"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:text="@string/entrar"
-        android:textSize="20sp"
         android:backgroundTint="@color/black"
+        android:text="@string/entrar"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.914" />
+        app:layout_constraintVertical_bias="0.861" />
+
+    <TextView
+        android:id="@+id/textoRegistro"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="¿No tienes una cuenta? Regístrate aquí."
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.917" />
+
+    <TextView
+        android:id="@+id/textoInvitado"
+        android:layout_width="294dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="Para iniciar sesión como invitado, pulsa aquí."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.973" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
