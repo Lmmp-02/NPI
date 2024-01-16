@@ -24,4 +24,5 @@
     <string name="curso">Curso</string>
     <string name="registrarse">Registrarse</string>
     <string name="mensaje_registro">Completa los siguientes datos para registrarte</string>
+    <string name="correo_electr_nico">Correo electrónico</string>
 </resources>

@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class IniciaSesion extends AppCompatActivity {
     TextView boton_registro;
     Button boton;
-    EditText usuario, password;
+    EditText correo, password;
     FirebaseAuth auth;
     String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
@@ -32,15 +32,26 @@ public class IniciaSesion extends AppCompatActivity {
         setContentView(R.layout.activity_inicia_sesion);
         auth = FirebaseAuth.getInstance();
         boton = findViewById(R.id.boton_entrar);
-        usuario = findViewById(R.id.editTextNombre);
+        correo = findViewById(R.id.editTextNombre);
         password = findViewById(R.id.editTextPassword);
         boton_registro = findViewById(R.id.textoRegistro);
+
+        //Al pulsar el boton de registro, vamos a la ventana de registro
+        boton_registro.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(IniciaSesion.this, RegistraUsuario.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         //Al pulsar el boton de iniciar sesion
         boton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 //Obtenemos el texto introducido por el usuario
-                String username = usuario.getText().toString();
+                String username = correo.getText().toString();
                 String pass = password.getText().toString();
 
                 //Comprobamos que los campos esten rellenados correctamente
@@ -49,7 +60,7 @@ public class IniciaSesion extends AppCompatActivity {
                 }else if(TextUtils.isEmpty(pass)){
                     Toast.makeText(IniciaSesion.this, "Introduzca la contraseña.", Toast.LENGTH_SHORT).show();
                 }else if(!username.matches(emailRegex)){
-                    usuario.setError("Correo no válido.");
+                    correo.setError("Correo no válido.");
                     Toast.makeText(IniciaSesion.this, "Introduzca una dirección de correo válida.", Toast.LENGTH_LONG).show();
                 }else if(pass.length()<6){
                     password.setError("Contraseña demasiado corta");

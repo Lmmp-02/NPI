@@ -21,7 +21,7 @@ public class Bienvenida extends AppCompatActivity {
             @Override
             public void run(){
                 //Intent intent = new Intent(Bienvenida.this, IniciaSesion.class);
-                Intent intent = new Intent(Bienvenida.this, RegistraUsuario.class);
+                Intent intent = new Intent(Bienvenida.this, IniciaSesion.class);
                 startActivity(intent);
                 finish();
             }

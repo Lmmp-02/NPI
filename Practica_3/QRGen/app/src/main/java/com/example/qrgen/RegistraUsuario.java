@@ -24,7 +24,7 @@ import com.google.firebase.storage.StorageReference;
 
 public class RegistraUsuario extends AppCompatActivity {
     TextView boton_login, boton_invitado;
-    EditText usuario, password, re_password, grado, grupo;
+    EditText usuario, correo, password, re_password, grado, grupo;
     Button boton_registro;
     FirebaseAuth auth;
     String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
@@ -40,6 +40,7 @@ public class RegistraUsuario extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         usuario = findViewById(R.id.editTextNombre);
+        correo = findViewById(R.id.editTextCorreo);
         password = findViewById(R.id.editTextPassword);
         re_password = findViewById(R.id.editTextPassword2);
         grado = findViewById(R.id.editTextGrado);
@@ -67,14 +68,23 @@ public class RegistraUsuario extends AppCompatActivity {
                 String user =  usuario.getText().toString();
                 String pass = password.getText().toString();
                 String pass2 = re_password.getText().toString();
+                String mail = correo.getText().toString();
                 String grad = grado.getText().toString();
                 String grup = grupo.getText().toString();
 
-                if(TextUtils.isEmpty(user) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(pass2)){
+                if(TextUtils.isEmpty(user) || TextUtils.isEmpty(mail) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(pass2)){
                     Toast.makeText(RegistraUsuario.this, "Faltan campos obligatorios por rellenar", Toast.LENGTH_SHORT).show();
+                    if(TextUtils.isEmpty(user))
+                        usuario.setError("Campo obligatorio");
+                    if(TextUtils.isEmpty(mail))
+                        correo.setError("Campo obligatorio");
+                    if(TextUtils.isEmpty(pass))
+                        password.setError("Campo obligatorio");
+                    if(TextUtils.isEmpty(pass2))
+                        re_password.setError("Campo obligatorio");
                 }
-                else if(!user.matches(emailRegex)){
-                    usuario.setError("Correo no válido.");
+                else if(!mail.matches(emailRegex)){
+                    correo.setError("Correo no válido.");
                     Toast.makeText(RegistraUsuario.this, "Introduzca una dirección de correo válida.", Toast.LENGTH_LONG).show();
                 }
                 else if(pass.length()<6){
@@ -86,9 +96,8 @@ public class RegistraUsuario extends AppCompatActivity {
                     Toast.makeText(RegistraUsuario.this, "Las contraseñas introducidas son diferentes", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    System.out.println(user + " " + pass);
                     //Si los parametros son correctos, registramos el usuario en la base de datos de autenticación
-                    auth.createUserWithEmailAndPassword(user,pass).addOnCompleteListener(
+                    auth.createUserWithEmailAndPassword(mail,pass).addOnCompleteListener(
                         new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -99,7 +108,7 @@ public class RegistraUsuario extends AppCompatActivity {
                                     String id = task.getResult().getUser().getUid();  //Obtenemos id del usuario
                                     DatabaseReference ref = database.getReference().child("user").child(id);
                                     //Creamos objeto Usuario
-                                    Usuario u = new Usuario(id, user, pass, grad, grup);
+                                    Usuario u = new Usuario(id, user, mail, pass, grad, grup);
                                     //Subimos el objeto a la base de datos
                                     ref.setValue(u).addOnCompleteListener(
                                         new OnCompleteListener<Void>() {
