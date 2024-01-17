@@ -41,6 +41,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/boton_inicio_iniciar_sesion"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline1"
         app:rippleColor="#FFFFFF" />
@@ -84,15 +85,16 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
 
-    <Button
-        android:id="@+id/boton_sesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/text_main_iniciar_sesion"
+    <ImageView
+        android:id="@+id/imagen_logout"
+        android:layout_width="66dp"
+        android:layout_height="58dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.982"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.98"
+        app:srcCompat="@drawable/logout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

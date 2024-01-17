@@ -42,7 +42,7 @@ public class IniciaSesion extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(IniciaSesion.this, RegistraUsuario.class);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 
