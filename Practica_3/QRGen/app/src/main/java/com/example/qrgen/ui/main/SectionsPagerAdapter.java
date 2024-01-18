@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.qrgen.FragmentoNFC;
+import com.example.qrgen.FragmentoQR;
 import com.example.qrgen.R;
 
 /**
@@ -16,8 +18,7 @@ import com.example.qrgen.R;
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private static final String[] TAB_TITLES = new String[]{"Escaner QR", "Escaner NFC"};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -27,15 +28,14 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment.
-        return PlaceholderFragment.newInstance(position + 1);
+        if(position == 0) return new FragmentoQR();
+        else return new FragmentoNFC();
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
+        return TAB_TITLES[position];
     }
 
     @Override
