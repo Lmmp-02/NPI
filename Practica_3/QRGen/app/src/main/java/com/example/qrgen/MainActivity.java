@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         boton_pago = findViewById(R.id.boton_inicio_registrarse);
         boton_localizacion = findViewById(R.id.boton_inicio_iniciar_sesion);
         imagen_logout = findViewById(R.id.imagen_logout);
+
         //Al pulsar el boton de pago de comida, vamos a la actividad de pago
         boton_pago.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         imagen_logout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(MainActivity.this, IniciaSesion.class);
                 startActivity(intent);
                 finish();   //Esto hace que no se pueda volver hacia atras con las flechas
