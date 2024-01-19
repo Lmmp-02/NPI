@@ -30,7 +30,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class FragmentoQR extends Fragment {
 
     Button btnEscanerQR;
-    EditText txtResultado;
+    String resultado;
 
     public FragmentoQR() {
         // Required empty public constructor
@@ -43,20 +43,16 @@ public class FragmentoQR extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.d("FragmentoQR", "onCreate called");
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("FragmentoQR", "onCreateView called");
-
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_qr, container, false);
 
         btnEscanerQR = view.findViewById(R.id.btnEscanerQR);
-        txtResultado = view.findViewById(R.id.txtResultado);
 
         btnEscanerQR.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,15 +74,13 @@ public class FragmentoQR extends Fragment {
     }
 
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        Log.d("FragmentoQR", "onActivityResult called");
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 
         if(result != null){ //Se lee algo o se cancela la lectura
             if(result.getContents() == null) Toast.makeText(this.getActivity(), "Escaneo cancelado", Toast.LENGTH_LONG).show();
             else{
-                Log.d("FragmentoQR", "QR Contents: " + result.getContents());
-                Toast.makeText(this.getActivity(), result.getContents(), Toast.LENGTH_LONG).show();
-                txtResultado.setText(result.getContents());
+                resultado = result.getContents();
+                Toast.makeText(this.getActivity(), resultado, Toast.LENGTH_LONG).show();
             }
         }
         else super.onActivityResult(requestCode, resultCode, data);
