@@ -6,26 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".PantallaPago">
 
-    <TableLayout
-        android:layout_width="307dp"
-        android:layout_height="588dp"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="71dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TableRow
+        <LinearLayout
+            android:id="@+id/contenedorCampos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginTop="16dp">
+            <!-- Resto de tu diseño -->
+        </LinearLayout>
+    </ScrollView>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

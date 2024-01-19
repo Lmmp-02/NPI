@@ -81,6 +81,13 @@ public class FragmentoQR extends Fragment {
             else{
                 resultado = result.getContents();
                 Toast.makeText(this.getActivity(), resultado, Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(this.getActivity(), PantallaPago.class);
+
+                // Pasar el resultado del escaneo como extra al Intent
+                intent.putExtra("RESULTADO_QR", resultado);
+
+                startActivity(intent);
             }
         }
         else super.onActivityResult(requestCode, resultCode, data);
