@@ -64,24 +64,32 @@ public class InterfazOral extends AppCompatActivity {
             Kommunicate.login(this, kmuser, new KMLoginHandler() {
                 @Override
                 public void onSuccess(RegistrationResponse registrationResponse, Context context) {
+                    Map<String, String> conv_metadata = new HashMap<>();
+                    conv_metadata.put("Department" , "Mobility"); // This is an example of updating metadata.
+                    conv_metadata.put("Designation" , "Software Engineer II"); // This is an example of updating metadata.
                     //Creamos la conversación
                     new KmConversationBuilder(InterfazOral.this)
                             // Pass false if you would like to create new conversation every time user starts
                             // a conversation. This is true by default which means only one conversation will
                             // open for the user every time the user starts a conversation.
                             .setSingleConversation(false)
-                            .createConversation(new KmCallback() {
+                            .setConversationInfo(conv_metadata)
+                            //Creamos y abrimos la conversacion
+                            .launchConversation(new KmCallback() {
                                 @Override
                                 public void onSuccess(Object message) {
+                                    //Obtenemos el id de la conversacion
                                     Integer conversationId = (Integer) message;
-                                    //Abrimos la conversacion
-                                    try {
-                                        KmConversationHelper.openConversation(InterfazOral.this,
-                                                true,
-                                                conversationId, null);
-                                    } catch (KmException e) {
-                                        throw new RuntimeException(e);
+
+                                    //Mostramos info de la conversacion
+                                    // Iterar sobre el Map utilizando un bucle for-each
+                                    /*
+                                    for (Map.Entry<String, String> entry : Kommunicate.conv()) {
+                                        String clave = entry.getKey();
+                                        String valor = entry.getValue();
+                                        System.out.println("Clave: " + clave + ", Valor: " + valor);
                                     }
+                                    */
                                     //Cierra la pantalla de carga cuando termina la conversación, volviendo al menú
                                     finish();
                                 }
@@ -107,7 +115,6 @@ public class InterfazOral extends AppCompatActivity {
         }
         //Si el usuario no esta registrado, hacemos un chat como visitante
         else {
-
             Kommunicate.loginAsVisitor(this, new KMLoginHandler() {
                 @Override
                 public void onSuccess(RegistrationResponse registrationResponse, Context context) {
