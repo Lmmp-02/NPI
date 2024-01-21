@@ -46,7 +46,6 @@ public class RegistraUsuario extends AppCompatActivity {
         grado = findViewById(R.id.editTextGrado);
         grupo = findViewById(R.id.editTextCurso);
         boton_login = findViewById(R.id.textoRegistro);
-        boton_invitado = findViewById(R.id.textoInvitado);
         boton_registro = findViewById(R.id.boton_entrar);
 
 
@@ -54,11 +53,12 @@ public class RegistraUsuario extends AppCompatActivity {
         boton_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegistraUsuario.this, IniciaSesion.class);
-                startActivity(intent);
+                //Intent intent = new Intent(RegistraUsuario.this, IniciaSesion.class);
+                //startActivity(intent);
                 finish();
             }
         });
+
 
         //Si se pulsa registrarse
         boton_registro.setOnClickListener(new View.OnClickListener() {
@@ -101,8 +101,6 @@ public class RegistraUsuario extends AppCompatActivity {
                         new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                System.out.println("COMPLETADO REGISTRO\n");
-
                                 //Si se registra correctamente, guardamos en la base de datos el objeto del usuario
                                 if(task.isSuccessful()){
                                     String id = task.getResult().getUser().getUid();  //Obtenemos id del usuario

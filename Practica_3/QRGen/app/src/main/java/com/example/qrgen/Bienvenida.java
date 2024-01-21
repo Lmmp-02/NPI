@@ -20,11 +20,10 @@ public class Bienvenida extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){
-                //Intent intent = new Intent(Bienvenida.this, IniciaSesion.class);
                 Intent intent = new Intent(Bienvenida.this, IniciaSesion.class);
                 startActivity(intent);
                 finish();
             }
-        }, 4000);
+        }, 3000);
     }
 }
