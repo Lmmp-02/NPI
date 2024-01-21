@@ -72,7 +72,7 @@ public class PantallaPago extends AppCompatActivity {
 
             if (scaleFactor > 0.5) {
                 // Realizar acciones cuando se detecta un swipe hacia arriba con dos dedos
-                showToast("Swipe hacia arriba con dos dedos detectado");
+                pagoRealizado();
                 return true;
             }
 
@@ -80,8 +80,10 @@ public class PantallaPago extends AppCompatActivity {
         }
     }
 
-    private void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    private void pagoRealizado() {
+        Intent intent = new Intent(this, PagoConfirmado.class);
+        startActivity(intent);
+        finish(); //No queremos que una vez se pague se pueda volver a pagar
     }
 
     private void agregarCamposDinamicos(int cantidadCampos, String[] info) {

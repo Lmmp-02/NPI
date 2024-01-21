@@ -20,9 +20,11 @@
         android:theme="@style/Theme.QRGen"
         tools:targetApi="31">
         <activity
+            android:name=".PagoConfirmado"
+            android:exported="false" />
+        <activity
             android:name=".LectorNFC"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".PantallaPago"
             android:exported="false" />
