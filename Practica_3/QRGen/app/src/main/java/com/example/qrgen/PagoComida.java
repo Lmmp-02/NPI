@@ -1,14 +1,17 @@
 package com.example.qrgen;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,54 +34,11 @@ public class PagoComida extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = binding.fab;
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
-
-/*
-///Codigo creacion QR
-private SensorManager sensorManager;
-private Sensor pressure;
-
-EditText edit_input;
-Button bt_generate;
-ImageView iv_qr;
-
-@Override
-protected void onCreate(Bundle savedInstanceState){
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-
-    edit_input = findViewById(R.id.edit_input);
-    bt_generate = findViewById(R.id.bt_generate);
-    iv_qr = findViewById(R.id.iv_qr);
-
-    bt_generate.setOnClickListener(v->{
-        generateQR();
-    });
-}
-
-
-private void generateQR() {
-    String text = edit_input.getText().toString().trim();
-    MultiFormatWriter writer = new MultiFormatWriter();
-
-    try {
-        BitMatrix matrix = writer.encode(text, BarcodeFormat.QR_CODE, 400, 400);
-        BarcodeEncoder encoder = new BarcodeEncoder();
-        Bitmap bitmap = encoder.createBitmap(matrix);
-        iv_qr.setImageBitmap(bitmap);
-
-    } catch (WriterException e) {
-        throw new RuntimeException(e);
-    }
-}
-*/
