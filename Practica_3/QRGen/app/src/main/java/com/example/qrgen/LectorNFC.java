@@ -92,7 +92,7 @@ public class LectorNFC extends AppCompatActivity {
 
         if (pendingIntent == null) {
             pendingIntent = PendingIntent.getActivity(this, 0,
-                    new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), PendingIntent.FLAG_IMMUTABLE);
+                    new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), PendingIntent.FLAG_MUTABLE);
 
             currentTagView.setText("Scan a tag");
         }
