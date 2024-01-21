@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class IniciaSesion extends AppCompatActivity {
-    TextView boton_registro;
+    TextView boton_registro, boton_invitado;
     Button boton;
     EditText correo, password;
     FirebaseAuth auth;
@@ -35,6 +35,7 @@ public class IniciaSesion extends AppCompatActivity {
         correo = findViewById(R.id.editTextNombre);
         password = findViewById(R.id.editTextPassword);
         boton_registro = findViewById(R.id.textoRegistro);
+        boton_invitado = findViewById(R.id.textoInvitado);
 
         //Al pulsar el boton de registro, vamos a la ventana de registro
         boton_registro.setOnClickListener(new View.OnClickListener(){
@@ -43,6 +44,33 @@ public class IniciaSesion extends AppCompatActivity {
                 Intent intent = new Intent(IniciaSesion.this, RegistraUsuario.class);
                 startActivity(intent);
                 //finish();
+            }
+        });
+
+        boton_invitado.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                auth.signInAnonymously().addOnCompleteListener(
+                        new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                //Si va bien, pasamos a la app
+                                if(task.isSuccessful()){
+                                    try{
+                                        Intent intent = new Intent(IniciaSesion.this, MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }catch (Exception e){
+                                        Toast.makeText(IniciaSesion.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                                //Si no, mostramos el error por pantalla
+                                else{
+                                    Toast.makeText(IniciaSesion.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                );
             }
         });
 

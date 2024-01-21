@@ -46,7 +46,6 @@ public class RegistraUsuario extends AppCompatActivity {
         grado = findViewById(R.id.editTextGrado);
         grupo = findViewById(R.id.editTextCurso);
         boton_login = findViewById(R.id.textoRegistro);
-        boton_invitado = findViewById(R.id.textoInvitado);
         boton_registro = findViewById(R.id.boton_entrar);
 
 
@@ -59,6 +58,7 @@ public class RegistraUsuario extends AppCompatActivity {
                 finish();
             }
         });
+
 
         //Si se pulsa registrarse
         boton_registro.setOnClickListener(new View.OnClickListener() {
