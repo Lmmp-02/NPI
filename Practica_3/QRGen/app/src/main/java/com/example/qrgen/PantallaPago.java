@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -14,6 +15,8 @@ public class PantallaPago extends AppCompatActivity {
     // Crear un vector de strings con tamaño 5
     String[] campos = new String[4];
     String resultado;
+
+    TextView txtPago;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +35,16 @@ public class PantallaPago extends AppCompatActivity {
         campos[2] = "Acompanamiento";
         campos[3] = "Postre";
 
-        if(lineas.length > 6) agregarCamposDinamicos(8, lineas); //Menú diario
-        else agregarCamposDinamicos(4, lineas); //Menú recoger
+        txtPago = findViewById(R.id.txtPago);
+
+        if(lineas.length > 6){ //Menú recoger
+            agregarCamposDinamicos(8, lineas);
+            txtPago.setText("Precio del menú, 6 euros\nDesliza dos dedos hacia arriba para pagar");
+        }
+        else{ //Menú diario
+            txtPago.setText("Precio del menú, 3,5 euros\nDesliza dos dedos hacia arriba para pagar");
+            agregarCamposDinamicos(4, lineas);
+        }
     }
 
     private void agregarCamposDinamicos(int cantidadCampos, String[] info) {
@@ -52,6 +63,7 @@ public class PantallaPago extends AppCompatActivity {
             etiqueta.setText(campos[i%4]);
 
             EditText campoTexto = new EditText(this);
+            campoTexto.setInputType(InputType.TYPE_NULL);
             if(i > 3) campoTexto.setText(info[i+3]);
             else campoTexto.setText(info[i+2]);
 
@@ -79,7 +91,7 @@ public class PantallaPago extends AppCompatActivity {
                         LinearLayout.LayoutParams.WRAP_CONTENT
                 );
                 paramsTituloSecundario.gravity = Gravity.CENTER_VERTICAL;
-                paramsTituloSecundario.topMargin = 60; // Ajusta este valor según tus necesidades
+                paramsTituloSecundario.topMargin = 60;
 
                 contenedorCampos.addView(tituloSecundario, paramsTituloSecundario);
             }
