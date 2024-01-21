@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PantallaPago extends AppCompatActivity {
 
@@ -18,10 +21,15 @@ public class PantallaPago extends AppCompatActivity {
 
     TextView txtPago;
 
+    private ScaleGestureDetector scaleGestureDetector;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_pago);
+
+        // Inicializar el detector de gestos de escala
+        scaleGestureDetector = new ScaleGestureDetector(this, new MyScaleGestureListener());
 
         // Recuperar el resultado del escaneo del Intent
         Intent intent = getIntent();
@@ -45,6 +53,35 @@ public class PantallaPago extends AppCompatActivity {
             txtPago.setText("Precio del menú, 3,5 euros\nDesliza dos dedos hacia arriba para pagar");
             agregarCamposDinamicos(4, lineas);
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // Pasar el evento al detector de gestos de escala
+        scaleGestureDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+    private class MyScaleGestureListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            // Aquí puedes controlar el evento de escala
+            // Puedes obtener el factor de escala con detector.getScaleFactor()
+            float scaleFactor = detector.getScaleFactor();
+
+            if (scaleFactor > 0.5) {
+                // Realizar acciones cuando se detecta un swipe hacia arriba con dos dedos
+                showToast("Swipe hacia arriba con dos dedos detectado");
+                return true;
+            }
+
+            return super.onScale(detector);
+        }
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void agregarCamposDinamicos(int cantidadCampos, String[] info) {
