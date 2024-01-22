@@ -1,6 +1,7 @@
 package grupo2.AsistenteEtsiit;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,20 +15,21 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import grupo2.AsistenteEtsiit.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
-    FirebaseAuth auth;
-
+    private static final int CODIGO_INTERFAZ_ORAL = 10;
     ActivityMainBinding binding;
+    private BottomNavigationView bottomNavigationView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
         getSupportActionBar().hide();   //Esconde la barra de arriba (no le gusta a nadie)
 
         replaceFragment(new InicioFragment());
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             else if(item.getItemId() == R.id.asistente){
                 replaceFragment(new Fragment());
                 Intent intent = new Intent(MainActivity.this, InterfazOralActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, CODIGO_INTERFAZ_ORAL);
             }
             else if(item.getItemId() == R.id.salir){
                 replaceFragment(new Fragment());
@@ -85,4 +87,19 @@ public class MainActivity extends AppCompatActivity {
          fragmentTransaction.addToBackStack(null);
          fragmentTransaction.commit();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //Ponemos que el boton seleccionado sea el de inicio
+        if (requestCode == CODIGO_INTERFAZ_ORAL) {
+            bottomNavigationView.setSelectedItemId(R.id.inicio);
+        }
+        //Guardamos que el llamador actual es main
+        SharedPreferences preferences = getSharedPreferences("MyPrefsFile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("interfazOralActiva", false);
+        editor.apply();
+    }
+
 }
