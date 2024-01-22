@@ -1,6 +1,7 @@
 package grupo2.AsistenteEtsiit;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -90,10 +91,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        //Ponemos que el boton seleccionado sea el de inicio
         if (requestCode == CODIGO_INTERFAZ_ORAL) {
             bottomNavigationView.setSelectedItemId(R.id.inicio);
         }
+        //Guardamos que el llamador actual es main
+        SharedPreferences preferences = getSharedPreferences("MyPrefsFile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("interfazOralActiva", false);
+        editor.apply();
     }
 
 }

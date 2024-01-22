@@ -22,6 +22,7 @@ public class BienvenidaActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("MyPrefsFile", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("conversationCreated", false);
+        editor.putBoolean("interfazOralActiva", false);
         editor.apply();
 
         new Handler().postDelayed(new Runnable(){

@@ -84,6 +84,12 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
     }
 
     public void creaInterfazOral(){
+        //Guardamos que el llamador actual es la interfaz oral
+        SharedPreferences preferences = getSharedPreferences("MyPrefsFile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("interfazOralActiva", true);
+        editor.apply();
+
         //Inicializamos Kommunicate
         Kommunicate.init(InterfazOralActivity.this, "1046f12744c6017fb944066df8190daeb");
 

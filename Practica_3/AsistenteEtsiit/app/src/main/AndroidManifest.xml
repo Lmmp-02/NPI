@@ -22,21 +22,27 @@
         tools:targetApi="34">
         <activity
             android:name=".LectorQRActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".InterfazOralActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".LectorNFCActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".PagoConfirmadoActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".PantallaPagoActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".BienvenidaActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,12 +52,15 @@
         </activity>
         <activity
             android:name=".IniciaSesionActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".RegistraUsuarioActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
