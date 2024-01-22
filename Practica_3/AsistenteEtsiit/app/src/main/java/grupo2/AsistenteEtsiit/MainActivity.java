@@ -14,20 +14,21 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import grupo2.AsistenteEtsiit.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
-    FirebaseAuth auth;
-
+    private static final int CODIGO_INTERFAZ_ORAL = 10;
     ActivityMainBinding binding;
+    private BottomNavigationView bottomNavigationView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
         getSupportActionBar().hide();   //Esconde la barra de arriba (no le gusta a nadie)
 
         replaceFragment(new InicioFragment());
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             else if(item.getItemId() == R.id.asistente){
                 replaceFragment(new Fragment());
                 Intent intent = new Intent(MainActivity.this, InterfazOralActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, CODIGO_INTERFAZ_ORAL);
             }
             else if(item.getItemId() == R.id.salir){
                 replaceFragment(new Fragment());
@@ -85,4 +86,14 @@ public class MainActivity extends AppCompatActivity {
          fragmentTransaction.addToBackStack(null);
          fragmentTransaction.commit();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CODIGO_INTERFAZ_ORAL) {
+            bottomNavigationView.setSelectedItemId(R.id.inicio);
+        }
+    }
+
 }

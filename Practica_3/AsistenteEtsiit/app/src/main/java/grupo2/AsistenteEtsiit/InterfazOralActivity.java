@@ -197,7 +197,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
 
         }
         //Si el usuario no esta registrado, hacemos un chat como visitante
-        /*
+
         else {
             Kommunicate.loginAsVisitor(this, new KMLoginHandler() {
                 @Override
@@ -213,7 +213,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
                 }
             });
         }
-         */
+
     }
     private boolean isConversationCreated() {
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -291,12 +291,12 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
 
     @Override
     public void onConversationResolved(Integer conversationId) {
-        Toast.makeText(this,"Resolved", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Resolved", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onConversationRestarted(Integer conversationId) {
-        Toast.makeText(this,"Restart", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Restart", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -306,7 +306,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
 
     @Override
     public void onStartNewConversation(Integer conversationId) {
-        Toast.makeText(this,"Cosas especiales", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Cosas especiales", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -320,7 +320,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
     }
     @Override
     public void onBackButtonClicked(boolean isConversationOpened) {
-        Toast.makeText(this,"Cosas especiales", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Cosas especiales", Toast.LENGTH_SHORT).show();
     }
 
     @Override
