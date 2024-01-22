@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/inicio"
+        android:title="@string/MainActivity_inicio"
+        android:icon="@drawable/baseline_home_24"/>
+    <item android:id="@+id/comedor"
+        android:title="@string/MainActivity_comedor"
+        android:icon="@drawable/baseline_local_dining_24"/>
+    <item android:id="@+id/localizacion"
+        android:title="@string/MainActivity_localizacion"
+        android:icon="@drawable/baseline_location_pin_24"/>
+    <item android:id="@+id/asistente"
+        android:title="@string/MainActivity_asistente"
+        android:icon="@drawable/baseline_voice_chat_24"/>
+    <item android:id="@+id/salir"
+        android:title="@string/MainActivity_salir"
+        android:icon="@drawable/baseline_logout_24"/>
+</menu>

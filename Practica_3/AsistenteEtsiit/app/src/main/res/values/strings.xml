@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">AsistenteEtsiit</string>
+
+    <string name="bienvenida">Bienvenido :)</string>
+    <string name="text_inicio_descripcion">Puedes registrarse, iniciar como invitado, o iniciar sesión si ya tienes una cuenta.</string>
+    <string name="text_inicio_registrarse">Registrarse</string>
+    <string name="text_inicio_invitado">Acceder como invitado</string>
+
+    <string name="titulo_principal">APP ETSIIT</string>
+    <string name="text_main_pago">Pagar comedor</string>
+    <string name="text_main_localizacion">Localización</string>
+    <string name="text_main_oral">Interfaz oral</string>
+    <string name="text_main_iniciar_sesion">Iniciar sesión</string>
+    <string name="text_main_cerrar_sesion">Cerrar sesión</string>
+    <string name="name">Name</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="usuario">Usuario</string>
+    <string name="inicia_sesi_n">Inicia sesión</string>
+    <string name="nombre">Nombre</string>
+    <string name="nombre_de_usuario">Nombre de usuario</string>
+    <string name="entrar">Entrar</string>
+    <string name="repita_su_contrase_a">Repita su contraseña</string>
+    <string name="grado">Grado</string>
+    <string name="curso">Curso</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="mensaje_registro">Completa los siguientes datos para registrarte</string>
+    <string name="correo_electr_nico">Correo electrónico</string>
+    <string name="title_activity_pago_comida">PagoComida</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+    <string name="MainActivity_inicio">Inicio</string>
+    <string name="MainActivity_comedor">Comedor</string>
+    <string name="MainActivity_localizacion">Localización</string>
+    <string name="MainActivity_asistente">Asistente</string>
+    <string name="MainActivity_salir">Salir</string>
+
+    <string name="InicioFragment_string">Inicio</string>
+
+    <string name="LocalizacionFragment_qr">Escanear QR</string>
+    <string name="LocalizacionFragment_mano">Introducir Localización</string>
+
+    <string name="PagoComida_qr">Lector QR</string>
+    <string name="PagoComida_nfc">Lector NFC</string>
+
+    <string name="SelectorRuta_comunes">Espacios Comunes</string>
+    <string name="SelectorRuta_clasesdesp">Clases/Despachos</string>
+
+    <string name="InterfazOralFragment_string">Interfaz Oral</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
