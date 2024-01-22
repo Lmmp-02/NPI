@@ -128,7 +128,7 @@ public class Ventana extends javax.swing.JFrame {
         escanerQR.setVisible(true);
     }
     
-    public void codigoLeido(String codigo){
+    /*public void codigoLeido(String codigo){
         System.out.println(codigo);
         confirmacion_pago.setCodigo(codigo);
         
@@ -137,7 +137,7 @@ public class Ventana extends javax.swing.JFrame {
         
         muestraPanel(confirmacion_pago); 
         estado = 10;
-    }
+    }*/
     
     // Método para ajustar el icono de un botón
     private void ajustarIconoBoton(JButton boton, String rutaIcono) {
@@ -210,6 +210,12 @@ public class Ventana extends javax.swing.JFrame {
         panel_menu_llevar = new Panel_Menu_Llevar(this, 4);
         muestraPanel(panel_menu_llevar);
         estado = 9;
+    }
+    
+    public void botonReservaPulsado(String datos){
+        confirmacion_pago = new Confirmacion_Pago(this, datos);
+        muestraPanel(confirmacion_pago);
+        estado = 10;
     }
     
     public void botonLocalizacionClasesPulsado(){

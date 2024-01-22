@@ -139,6 +139,7 @@ public class Panel_Menu extends javax.swing.JPanel {
         txtAcompaniamiento1 = new javax.swing.JTextField();
         txtPrimero1 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        btnReservar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(450, 750));
 
@@ -243,7 +244,15 @@ public class Panel_Menu extends javax.swing.JPanel {
             });
 
             jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-            jLabel13.setText("Menú 2:");
+            jLabel13.setText("Menú 2");
+
+            btnReservar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+            btnReservar.setText("Reservar");
+            btnReservar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btnReservarActionPerformed(evt);
+                }
+            });
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
             this.setLayout(layout);
@@ -251,17 +260,6 @@ public class Panel_Menu extends javax.swing.JPanel {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(116, 116, 116)
-                                    .addComponent(tagTitulo))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(195, 195, 195)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(btnAbajo)
-                                        .addComponent(btnArriba))))
-                            .addGap(0, 0, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +300,22 @@ public class Panel_Menu extends javax.swing.JPanel {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(txtPrimero1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtSegundo1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(116, 116, 116)
+                                    .addComponent(tagTitulo))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(195, 195, 195)
+                                    .addComponent(btnArriba))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(196, 196, 196)
+                                    .addComponent(btnAbajo))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(161, 161, 161)
+                                    .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(0, 0, Short.MAX_VALUE)))
                     .addContainerGap())
             );
             layout.setVerticalGroup(
@@ -348,9 +361,10 @@ public class Panel_Menu extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
                         .addComponent(txtPostre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                    .addComponent(btnAbajo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(32, 32, 32))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                    .addComponent(btnAbajo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
             );
         }// </editor-fold>//GEN-END:initComponents
 
@@ -386,10 +400,21 @@ public class Panel_Menu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrimero1ActionPerformed
 
+    private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
+        String datos = tagTitulo.getText()+"\n" + jLabel8.getText()+"\n" +
+                       txtPrimero.getText()+"\n" + txtSegundo.getText()+"\n" +
+                       txtAcompaniamiento.getText()+"\n" + txtPostre.getText()+"\n" + 
+                       jLabel13.getText()+"\n" + txtPrimero1.getText()+"\n" + 
+                       txtSegundo1.getText()+"\n" + txtAcompaniamiento1.getText()+"\n" + 
+                       txtPostre1.getText()+"\n";
+        padre.botonReservaPulsado(datos);
+    }//GEN-LAST:event_btnReservarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbajo;
     private javax.swing.JButton btnArriba;
+    private javax.swing.JButton btnReservar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

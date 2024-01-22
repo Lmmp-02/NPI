@@ -4,9 +4,35 @@
  */
 package GUI;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+
 /**
  *
- * @author Usuario
+ * IMPORTANTE AL CAMBIAR DIMENSIONES EN DISEÑO HAY QUE ACTUALIZAR LOS
+ * VALORES WIDTH Y HEIGHT
  */
 public class Confirmacion_Pago extends javax.swing.JPanel {
 
@@ -15,6 +41,12 @@ public class Confirmacion_Pago extends javax.swing.JPanel {
      */
     private Ventana padre;
     private String codigo;
+    private String datos;
+    
+    int WIDTH = 300;
+    int HEIGHT = 300;
+    
+    private static final String UTF_8 = "UTF-8";
     
     public Confirmacion_Pago(Ventana p) {
         initComponents();
@@ -22,9 +54,59 @@ public class Confirmacion_Pago extends javax.swing.JPanel {
         codigo = "";
     }
     
+    public Confirmacion_Pago(Ventana p, String d) {
+        initComponents();
+        padre = p;
+        datos = d;
+        codigo = "";
+        
+        generaQR(datos);
+    }
+    
+    /*
     public void setCodigo(String c){
         this.codigo = c;
         txtfCodigo.setText(c);
+    }*/
+    
+    private void generaQR(String datos){
+        QRCodeWriter qr = new QRCodeWriter();
+        
+        int size = 1000;
+        
+        try {
+            BitMatrix matrix = qr.encode(datos, BarcodeFormat.QR_CODE, size, size);
+            File f = new File("./qr.png");
+            
+            int matrixTam = matrix.getWidth();
+            
+            BufferedImage image = new BufferedImage(matrixTam, matrixTam, BufferedImage.TYPE_INT_RGB);
+            image.createGraphics();
+            
+            Graphics2D gd = (Graphics2D) image.getGraphics();
+            gd.setColor(Color.WHITE);
+            gd.fillRect(0, 0, size, size);
+            gd.setColor(Color.BLACK);
+            
+            for(int b = 0; b < matrixTam; b++){
+                for(int j = 0; j < matrixTam; j++){
+                    if(matrix.get(b, j)){
+                        gd.fillRect(b, j, 1, 1);
+                    }
+                }
+            }
+            
+            ImageIO.write(image, "png", f);
+            Image miQR = new ImageIcon("./qr.png").getImage();
+            System.out.println(datos);
+            ImageIcon icon = new ImageIcon(miQR.getScaledInstance(WIDTH, HEIGHT, 0));
+            txtQR.setIcon(icon);
+            
+        } catch (WriterException ex) {
+            Logger.getLogger(Confirmacion_Pago.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Confirmacion_Pago.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
@@ -38,14 +120,14 @@ public class Confirmacion_Pago extends javax.swing.JPanel {
 
         jLabel_titulo1 = new javax.swing.JLabel();
         boton_si = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        txtfCodigo = new javax.swing.JTextField();
+        jLabel_titulo2 = new javax.swing.JLabel();
+        txtQR = new javax.swing.JLabel();
 
         setOpaque(false);
 
-        jLabel_titulo1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel_titulo1.setFont(new java.awt.Font("Segoe UI", 0, 38)); // NOI18N
         jLabel_titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_titulo1.setText("Pago confirmado");
+        jLabel_titulo1.setText("Emitiendo NFC...");
 
         boton_si.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_si.setText("Volver al menú");
@@ -55,45 +137,38 @@ public class Confirmacion_Pago extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Código:");
+        jLabel_titulo2.setFont(new java.awt.Font("Segoe UI", 0, 38)); // NOI18N
+        jLabel_titulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_titulo2.setText("Pago desde la App");
 
-        txtfCodigo.setEditable(false);
-        txtfCodigo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtfCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfCodigoActionPerformed(evt);
-            }
-        });
+        txtQR.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boton_si, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel_titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel_titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                .addComponent(jLabel_titulo2, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(boton_si, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(txtQR, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel_titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                .addComponent(jLabel_titulo2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(156, 156, 156)
-                .addComponent(boton_si, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
+                .addComponent(txtQR, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel_titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(boton_si, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -101,15 +176,11 @@ public class Confirmacion_Pago extends javax.swing.JPanel {
         padre.siguiente();
     }//GEN-LAST:event_boton_siActionPerformed
 
-    private void txtfCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfCodigoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_si;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_titulo1;
-    private javax.swing.JTextField txtfCodigo;
+    private javax.swing.JLabel jLabel_titulo2;
+    private javax.swing.JLabel txtQR;
     // End of variables declaration//GEN-END:variables
 }

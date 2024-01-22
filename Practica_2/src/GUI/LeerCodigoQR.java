@@ -194,7 +194,7 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
             
             if(resultado != null){
                 campo_resultado.setText(resultado.getText());
-                padre.codigoLeido(resultado.getText());
+                //padre.codigoLeido(resultado.getText());
             }
             
         }while(true);

@@ -299,7 +299,10 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPrimeroActionPerformed
 
     private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
-        padre.pagoConQR();
+        String datos = tagTitulo.getText()+"\n" + jLabel8.getText()+"\n" +
+                       txtPrimero.getText()+"\n" + txtSegundo.getText()+"\n" +
+                       txtAcompaniamiento.getText()+"\n" + txtPostre.getText()+"\n";
+        padre.botonReservaPulsado(datos);
     }//GEN-LAST:event_btnReservarActionPerformed
 
 
