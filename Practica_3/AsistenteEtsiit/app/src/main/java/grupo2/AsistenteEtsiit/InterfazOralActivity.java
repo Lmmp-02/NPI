@@ -171,11 +171,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
                                         @Override
                                         public void onSuccess(Object message) {
                                             AlEventManager.getInstance().registerPluginEventListener(InterfazOralActivity.this);
-                                            new MessageBuilder(context)
-                                                    .setMessage("Hola de nuevo")
-                                                    .setGroupId(conversationId)  //where 123456 is the conversationId.
-                                                    .send();
-                                            finish();
+
                                         }
 
                                         @Override
