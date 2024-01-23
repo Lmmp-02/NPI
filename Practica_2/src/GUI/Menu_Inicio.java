@@ -231,7 +231,7 @@ public class Menu_Inicio extends javax.swing.JPanel {
     }//GEN-LAST:event_boton_comedorActionPerformed
 
     private void boton_tramitesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_tramitesActionPerformed
-        // TODO add your handling code here:
+        padre.botonTramitesPulsado();
     }//GEN-LAST:event_boton_tramitesActionPerformed
 
     private void boton_localizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_localizacionActionPerformed

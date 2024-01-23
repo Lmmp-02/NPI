@@ -43,6 +43,7 @@ public class Ventana extends javax.swing.JFrame {
     private Seleccion_Tipo_Menu sel_tipo_menu;
     private Localizacion_Profesorado localizacion_profes;
     private Menu_Docencia menu_docencia;
+    private Menu_Tramites menu_tramites;
     
     private int estado;
     
@@ -69,6 +70,7 @@ public class Ventana extends javax.swing.JFrame {
         localizacion_profes = new Localizacion_Profesorado(this);
         confirmacion_pago = new Confirmacion_Pago(this);
         menu_docencia = new Menu_Docencia(this);
+        menu_tramites = new Menu_Tramites(this);
 
         //Activamos el cursor personalizado
         this.set_cursor_personalizado();
@@ -240,6 +242,11 @@ public class Ventana extends javax.swing.JFrame {
         estado = 12;
     }
     
+    public void botonTramitesPulsado(){
+        muestraPanel(menu_tramites);
+        estado = 13;
+    }
+    
     public void gestoSwipeRight(){
         siguiente();
     }
@@ -351,7 +358,7 @@ public class Ventana extends javax.swing.JFrame {
                 estado = 9;
                 break;
             case 6: //Menú Comedor
-                muestraPanel(menu_inicio); //Cambiarlo pero no sé cuál es su función
+                muestraPanel(menu_inicio);
                 estado = 0;
                 break;
             case 7: //Panel menu diario 
@@ -373,6 +380,10 @@ public class Ventana extends javax.swing.JFrame {
                 estado = 0;
                 break;
             case 12:
+                muestraPanel(menu_inicio);
+                estado = 0;
+                break;
+            case 13:
                 muestraPanel(menu_inicio);
                 estado = 0;
                 break;
