@@ -84,5 +84,5 @@ public class MainActivity extends AppCompatActivity {
          //Guardamos el fragmento anterior en la pila
          fragmentTransaction.addToBackStack(null);
          fragmentTransaction.commit();
-    }
+     }
 }
