@@ -128,7 +128,7 @@ public class Ventana extends javax.swing.JFrame {
         escanerQR.setVisible(true);
     }
     
-    public void codigoLeido(String codigo){
+    /*public void codigoLeido(String codigo){
         System.out.println(codigo);
         confirmacion_pago.setCodigo(codigo);
         
@@ -137,7 +137,7 @@ public class Ventana extends javax.swing.JFrame {
         
         muestraPanel(confirmacion_pago); 
         estado = 10;
-    }
+    }*/
     
     // Método para ajustar el icono de un botón
     private void ajustarIconoBoton(JButton boton, String rutaIcono) {
@@ -210,6 +210,12 @@ public class Ventana extends javax.swing.JFrame {
         panel_menu_llevar = new Panel_Menu_Llevar(this, 4);
         muestraPanel(panel_menu_llevar);
         estado = 9;
+    }
+    
+    public void botonReservaPulsado(String datos){
+        confirmacion_pago = new Confirmacion_Pago(this, datos);
+        muestraPanel(confirmacion_pago);
+        estado = 10;
     }
     
     public void botonLocalizacionClasesPulsado(){
@@ -494,11 +500,11 @@ public class Ventana extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         contenedor_principal = new javax.swing.JPanel();
         botones_inicio = new javax.swing.JPanel();
-        boton_anterior = new javax.swing.JButton();
-        boton_siguiente = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         boton_home = new javax.swing.JButton();
         boton_ayuda = new javax.swing.JButton();
+        boton_anterior = new javax.swing.JButton();
+        boton_siguiente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 255));
@@ -513,7 +519,7 @@ public class Ventana extends javax.swing.JFrame {
         contenedor_principal.setLayout(contenedor_principalLayout);
         contenedor_principalLayout.setHorizontalGroup(
             contenedor_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1060, Short.MAX_VALUE)
         );
         contenedor_principalLayout.setVerticalGroup(
             contenedor_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -523,39 +529,15 @@ public class Ventana extends javax.swing.JFrame {
         botones_inicio.setBackground(new java.awt.Color(255, 153, 0));
         botones_inicio.setOpaque(false);
 
-        boton_anterior.setText("Atrás");
-        boton_anterior.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_anteriorActionPerformed(evt);
-            }
-        });
-
-        boton_siguiente.setText("Siguiente");
-        boton_siguiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_siguienteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout botones_inicioLayout = new javax.swing.GroupLayout(botones_inicio);
         botones_inicio.setLayout(botones_inicioLayout);
         botones_inicioLayout.setHorizontalGroup(
             botones_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botones_inicioLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(boton_anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 415, Short.MAX_VALUE)
-                .addComponent(boton_siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(174, 174, 174))
+            .addGap(0, 1060, Short.MAX_VALUE)
         );
         botones_inicioLayout.setVerticalGroup(
             botones_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botones_inicioLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(botones_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boton_anterior)
-                    .addComponent(boton_siguiente))
-                .addContainerGap(23, Short.MAX_VALUE))
+            .addGap(0, 102, Short.MAX_VALUE)
         );
 
         jPanel2.setOpaque(false);
@@ -583,6 +565,20 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
+        boton_anterior.setText("Atrás");
+        boton_anterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_anteriorActionPerformed(evt);
+            }
+        });
+
+        boton_siguiente.setText("Siguiente");
+        boton_siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_siguienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -590,7 +586,11 @@ public class Ventana extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(boton_home, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(215, 215, 215)
+                .addComponent(boton_anterior)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(boton_siguiente)
+                .addGap(161, 161, 161)
                 .addComponent(boton_ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(100, 100, 100))
         );
@@ -602,6 +602,12 @@ public class Ventana extends javax.swing.JFrame {
                     .addComponent(boton_home, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                     .addComponent(boton_ayuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(27, 27, 27))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boton_anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boton_siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -612,7 +618,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botones_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE))
+                    .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE))
                 .addContainerGap())
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );

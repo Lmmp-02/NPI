@@ -25,10 +25,10 @@ public class Menu_Comedor extends javax.swing.JPanel {
         int ancho_menu = padre.getWidth();
         System.out.println(ancho_menu);
         Font fuente_botones = MenuAydanamar.getFont().deriveFont((float) ancho_menu/15);
-        Font fuente_titulo = jLabel1.getFont().deriveFont((float) ancho_menu/13);
+        //Font fuente_titulo = jLabel1.getFont().deriveFont((float) ancho_menu/13);
         MenuAydanamar.setFont(fuente_botones);
         MenuParaLLevar.setFont(fuente_botones);
-        jLabel1.setFont(fuente_titulo);
+        //jLabel1.setFont(fuente_titulo);
         
     }
 
@@ -41,17 +41,11 @@ public class Menu_Comedor extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         MenuAydanamar = new javax.swing.JButton();
         MenuParaLLevar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 204, 255));
         setOpaque(false);
-
-        jLabel1.setFont(new java.awt.Font("Castellar", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 153, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Menú Comedores");
 
         MenuAydanamar.setBackground(new java.awt.Color(255, 255, 255));
         MenuAydanamar.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -78,25 +72,20 @@ public class Menu_Comedor extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MenuAydanamar, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
-                            .addComponent(MenuParaLLevar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                .addContainerGap(162, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(MenuParaLLevar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MenuAydanamar, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE))
+                .addGap(171, 171, 171))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(MenuAydanamar, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                .addGap(98, 98, 98)
-                .addComponent(MenuParaLLevar, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                .addGap(181, 181, 181))
+                .addGap(339, 339, 339)
+                .addComponent(MenuAydanamar, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(198, 198, 198)
+                .addComponent(MenuParaLLevar, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(363, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -112,6 +101,5 @@ public class Menu_Comedor extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MenuAydanamar;
     private javax.swing.JButton MenuParaLLevar;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
