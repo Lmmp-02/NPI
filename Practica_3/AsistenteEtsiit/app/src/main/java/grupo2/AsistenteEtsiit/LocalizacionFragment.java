@@ -39,7 +39,7 @@ public class LocalizacionFragment extends Fragment {
         boton_mano.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addFragment(new SelectorRutaFragment());
+                addFragment(new SelectorRutaFragment(null));
             }
         });
 

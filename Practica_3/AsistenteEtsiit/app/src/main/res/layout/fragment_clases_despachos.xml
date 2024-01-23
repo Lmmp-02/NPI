@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ClasesDespachosFragment">
+
+    <Button
+        android:id="@+id/cd_selecionar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="@string/cd_seleccionar"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <NumberPicker
+        android:id="@+id/cd_np_numero"
+        android:layout_width="60dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <NumberPicker
+        android:id="@+id/cd_np_planta"
+        android:layout_width="60dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="130dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cd_text_planta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cd_str_planta"
+        android:textSize="25sp"
+        android:textColor="@color/etsiit"
+        app:layout_constraintBottom_toTopOf="@+id/cd_np_planta"
+        app:layout_constraintEnd_toEndOf="@+id/cd_np_planta"
+        app:layout_constraintStart_toStartOf="@+id/cd_np_planta" />
+
+    <TextView
+        android:id="@+id/cd_text_numero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cd_str_numero"
+        android:textSize="25sp"
+        android:textColor="@color/etsiit"
+        app:layout_constraintBottom_toTopOf="@+id/cd_np_numero"
+        app:layout_constraintEnd_toEndOf="@+id/cd_np_numero"
+        app:layout_constraintStart_toStartOf="@+id/cd_np_numero" />
+
+    <Button
+        android:id="@+id/cd_b_clase"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/cd_clase"
+        app:layout_constraintBottom_toTopOf="@+id/cd_selecionar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/cd_b_despacho"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/cd_despacho"
+        app:layout_constraintBottom_toTopOf="@+id/cd_selecionar"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

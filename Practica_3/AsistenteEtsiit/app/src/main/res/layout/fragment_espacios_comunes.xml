@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EspaciosComunesFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="40dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <ImageButton
+                    android:id="@+id/ec_totem"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ec_totem"
+                    android:src="@drawable/totem"
+                    android:scaleType="fitXY"
+                    android:background="@color/etsiit"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:clickable="false"
+                    android:textSize="30sp"
+                    android:textColor="@color/etsiit"
+                    android:text="@string/ec_totem" />
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <ImageButton
+                    android:id="@+id/ec_cafeteria"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ec_cafeteria"
+                    android:src="@drawable/cafeteria"
+                    android:scaleType="fitXY"
+                    android:background="@color/etsiit"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:clickable="false"
+                    android:textSize="30sp"
+                    android:textColor="@color/etsiit"
+                    android:text="@string/ec_cafeteria" />
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <ImageButton
+                    android:id="@+id/ec_comedor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ec_comedor"
+                    android:src="@drawable/comedor"
+                    android:scaleType="fitXY"
+                    android:background="@color/etsiit"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:clickable="false"
+                    android:textSize="30sp"
+                    android:textColor="@color/etsiit"
+                    android:text="@string/ec_comedor" />
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <ImageButton
+                    android:id="@+id/ec_biblioteca"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ec_biblioteca"
+                    android:src="@drawable/biblioteca"
+                    android:scaleType="fitXY"
+                    android:background="@color/etsiit"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:clickable="false"
+                    android:textSize="30sp"
+                    android:textColor="@color/etsiit"
+                    android:text="@string/ec_biblioteca" />
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <ImageButton
+                    android:id="@+id/ec_secretaria"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ec_secretaria"
+                    android:src="@drawable/secretaria"
+                    android:scaleType="fitXY"
+                    android:background="@color/etsiit"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:clickable="false"
+                    android:textSize="30sp"
+                    android:textColor="@color/etsiit"
+                    android:text="@string/ec_secretaria" />
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <ImageButton
+                    android:id="@+id/ec_salondeactos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ec_salondeactos"
+                    android:src="@drawable/salondeactos"
+                    android:scaleType="fitXY"
+                    android:background="@color/etsiit"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:clickable="false"
+                    android:textSize="30sp"
+                    android:textColor="@color/etsiit"
+                    android:text="@string/ec_salondeactos" />
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <ImageButton
+                    android:id="@+id/ec_salondegrados"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ec_salondegrados"
+                    android:src="@drawable/salondegrados"
+                    android:scaleType="fitXY"
+                    android:background="@color/etsiit"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:clickable="false"
+                    android:textSize="30sp"
+                    android:textColor="@color/etsiit"
+                    android:text="@string/ec_salondegrados" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

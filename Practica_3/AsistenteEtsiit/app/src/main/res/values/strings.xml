@@ -43,12 +43,23 @@
     <string name="PagoComida_qr">Lector QR</string>
     <string name="PagoComida_nfc">Lector NFC</string>
 
+    <string name="SelectorRuta_cabecera_or">Seleccione Origen</string>
+    <string name="SelectorRuta_cabecera_de">Seleccione Destino</string>
     <string name="SelectorRuta_comunes">Espacios Comunes</string>
     <string name="SelectorRuta_clasesdesp">Clases/Despachos</string>
 
     <string name="InterfazOralFragment_string">Interfaz Oral</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="ec_totem">Totem</string>
+    <string name="ec_cafeteria">Cafetería</string>
+    <string name="ec_comedor">Comedor</string>
+    <string name="ec_biblioteca">Biblioteca</string>
+    <string name="ec_secretaria">Secretaría</string>
+    <string name="ec_salondeactos">Salón de Actos</string>
+    <string name="ec_salondegrados">Salón de Grados</string>
+    <string name="cd_seleccionar">Seleccionar</string>
+    <string name="cd_str_planta">Planta</string>
+    <string name="cd_str_numero">Número</string>
+    <string name="cd_clase">Clase</string>
+    <string name="cd_despacho">Despacho</string>
 </resources>

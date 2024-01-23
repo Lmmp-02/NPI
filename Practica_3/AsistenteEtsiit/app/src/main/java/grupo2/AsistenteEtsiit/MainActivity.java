@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
          //Guardamos el fragmento anterior en la pila
          fragmentTransaction.addToBackStack(null);
          fragmentTransaction.commit();
-    }
+     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -101,5 +101,4 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean("interfazOralActiva", false);
         editor.apply();
     }
-
 }
