@@ -84,6 +84,12 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
     }
 
     public void creaInterfazOral(){
+        //Guardamos que el llamador actual es la interfaz oral
+        SharedPreferences preferences = getSharedPreferences("MyPrefsFile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("interfazOralActiva", true);
+        editor.apply();
+
         //Inicializamos Kommunicate
         Kommunicate.init(InterfazOralActivity.this, "1046f12744c6017fb944066df8190daeb");
 
@@ -171,11 +177,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
                                         @Override
                                         public void onSuccess(Object message) {
                                             AlEventManager.getInstance().registerPluginEventListener(InterfazOralActivity.this);
-                                            new MessageBuilder(context)
-                                                    .setMessage("Hola de nuevo")
-                                                    .setGroupId(conversationId)  //where 123456 is the conversationId.
-                                                    .send();
-                                            finish();
+
                                         }
 
                                         @Override
@@ -201,7 +203,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
 
         }
         //Si el usuario no esta registrado, hacemos un chat como visitante
-        /*
+
         else {
             Kommunicate.loginAsVisitor(this, new KMLoginHandler() {
                 @Override
@@ -217,7 +219,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
                 }
             });
         }
-         */
+
     }
     private boolean isConversationCreated() {
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -295,12 +297,12 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
 
     @Override
     public void onConversationResolved(Integer conversationId) {
-        Toast.makeText(this,"Resolved", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Resolved", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onConversationRestarted(Integer conversationId) {
-        Toast.makeText(this,"Restart", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Restart", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -310,7 +312,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
 
     @Override
     public void onStartNewConversation(Integer conversationId) {
-        Toast.makeText(this,"Cosas especiales", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Cosas especiales", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -324,7 +326,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
     }
     @Override
     public void onBackButtonClicked(boolean isConversationOpened) {
-        Toast.makeText(this,"Cosas especiales", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Cosas especiales", Toast.LENGTH_SHORT).show();
     }
 
     @Override

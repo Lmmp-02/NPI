@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AsistenteEtsiit</string>
+    <string name="app_name">Asistente Etsiit</string>
 
     <string name="bienvenida">Bienvenido :)</string>
     <string name="text_inicio_descripcion">Puedes registrarse, iniciar como invitado, o iniciar sesión si ya tienes una cuenta.</string>
