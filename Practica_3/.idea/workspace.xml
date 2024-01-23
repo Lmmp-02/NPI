@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80793b56-2560-419e-a7a8-0abed8079be2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +31,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "localizaciones-app",
-    "last_opened_file_path": "/home/aj/Universidad/NPI/NPI/Practica_3/QRGen",
+    "last_opened_file_path": "C:/Users/34667/OneDrive/Escritorio/MP/NPI_P2/Practica_3",
     "settings.editor.selected.configurable": "device.mirroring"
   }
 }]]></component>
