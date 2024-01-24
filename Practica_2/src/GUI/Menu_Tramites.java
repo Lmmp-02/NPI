@@ -30,16 +30,18 @@ public class Menu_Tramites extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jButton1.setText("Solicitudes Generales");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0), 4));
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 4, true));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jButton2.setText("Certificados de Notas");
         jButton2.setToolTipText("");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0), 4));
+        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 4, true));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N

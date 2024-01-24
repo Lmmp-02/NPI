@@ -45,6 +45,8 @@ class SampleListener extends Listener {
     private Integer contador_salida;
     
     private int frames_gesto_salida;
+    private boolean palmadaDetectada = false;
+    private double distanciaPrevia = 0;
     
     private Seleccion_Clases seleccionClasesPanel;
     
@@ -69,9 +71,6 @@ class SampleListener extends Listener {
     public void onConnect(Controller controller) {
         System.out.println("Connected");
         controller.enableGesture(Gesture.Type.TYPE_SWIPE);
-        //controller.enableGesture(Gesture.Type.TYPE_CIRCLE);
-        //controller.enableGesture(Gesture.Type.TYPE_SCREEN_TAP);
-        //controller.enableGesture(Gesture.Type.TYPE_KEY_TAP);
     }
     
     // Desconectamos Leap software o hardware
@@ -271,26 +270,6 @@ class SampleListener extends Listener {
             int mov_x = (int) position.getX();
             int mov_y = (int) position.getY() - ALTURA_CERO; 
             int pos_z = (int) position.getZ(); 
-            /*
-            // Verifica si no hay dedos visibles y la palma está detectada para hacer clic
-            if (hand.fingers().count() == 0 && hand.sphereRadius() > 10) {
-                if (!pulsando_click) {
-                    pulsando_click = true;
-                    System.out.println("Clic con el puño cerrado");
-                    try {
-                        Robot robot = new Robot();
-                        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-                        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            } else {
-                if (pulsando_click) {
-                    pulsando_click = false;
-                }
-            }
-            */
         
             FingerList fingers = hand.fingers();
 
@@ -365,6 +344,24 @@ class SampleListener extends Listener {
         
         }
         
+        // Gesto de salida: palmada
+        if (!frame.hands().isEmpty() && frame.hands().count() == 2) {
+            // Obtiene ambas manos
+            Hand manoIzquierda = frame.hands().leftmost();
+            Hand manoDerecha = frame.hands().rightmost();
+
+            // Calcula la distancia entre las palmas de las manos
+            double distanciaActual = manoIzquierda.palmPosition().distanceTo(manoDerecha.palmPosition());
+
+            // Detecta una palmada (acercamiento y luego alejamiento rápido)
+            if (!palmadaDetectada && distanciaActual < 50 && distanciaPrevia - distanciaActual > 30) {
+                palmadaDetectada = true;
+            } else if (palmadaDetectada && distanciaActual > 100) {
+                System.exit(0); // Cierra la aplicación
+            }
+
+            distanciaPrevia = distanciaActual;
+        }
     }
     
     private void handleSwipeGesture(SwipeGesture swipe) {
