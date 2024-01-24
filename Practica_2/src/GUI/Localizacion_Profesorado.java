@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import java.util.HashMap;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+
 /**
  *
  * @author 34611
@@ -11,10 +15,76 @@ package GUI;
 public class Localizacion_Profesorado extends javax.swing.JPanel {
 
     private Ventana padre;
+    private HashMap<String, String> infoProfesores;
+    
+    //private JComboBox<String> comboBoxProfesores;
+    //private JTextArea textAreaInfo;
     
     public Localizacion_Profesorado(Ventana p) {
         initComponents();
         padre = p;
+        inicializarDatosProfesores();
+        llenarComboBoxProfesores();
+    }
+    
+    private void inicializarDatosProfesores() {
+    infoProfesores = new HashMap<>();
+
+    infoProfesores.put("Marcelino Cabrera Cuevas",
+        "Tutorías:\n" +
+        "         - Miércoles de 9:00 a 11:00\n" +
+        "         - Viernes de 8:30 a 10:30 y de 12:20 a 14:30\n" +
+        "Despacho: 25 planta 3 ETSIIT.");
+
+    infoProfesores.put("Ramón López-Cózar Delgado",
+        "Tutorías:\n" +
+        "      - Martes de 10:30 a 13:30\n" +
+        "      - Miércoles de 10:30 a 13:30\n" +
+        "Despacho: 26 planta 3 ETSIIT.");
+
+    infoProfesores.put("Jorge Revelles Moreno",
+        "Tutorías:\n" +
+        "      - Martes de 9:30 a 11:30\n" +
+        "      - Miércoles de 9:30 a 11:30\n" +
+        "      - Jueves de 10:30 a 12:30\n" +
+        "Despacho: 4 planta 3 ETSIIT.");
+
+    infoProfesores.put("Manuel Pegalajar Cuéllar",
+        "Tutorías:\n" +
+        "      - Lunes de 9:30 a 11:30\n" +
+        "      - Martes de 9:30 a 11:30 y de 15:30 a 17:30\n" +
+        "Despacho: 19 planta 4 ETSIIT.");
+
+    infoProfesores.put("Pablo Mesejo",
+        "Tutorías:\n" +
+        "      - Martes y miércoles de 10:00 a 13:00\n" +
+        "Despacho: 1.10 edificio auxiliar de la ETSIIT.");
+
+    infoProfesores.put("Víctor Vargas Pérez",
+        "Tutorías:\n" +
+        "    - Jueves de 8:30 a 10:00\n" +
+        "Despacho: IB-11 CITIC.");
+
+    infoProfesores.put("Luis Miguel Campos Ibáñez",
+        "Tutorías:\n" +
+        "      - Lunes de 11:30 a 14:40\n" +
+        "      - Martes de 11:30 a 14:30\n" +
+        "Despacho: 10 planta 2 ETSIIT.");
+
+    infoProfesores.put("Miguel García Silvente",
+        "Tutorías:\n" +
+        "      - Lunes de 9:30 a 11:30\n" +
+        "      - Martes de 11:30 a 13:30\n" +
+        "      - Miércoles de 11:00 a 13:00\n" +
+        "Despacho: 30 planta 3 ETSIIT.");
+}
+
+    
+    private void llenarComboBoxProfesores(){
+        comboBoxProfesores.removeAllItems(); // Limpia todos los elementos existentes
+        for (String profesor : infoProfesores.keySet()){
+            comboBoxProfesores.addItem(profesor);
+        }
     }
 
     /**
@@ -27,10 +97,12 @@ public class Localizacion_Profesorado extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        comboBoxProfesores = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textAreaInfo = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -38,13 +110,6 @@ public class Localizacion_Profesorado extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Castellar", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 153, 51));
         jLabel1.setText("Introduzca el nombre del");
-
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
@@ -61,55 +126,78 @@ public class Localizacion_Profesorado extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(255, 153, 51));
         jLabel4.setText("obtener información");
 
+        comboBoxProfesores.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        comboBoxProfesores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxProfesores.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 4, true));
+        comboBoxProfesores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxProfesoresActionPerformed(evt);
+            }
+        });
+
+        textAreaInfo.setColumns(20);
+        textAreaInfo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        textAreaInfo.setRows(5);
+        jScrollPane1.setViewportView(textAreaInfo);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(265, 265, 265)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel1)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(290, 290, 290)
+                            .addGap(23, 23, 23)
                             .addComponent(jLabel3)
                             .addGap(23, 23, 23)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(315, 315, 315)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(272, Short.MAX_VALUE))
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel4)))
+                .addContainerGap(283, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
+                    .addComponent(comboBoxProfesores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(500, 500, 500)
+                .addGap(161, 161, 161)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addGap(50, 50, 50)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(89, 89, 89)
+                .addComponent(comboBoxProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(698, Short.MAX_VALUE))
+                .addContainerGap(731, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void comboBoxProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxProfesoresActionPerformed
+        String profesorSeleccionado = (String) comboBoxProfesores.getSelectedItem();
+        String info = infoProfesores.getOrDefault(profesorSeleccionado, "Información no disponible");
+        textAreaInfo.setText(info);
+    }//GEN-LAST:event_comboBoxProfesoresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboBoxProfesores;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea textAreaInfo;
     // End of variables declaration//GEN-END:variables
 }
