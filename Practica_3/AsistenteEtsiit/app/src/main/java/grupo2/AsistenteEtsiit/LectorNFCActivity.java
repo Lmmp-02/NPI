@@ -79,6 +79,11 @@ public class LectorNFCActivity extends AppCompatActivity {
         });
 
         adapter = NfcAdapter.getDefaultAdapter(this);
+
+        if(adapter == null){
+            Toast.makeText(this, "No se ha encontrado lector NFC", Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
 
     @Override

@@ -62,4 +62,5 @@
     <string name="cd_str_numero">Número</string>
     <string name="cd_clase">Clase</string>
     <string name="cd_despacho">Despacho</string>
+    <string name="mr_indice">Indice</string>
 </resources>
