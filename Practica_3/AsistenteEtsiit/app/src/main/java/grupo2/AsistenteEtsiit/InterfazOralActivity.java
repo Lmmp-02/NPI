@@ -151,8 +151,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
                                         //Registramos eventos
                                         AlEventManager.getInstance().registerPluginEventListener(InterfazOralActivity.this);
                                         setConversationCreated(true);
-                                        //Mostramos info de la conversacion
-                                        // Iterar sobre el Map utilizando un bucle for-each
+
                                         //Cierra la pantalla de carga cuando termina la conversación, volviendo al menú
                                         finish();
                                     }
@@ -177,7 +176,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
                                         @Override
                                         public void onSuccess(Object message) {
                                             AlEventManager.getInstance().registerPluginEventListener(InterfazOralActivity.this);
-
+                                            finish();
                                         }
 
                                         @Override
@@ -195,27 +194,6 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
                 public void onFailure(RegistrationResponse registrationResponse, Exception exception) {
                     // You can perform actions such as repeating the login call or throw an error message on failure
                     Log.d("Error en login KM", "Error : " + exception);
-                }
-            });
-
-
-
-
-        }
-        //Si el usuario no esta registrado, hacemos un chat como visitante
-
-        else {
-            Kommunicate.loginAsVisitor(this, new KMLoginHandler() {
-                @Override
-                public void onSuccess(RegistrationResponse registrationResponse, Context context) {
-                    // You can perform operations such as opening the conversation, creating a new conversation or update user details on success
-                    // A completar
-                }
-
-                @Override
-                public void onFailure(RegistrationResponse registrationResponse, Exception exception) {
-                    // You can perform actions such as repeating the login call or throw an error message on failure
-                    // A completar
                 }
             });
         }
@@ -252,8 +230,22 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
             // Obtener los valores de $origen y $destino
             String origen = matcher_localizacion.group(1);
             String destino = matcher_localizacion.group(2);
-            // Llamamos a la funcion de localizacion
-            Toast.makeText(this,"Origen: "+origen+"\tDestino: "+destino, Toast.LENGTH_SHORT).show();
+            // Llamamos a la funcion de localizacion correspondiente
+            if(msg.matches(".*texto\\.$")){
+                //Por texto
+                //Necesito la funcion que las devuelve :)
+                //No estoy muy seguro de si se podrá implementar desde aqui, puede que necesitemos derivarlo
+                //al webhook
+                Toast.makeText(this, "Texto por implementar", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                //Por interfaz interactiva
+                Intent intent = new Intent(InterfazOralActivity.this, MuestraRutaActivity.class);
+                intent.putExtra("origen", origen);
+                intent.putExtra("destino", destino);
+                Toast.makeText(this, "Origen: " + origen + "\tDestino: " + destino, Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            }
         }
         // Si el bot pide leer QR para comedor
         else if(msg.equals("Activando lector de QR...")) {
@@ -263,7 +255,7 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
             startActivity(intent);
             Toast.makeText(this,"Ir a lectura de QR", Toast.LENGTH_SHORT).show();
         }
-        // Si el bot pide leer QR para comedor
+        // Si el bot pide leer NFC para comedor
         else if(msg.equals("Activando NFC...")) {
             // Llamamos a la funcion de escaneo de NFC para comedores
             Intent intent = new Intent(InterfazOralActivity.this, LectorNFCActivity.class);
