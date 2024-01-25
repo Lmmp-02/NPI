@@ -213,7 +213,7 @@ public class Caminos{
         }
 
         // Si origen o destino es clase o despacho se quita la entrada correspondiente
-        String regex = "D?[0-9AB]+\\.[0-9]+";
+        String regex = "D?-?[0-9AB]+\\.[0-9]+";
         Pattern pattern = Pattern.compile(regex);
 
         Matcher matcher_orig = pattern.matcher(origen);

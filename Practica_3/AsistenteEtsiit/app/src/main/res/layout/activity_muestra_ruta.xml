@@ -16,6 +16,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/mr_vacio"
+        android:layout_width="293dp"
+        android:layout_height="380dp"
+        android:layout_marginTop="59dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/mr_imagecam"
         android:layout_width="283dp"
         android:layout_height="370dp"
@@ -39,7 +49,7 @@
         android:id="@+id/mr_textact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="45dp"
         android:text="@string/mr_indice"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,21 +59,23 @@
 
     <Button
         android:id="@+id/mr_boton_atras"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="65dp"
         android:layout_marginStart="35dp"
         android:layout_marginBottom="25dp"
         android:drawableLeft="@drawable/baseline_arrow_back_24"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/mr_boton_adelante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="65dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="25dp"
         android:drawableRight="@drawable/baseline_arrow_forward_24"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
