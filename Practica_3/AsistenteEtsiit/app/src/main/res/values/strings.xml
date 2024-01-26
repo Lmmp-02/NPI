@@ -64,4 +64,14 @@
     <string name="cd_despacho">Despacho</string>
     <string name="mr_indice">Indice</string>
     <string name="mr_nodisponible">Descripción no disponible</string>
+    <string name="fl_servicios_externos">Servicios externos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="se_rectorado">Rectorado</string>
+    <string name="se_secretaria_general">Secretaría General</string>
+    <string name="se_servicio_de_becas">Servicio de Becas</string>
+    <string name="se_csirc">CSIRC</string>
+    <string name="se_osl">Oficina Software Libre</string>
+    <string name="se_citic">CITIC</string>
+    <string name="se_ceprud">CEPRUD</string>
 </resources>
