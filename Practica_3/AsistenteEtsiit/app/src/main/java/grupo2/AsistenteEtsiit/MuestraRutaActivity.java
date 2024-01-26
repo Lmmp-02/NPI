@@ -135,18 +135,31 @@ public class MuestraRutaActivity extends AppCompatActivity implements SensorEven
     }
 
     private void actualizaImagen(int indice){
+        // Actualizamos el índice internamente
+        idx = indice;
+
+        // Abre un flujo de entrada para la imagen y la decripcio en assets
         try {
-            // Actualizamos el índice internamente
-            idx = indice;
-
-            // Abre un flujo de entrada para la imagen y la decripcio en assets
             InputStream inputStream_img = getAssets().open(archivos.get(indice).get(0));
-            InputStream inputStream_txt = getAssets().open(archivos.get(indice).get(1));
-
             // Crea un Drawable desde el InputStream y establece la imagen en el ImageView
             imageView_cam.setImageDrawable(Drawable.createFromStream(inputStream_img, null));
+            inputStream_img.close();
+        }
+        catch(IOException e) {
+            try {
+                InputStream inputStream_img = getAssets().open("imagenes/null.png");
+                // Crea un Drawable desde el InputStream y establece la imagen en el ImageView
+                imageView_cam.setImageDrawable(Drawable.createFromStream(inputStream_img, null));
+                inputStream_img.close();
+            }
+            catch (IOException e2){
+                e2.printStackTrace();
+            }
+        }
 
+        try {
             // Lee el contenido del archivo línea por línea
+            InputStream inputStream_txt = getAssets().open(archivos.get(indice).get(1));
             StringBuilder contenido = new StringBuilder();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream_txt));
             String linea;
@@ -155,18 +168,17 @@ public class MuestraRutaActivity extends AppCompatActivity implements SensorEven
             }
 
             textView_cam.setText(contenido.toString());
-
-            String str_indice = String.valueOf(indice+1) + "/" + String.valueOf(archivos.size());
-            textView_idx.setText(str_indice);
-
-            // Cierra el InputStream
-            inputStream_img.close();
             inputStream_txt.close();
-
-            orientacion_act = -1;
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
+            textView_cam.setText(R.string.mr_nodisponible);
             e.printStackTrace();
         }
+
+        String str_indice = String.valueOf(indice+1) + "/" + String.valueOf(archivos.size());
+        textView_idx.setText(str_indice);
+
+        orientacion_act = -1;
     }
 
     private void anterior(){
