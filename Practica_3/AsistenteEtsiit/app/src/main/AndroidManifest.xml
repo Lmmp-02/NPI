@@ -9,7 +9,13 @@
         android:name="android.hardware.nfc"
         android:required="true" />
 
-
+    <queries>
+        <!-- Hace falta para poder arrancar Maps -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="geo" />
+        </intent>
+    </queries>
 
     <application
         android:allowBackup="true"

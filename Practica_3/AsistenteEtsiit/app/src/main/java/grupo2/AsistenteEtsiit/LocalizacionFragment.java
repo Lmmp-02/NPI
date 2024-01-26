@@ -28,6 +28,7 @@ public class LocalizacionFragment extends Fragment {
 
         Button boton_qr = view.findViewById(R.id.boton_qr);
         Button boton_mano = view.findViewById(R.id.boton_mano);
+        Button boton_se = view.findViewById(R.id.boton_externos);
 
         boton_qr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,13 @@ public class LocalizacionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addFragment(new SelectorRutaFragment(null));
+            }
+        });
+
+        boton_se.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFragment(new ServiciosExternos());
             }
         });
 
