@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Bienvenida">
+    tools:context=".BienvenidaActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -24,7 +24,7 @@
         android:layout_height="119dp"
         android:fontFamily="@font/spartan_bold"
         android:gravity="center"
-        android:text="ETSIIT Assistant"
+        android:text="Asistente ETSIIT"
         android:textColor="#EC640B"
         android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
