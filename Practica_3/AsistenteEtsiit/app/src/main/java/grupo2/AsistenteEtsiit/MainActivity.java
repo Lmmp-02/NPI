@@ -50,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, CODIGO_INTERFAZ_ORAL);
             }
             else if(item.getItemId() == R.id.salir){
-                replaceFragment(new Fragment());
+                Intent intent = new Intent(MainActivity.this, IniciaSesionActivity.class);
+                startActivity(intent);
+                finish();
             }
 
             return true;
