@@ -1,0 +1,1 @@
+Recorre la parte derecha del pasillo, allí verás la clase deseada

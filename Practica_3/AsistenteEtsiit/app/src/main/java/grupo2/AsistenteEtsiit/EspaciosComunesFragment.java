@@ -6,11 +6,13 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
+import android.widget.Toast;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class EspaciosComunesFragment extends Fragment {
     private String origen;
@@ -100,10 +102,15 @@ public class EspaciosComunesFragment extends Fragment {
                     addFragment(new SelectorRutaFragment(loc));
                 }
                 else{
-                    Intent intent = new Intent(requireContext(), MuestraRutaActivity.class);
-                    intent.putExtra("origen", origen);
-                    intent.putExtra("destino", loc);
-                    startActivity(intent);
+                    if(origen.equals(loc)){
+                        Toast.makeText(getActivity(), "El origen debe ser distinto al destino", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Intent intent = new Intent(requireContext(), MuestraRutaActivity.class);
+                        intent.putExtra("origen", origen);
+                        intent.putExtra("destino", loc);
+                        startActivity(intent);
+                    }
                 }
 
                 boton.setBackgroundResource(R.color.etsiit);
