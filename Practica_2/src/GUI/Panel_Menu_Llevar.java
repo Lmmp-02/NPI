@@ -130,6 +130,7 @@ public class Panel_Menu_Llevar extends javax.swing.JPanel {
         btnReservar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(450, 750));
 
         tagTitulo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N

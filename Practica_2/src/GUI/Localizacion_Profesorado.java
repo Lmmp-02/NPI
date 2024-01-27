@@ -104,6 +104,7 @@ public class Localizacion_Profesorado extends javax.swing.JPanel {
         textAreaInfo = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setOpaque(false);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N

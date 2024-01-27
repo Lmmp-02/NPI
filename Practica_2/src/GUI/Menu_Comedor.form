@@ -23,7 +23,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="162" max="32767" attributes="0"/>
+              <EmptySpace pref="159" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="MenuParaLLevar" max="32767" attributes="0"/>
                   <Component id="MenuAydanamar" pref="739" max="32767" attributes="0"/>
@@ -39,7 +39,7 @@
               <Component id="MenuAydanamar" min="-2" pref="350" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
               <Component id="MenuParaLLevar" min="-2" pref="350" max="-2" attributes="0"/>
-              <EmptySpace pref="363" max="32767" attributes="0"/>
+              <EmptySpace pref="314" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
