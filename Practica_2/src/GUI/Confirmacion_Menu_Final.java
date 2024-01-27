@@ -44,16 +44,20 @@ public class Confirmacion_Menu_Final extends javax.swing.JPanel {
         jLabel_titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_titulo1.setText("¿Está seguro de que");
 
+        boton_si.setBackground(new java.awt.Color(255, 255, 255));
         boton_si.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_si.setText("Sí");
+        boton_si.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 4, true));
         boton_si.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_siActionPerformed(evt);
             }
         });
 
+        boton_no.setBackground(new java.awt.Color(255, 255, 255));
         boton_no.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_no.setText("No");
+        boton_no.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 4, true));
         boton_no.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_noActionPerformed(evt);
@@ -67,7 +71,7 @@ public class Confirmacion_Menu_Final extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                    .addComponent(jLabel_titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE)
                     .addComponent(jLabel_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(boton_no, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -78,15 +82,15 @@ public class Confirmacion_Menu_Final extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel_titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(294, 294, 294)
+                .addComponent(jLabel_titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(57, 57, 57)
+                .addComponent(jLabel_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addGap(297, 297, 297)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_si, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boton_no, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54))
+                .addGap(258, 258, 258))
         );
     }// </editor-fold>//GEN-END:initComponents
 
