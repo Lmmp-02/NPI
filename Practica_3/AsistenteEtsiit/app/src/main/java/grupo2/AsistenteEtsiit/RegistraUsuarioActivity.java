@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +25,8 @@ import com.google.firebase.storage.StorageReference;
 
 public class RegistraUsuarioActivity extends AppCompatActivity {
     TextView boton_login, boton_invitado;
-    EditText usuario, correo, password, re_password, grado, grupo;
+    EditText usuario, correo, password, re_password, grupo;
+    Spinner grado;
     Button boton_registro;
     FirebaseAuth auth;
     String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
@@ -43,7 +45,7 @@ public class RegistraUsuarioActivity extends AppCompatActivity {
         correo = findViewById(R.id.editTextCorreo);
         password = findViewById(R.id.editTextPassword);
         re_password = findViewById(R.id.editTextPassword2);
-        grado = findViewById(R.id.editTextGrado);
+        grado = findViewById(R.id.spinnerGrado);
         grupo = findViewById(R.id.editTextCurso);
         boton_login = findViewById(R.id.textoRegistro);
         boton_registro = findViewById(R.id.boton_entrar);
