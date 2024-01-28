@@ -1,6 +1,5 @@
 package grupo2.AsistenteEtsiit;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -30,7 +29,6 @@ public class LocalizacionFragment extends Fragment {
         Button boton_qr = view.findViewById(R.id.boton_qr);
         Button boton_mano = view.findViewById(R.id.boton_mano);
         Button boton_se = view.findViewById(R.id.boton_externos);
-        Button boton_horario = view.findViewById(R.id.boton_horarios);
 
         boton_qr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,14 +48,6 @@ public class LocalizacionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addFragment(new ServiciosExternos());
-            }
-        });
-
-        boton_horario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent((MainActivity) getActivity(), HorariosActivity.class);
-                startActivity(intent);
             }
         });
 
