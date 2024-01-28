@@ -5,13 +5,20 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.android.material.tabs.TabLayout;
 
 public class InicioFragment extends Fragment {
-    private WebView webView;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     public InicioFragment() {
         // Required empty public constructor
@@ -26,17 +33,18 @@ public class InicioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
 
-        // Encuentra el WebView en tu diseño
-        webView = view.findViewById(R.id.activity_webview);
+        tabLayout = view.findViewById(R.id.fi_tablayout);
+        viewPager = view.findViewById(R.id.fi_viewpager);
 
-        // Configura un cliente de WebView para manejar las redirecciones y cargas de páginas
-        webView.setWebViewClient(new WebViewClient());
+        tabLayout.setupWithViewPager(viewPager);
 
-        // Habilita la configuración para JavaScript (si es necesario)
-        webView.getSettings().setJavaScriptEnabled(true);
+        FragmentManager fragmentManager = getChildFragmentManager();
 
-        // Carga la URL deseada
-        webView.loadUrl("https://etsiit.ugr.es/");
+        VPAdapter vpAdapter = new VPAdapter(fragmentManager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        vpAdapter.addFragment(new WebFragment(), getResources().getString(R.string.fi_pagina_web));
+        vpAdapter.addFragment(new HorarioFragment(), getResources().getString(R.string.fi_horario));
+
+        viewPager.setAdapter(vpAdapter);
 
         return view;
     }
