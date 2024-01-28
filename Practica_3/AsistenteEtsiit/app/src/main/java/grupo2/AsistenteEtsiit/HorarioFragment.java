@@ -47,7 +47,7 @@ public class HorarioFragment extends Fragment {
     String[] grados = {"Ingeniería Informática", "Ingeniería de Telecomunicaciones"};
     String[] grados_mostr = {"Informática", "Telecomunicaciones"};
     String[] grados_map = {"inf", "tel"};
-    String[] cursos_inf = {"4CSI", "4IC", "4IS", "4SI", "4TI"};
+    String[] cursos_inf = {"1A", "1B", "2A", "2B", "3A", "3B", "4CSI", "4IC", "4IS", "4SI", "4TI"};
     String[] cursos_tel = {"4A", "4B"};
     String[] cuatrimestres = {"Primero", "Segundo"};
 
@@ -129,14 +129,13 @@ public class HorarioFragment extends Fragment {
                             if (numberPickerCurso.getDisplayedValues()[i].equals(String.valueOf(task.getResult().getValue()))) {
                                 numberPickerCurso.setValue(i);
                                 encontrado = true;
+                                actualizarImagen();
                             }
                         }
                     }
                 }
             });
         }
-
-        actualizarImagen();
 
         // Configuración del botón para buscar horario
         buscarHorario.setOnClickListener(new View.OnClickListener() {
