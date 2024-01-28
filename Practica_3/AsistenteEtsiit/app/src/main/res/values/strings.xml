@@ -78,4 +78,5 @@
     <string name="fi_pagina_web">Página Web</string>
     <string name="fi_horario">Horario</string>
     <string name="fh_buscar_horario">Buscar Horario</string>
+    <string name="fh_grado_curso_cuatrimestre">Grado, Curso, Cuatrimestre</string>
 </resources>
