@@ -112,26 +112,26 @@ public class HorarioFragment extends Fragment {
                                 encontrado = true;
                             }
                         }
-                    }
-                }
-            });
 
-            mDatabase.child("user").child(userId).child("curso").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if (!task.isSuccessful()) {
-                        Log.e("firebase", "Error getting data", task.getException());
-                    }
-                    else {
-                        boolean encontrado = false;
+                        mDatabase.child("user").child(userId).child("curso").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                if (!task.isSuccessful()) {
+                                    Log.e("firebase", "Error getting data", task.getException());
+                                }
+                                else {
+                                    boolean encontrado = false;
 
-                        for (int i = 0; i < numberPickerCurso.getDisplayedValues().length && !encontrado; ++i){
-                            if (numberPickerCurso.getDisplayedValues()[i].equals(String.valueOf(task.getResult().getValue()))) {
-                                numberPickerCurso.setValue(i);
-                                encontrado = true;
-                                actualizarImagen();
+                                    for (int i = 0; i < numberPickerCurso.getDisplayedValues().length && !encontrado; ++i){
+                                        if (numberPickerCurso.getDisplayedValues()[i].equals(String.valueOf(task.getResult().getValue()))) {
+                                            numberPickerCurso.setValue(i);
+                                            encontrado = true;
+                                            actualizarImagen();
+                                        }
+                                    }
+                                }
                             }
-                        }
+                        });
                     }
                 }
             });
