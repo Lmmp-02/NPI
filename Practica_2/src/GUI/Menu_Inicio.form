@@ -170,7 +170,7 @@
             <Property name="text" type="java.lang.String" value="Profesorado"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder thickness="4">
+                <LineBorder roundedCorners="true" thickness="6">
                   <Color PropertyName="color" blue="33" green="99" red="ff" type="rgb"/>
                 </LineBorder>
               </Border>
@@ -188,7 +188,7 @@
             <Property name="text" type="java.lang.String" value="Tr&#xe1;mites"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder thickness="4">
+                <LineBorder roundedCorners="true" thickness="6">
                   <Color PropertyName="color" blue="33" green="99" red="ff" type="rgb"/>
                 </LineBorder>
               </Border>
@@ -206,7 +206,7 @@
             <Property name="text" type="java.lang.String" value="Docencia"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder thickness="4">
+                <LineBorder roundedCorners="true" thickness="6">
                   <Color PropertyName="color" blue="33" green="99" red="ff" type="rgb"/>
                 </LineBorder>
               </Border>
@@ -224,7 +224,7 @@
             <Property name="text" type="java.lang.String" value="Comedor"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder thickness="4">
+                <LineBorder roundedCorners="true" thickness="6">
                   <Color PropertyName="color" blue="33" green="99" red="ff" type="rgb"/>
                 </LineBorder>
               </Border>
@@ -242,7 +242,7 @@
             <Property name="text" type="java.lang.String" value="Localizaci&#xf3;n"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder roundedCorners="true" thickness="4">
+                <LineBorder roundedCorners="true" thickness="6">
                   <Color PropertyName="color" blue="33" green="99" red="ff" type="rgb"/>
                 </LineBorder>
               </Border>

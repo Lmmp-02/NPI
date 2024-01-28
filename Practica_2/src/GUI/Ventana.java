@@ -43,6 +43,7 @@ public class Ventana extends javax.swing.JFrame {
     private Seleccion_Tipo_Menu sel_tipo_menu;
     private Localizacion_Profesorado localizacion_profes;
     private Menu_Docencia menu_docencia;
+    private Menu_Tramites menu_tramites;
     
     private int estado;
     
@@ -53,8 +54,10 @@ public class Ventana extends javax.swing.JFrame {
         //Ponemos interfaz en pantalla completa
         //this.setExtendedState(Ventana.MAXIMIZED_BOTH);
         
-        ajustarIconoBoton(boton_home, "../Images/home.jpg");
-        ajustarIconoBoton(boton_ayuda, "../Images/ayuda.jpg");
+        ajustarIconoBoton(boton_home, "../Images/casa.png");
+        ajustarIconoBoton(boton_ayuda, "../Images/chat.png");
+        ajustarIconoBoton(boton_anterior, "../Images/anterior.png");
+        ajustarIconoBoton(boton_siguiente, "../Images/siguiente.png");
         
         //Inicializamos los diferentes JPanel
         menu_inicio = new Menu_Inicio(this);
@@ -69,6 +72,7 @@ public class Ventana extends javax.swing.JFrame {
         localizacion_profes = new Localizacion_Profesorado(this);
         confirmacion_pago = new Confirmacion_Pago(this);
         menu_docencia = new Menu_Docencia(this);
+        menu_tramites = new Menu_Tramites(this);
 
         //Activamos el cursor personalizado
         this.set_cursor_personalizado();
@@ -240,6 +244,11 @@ public class Ventana extends javax.swing.JFrame {
         estado = 12;
     }
     
+    public void botonTramitesPulsado(){
+        muestraPanel(menu_tramites);
+        estado = 13;
+    }
+    
     public void gestoSwipeRight(){
         siguiente();
     }
@@ -351,7 +360,7 @@ public class Ventana extends javax.swing.JFrame {
                 estado = 9;
                 break;
             case 6: //Menú Comedor
-                muestraPanel(menu_inicio); //Cambiarlo pero no sé cuál es su función
+                muestraPanel(menu_inicio);
                 estado = 0;
                 break;
             case 7: //Panel menu diario 
@@ -373,6 +382,10 @@ public class Ventana extends javax.swing.JFrame {
                 estado = 0;
                 break;
             case 12:
+                muestraPanel(menu_inicio);
+                estado = 0;
+                break;
+            case 13:
                 muestraPanel(menu_inicio);
                 estado = 0;
                 break;
@@ -500,11 +513,11 @@ public class Ventana extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         contenedor_principal = new javax.swing.JPanel();
         botones_inicio = new javax.swing.JPanel();
-        boton_anterior = new javax.swing.JButton();
-        boton_siguiente = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         boton_home = new javax.swing.JButton();
         boton_ayuda = new javax.swing.JButton();
+        boton_anterior = new javax.swing.JButton();
+        boton_siguiente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 255));
@@ -519,7 +532,7 @@ public class Ventana extends javax.swing.JFrame {
         contenedor_principal.setLayout(contenedor_principalLayout);
         contenedor_principalLayout.setHorizontalGroup(
             contenedor_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1060, Short.MAX_VALUE)
         );
         contenedor_principalLayout.setVerticalGroup(
             contenedor_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -529,44 +542,20 @@ public class Ventana extends javax.swing.JFrame {
         botones_inicio.setBackground(new java.awt.Color(255, 153, 0));
         botones_inicio.setOpaque(false);
 
-        boton_anterior.setText("Atrás");
-        boton_anterior.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_anteriorActionPerformed(evt);
-            }
-        });
-
-        boton_siguiente.setText("Siguiente");
-        boton_siguiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_siguienteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout botones_inicioLayout = new javax.swing.GroupLayout(botones_inicio);
         botones_inicio.setLayout(botones_inicioLayout);
         botones_inicioLayout.setHorizontalGroup(
             botones_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botones_inicioLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(boton_anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 415, Short.MAX_VALUE)
-                .addComponent(boton_siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(174, 174, 174))
+            .addGap(0, 1060, Short.MAX_VALUE)
         );
         botones_inicioLayout.setVerticalGroup(
             botones_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botones_inicioLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(botones_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boton_anterior)
-                    .addComponent(boton_siguiente))
-                .addContainerGap(23, Short.MAX_VALUE))
+            .addGap(0, 102, Short.MAX_VALUE)
         );
 
         jPanel2.setOpaque(false);
 
-        boton_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/home.jpg"))); // NOI18N
+        boton_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/casa.png"))); // NOI18N
         boton_home.setAlignmentY(0.9F);
         boton_home.setBorderPainted(false);
         boton_home.setContentAreaFilled(false);
@@ -579,7 +568,7 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
-        boton_ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ayuda.jpg"))); // NOI18N
+        boton_ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/chat.png"))); // NOI18N
         boton_ayuda.setBorderPainted(false);
         boton_ayuda.setContentAreaFilled(false);
         boton_ayuda.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -589,25 +578,54 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
+        boton_anterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/anterior.png"))); // NOI18N
+        boton_anterior.setBorderPainted(false);
+        boton_anterior.setContentAreaFilled(false);
+        boton_anterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_anteriorActionPerformed(evt);
+            }
+        });
+
+        boton_siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/siguiente.png"))); // NOI18N
+        boton_siguiente.setBorderPainted(false);
+        boton_siguiente.setContentAreaFilled(false);
+        boton_siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_siguienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(boton_home, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110)
+                .addComponent(boton_home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(251, 251, 251)
+                .addComponent(boton_anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(boton_siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(boton_ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addGap(102, 102, 102))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(boton_home, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                    .addComponent(boton_ayuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(27, 27, 27))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(boton_ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boton_home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(boton_siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boton_anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -618,7 +636,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botones_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE))
+                    .addComponent(contenedor_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE))
                 .addContainerGap())
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -705,7 +723,8 @@ public class Ventana extends javax.swing.JFrame {
         
         @Override
         public void paint(Graphics g){
-            imagen = new ImageIcon(getClass().getResource("../Images/Inicio.png")).getImage();
+            //imagen = new ImageIcon(getClass().getResource("../Images/Inicio.png")).getImage();
+            imagen = new ImageIcon(getClass().getResource("../Images/app.png")).getImage();
             
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
             setOpaque(false);

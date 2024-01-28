@@ -115,8 +115,9 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         titulo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setOpaque(false);
 
-        ComBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ComBox1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         ComBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-1", "0", "1", "2", "3", "4", "5" }));
         ComBox1.setToolTipText("");
         ComBox1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
@@ -126,7 +127,7 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         });
 
         ComBox2.setBackground(new java.awt.Color(255, 153, 51));
-        ComBox2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ComBox2.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         ComBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clase", "Despacho" }));
         ComBox2.setOpaque(false);
         ComBox2.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
@@ -140,7 +141,7 @@ public class Seleccion_Clases extends javax.swing.JPanel {
             }
         });
 
-        ComBox3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ComBox3.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         ComBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
         ComBox3.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
@@ -149,38 +150,37 @@ public class Seleccion_Clases extends javax.swing.JPanel {
         });
 
         titulo.setBackground(new java.awt.Color(255, 255, 255));
-        titulo.setFont(new java.awt.Font("Castellar", 1, 36)); // NOI18N
-        titulo.setForeground(new java.awt.Color(255, 153, 51));
-        titulo.setText("Seleccion Clases");
+        titulo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        titulo.setText("Selección de Clases");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(ComBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ComBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ComBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(254, 254, 254)
+                .addComponent(ComBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ComBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ComBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(267, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(titulo)
-                .addGap(35, 35, 35))
+                .addGap(391, 391, 391))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
+                .addGap(396, 396, 396)
                 .addComponent(titulo)
-                .addGap(143, 143, 143)
+                .addGap(123, 123, 123)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ComBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                     .addComponent(ComBox1)
-                    .addComponent(ComBox3))
-                .addContainerGap(248, Short.MAX_VALUE))
+                    .addComponent(ComBox2)
+                    .addComponent(ComBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(687, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
