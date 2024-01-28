@@ -114,13 +114,6 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
             //Creamos usuario en Kommunicate
             KMUser kmuser = new KMUser();
             kmuser.setUserId(uid);  // You can set any unique user ID
-            //user.setDisplayName(<DISPLAY_NAME>); // Pass the display name of the user
-
-            Map<String, String> metadata = new HashMap<>();
-            metadata.put("Department" , "Mobility"); // This is an example of updating metadata.
-            metadata.put("Designation" , "Software Engineer II"); // This is an example of updating metadata.
-
-            kmuser.setMetadata(metadata);
 
             //Inicio de sesión del usuario
             Kommunicate.login(this, kmuser, new KMLoginHandler() {
