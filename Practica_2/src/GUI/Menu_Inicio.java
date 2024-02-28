@@ -109,6 +109,7 @@ public class Menu_Inicio extends javax.swing.JPanel {
 
         jPanel5.setOpaque(false);
 
+        boton_profesorado.setBackground(new java.awt.Color(255, 255, 255));
         boton_profesorado.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_profesorado.setText("Profesorado");
         boton_profesorado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 6, true));
@@ -118,6 +119,7 @@ public class Menu_Inicio extends javax.swing.JPanel {
             }
         });
 
+        boton_tramites.setBackground(new java.awt.Color(255, 255, 255));
         boton_tramites.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_tramites.setText("Trámites");
         boton_tramites.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 6, true));
@@ -127,6 +129,7 @@ public class Menu_Inicio extends javax.swing.JPanel {
             }
         });
 
+        boton_docencia.setBackground(new java.awt.Color(255, 255, 255));
         boton_docencia.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_docencia.setText("Docencia");
         boton_docencia.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 6, true));
@@ -136,6 +139,7 @@ public class Menu_Inicio extends javax.swing.JPanel {
             }
         });
 
+        boton_comedor.setBackground(new java.awt.Color(255, 255, 255));
         boton_comedor.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_comedor.setText("Comedor");
         boton_comedor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 6, true));
@@ -145,6 +149,7 @@ public class Menu_Inicio extends javax.swing.JPanel {
             }
         });
 
+        boton_localizacion.setBackground(new java.awt.Color(255, 255, 255));
         boton_localizacion.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_localizacion.setText("Localización");
         boton_localizacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 6, true));
@@ -226,7 +231,7 @@ public class Menu_Inicio extends javax.swing.JPanel {
     }//GEN-LAST:event_boton_comedorActionPerformed
 
     private void boton_tramitesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_tramitesActionPerformed
-        // TODO add your handling code here:
+        padre.botonTramitesPulsado();
     }//GEN-LAST:event_boton_tramitesActionPerformed
 
     private void boton_localizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_localizacionActionPerformed

@@ -43,8 +43,8 @@ public class Confirmacion_Pago extends javax.swing.JPanel {
     private String codigo;
     private String datos;
     
-    int WIDTH = 300;
-    int HEIGHT = 300;
+    int WIDTH = 600;
+    int HEIGHT = 600;
     
     private static final String UTF_8 = "UTF-8";
     
@@ -125,12 +125,15 @@ public class Confirmacion_Pago extends javax.swing.JPanel {
 
         setOpaque(false);
 
+        jLabel_titulo1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel_titulo1.setFont(new java.awt.Font("Segoe UI", 0, 38)); // NOI18N
         jLabel_titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_titulo1.setText("Emitiendo NFC...");
 
+        boton_si.setBackground(new java.awt.Color(255, 255, 255));
         boton_si.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         boton_si.setText("Volver al menú");
+        boton_si.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0), 4));
         boton_si.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_siActionPerformed(evt);
@@ -141,34 +144,41 @@ public class Confirmacion_Pago extends javax.swing.JPanel {
         jLabel_titulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_titulo2.setText("Pago desde la App");
 
-        txtQR.setText("jLabel1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boton_si, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel_titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel_titulo2, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel_titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 245, Short.MAX_VALUE)
+                        .addComponent(txtQR, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(217, 217, 217))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel_titulo2)
+                .addGap(366, 366, 366))
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(txtQR, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(382, 382, 382)
+                .addComponent(boton_si, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel_titulo2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtQR, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(169, 169, 169)
+                .addComponent(jLabel_titulo2)
+                .addGap(329, 329, 329)
+                .addComponent(txtQR, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                .addGap(195, 195, 195)
                 .addComponent(jLabel_titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(boton_si, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(boton_si, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(380, 380, 380))
         );
     }// </editor-fold>//GEN-END:initComponents
 

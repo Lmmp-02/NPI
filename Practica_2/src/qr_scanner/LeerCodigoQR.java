@@ -21,6 +21,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.logging.Level;
+import javax.swing.JFrame;
+
 
 /**
  *
@@ -57,24 +59,20 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(null);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setLayout(null);
-        jPanel1.add(jPanel2, null);
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 370, 230));
 
         jLabel1.setText("Lectura");
-        jLabel1.setBounds(20, 270, jLabel1.getPreferredSize().width, jLabel1.getPreferredSize().height);
-        jPanel1.add(jLabel1);
-
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         campo_resultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campo_resultadoActionPerformed(evt);
             }
         });
-        
-        campo_resultado.setBounds(70, 260, 320, jPanel1.getPreferredSize().height);
-        jPanel1.add(campo_resultado);
+        jPanel1.add(campo_resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 320, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,45 +142,64 @@ public class LeerCodigoQR extends javax.swing.JFrame implements Runnable,ThreadF
         panel.setPreferredSize(size);
         panel.setFPSDisplayed(true);
         
-        panel.setBounds(0,0,470,300);
-        jPanel2.add(panel);
+        jPanel2.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,470,300));
         
         executor.execute(this);
     }
     
+
     @Override
-    public void run(){
-        do{
+    public void run() {
+        while (true) {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ex) {
                 java.util.logging.Logger.getLogger(LeerCodigoQR.class.getName()).log(Level.SEVERE, null, ex);
+                return; // Finaliza el hilo si se interrumpe
             }
+
             Result resultado = null;
             BufferedImage imagen = null;
-            
-            if(webcam.isOpen()){
+
+            if (webcam.isOpen()) {
                 imagen = webcam.getImage();
-                if(imagen == null){
+                if (imagen == null) {
                     continue;
                 }
             }
-            
+
             LuminanceSource fuente = new BufferedImageLuminanceSource(imagen);
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(fuente));
-            
+
             try {
                 resultado = new MultiFormatReader().decode(bitmap);
             } catch (NotFoundException ex) {
-                java.util.logging.Logger.getLogger(LeerCodigoQR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                continue; // No se encontró un código QR
             }
-            
-            if(resultado != null){
-                campo_resultado.setText(resultado.getText());
+
+            if (resultado != null) {
+                String textoQR = resultado.getText();
+                javax.swing.SwingUtilities.invokeLater(() -> {
+                    campo_resultado.setText(textoQR);
+
+                    // Crear y mostrar la ventana Horario
+                    Horario horario = new Horario();
+                    horario.actualizarImagen(textoQR);
+                    JFrame horarioFrame = new JFrame("Horario");
+                    horarioFrame.setContentPane(horario);
+                    horarioFrame.pack();
+                    horarioFrame.setVisible(true);
+
+                    // Cierra la ventana actual y libera la webcam
+                    this.dispose();
+                    webcam.close();
+                });
+                break; // Detiene el bucle, finaliza el hilo
             }
-            
-        }while(true);
+        }
     }
+
+
     
     @Override
     public Thread newThread(Runnable r){

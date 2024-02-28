@@ -18,9 +18,6 @@ import GUI.Seleccion_Clases;
 
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.State;
-import static com.leapmotion.leap.Gesture.Type.TYPE_CIRCLE;
-import static com.leapmotion.leap.Gesture.Type.TYPE_KEY_TAP;
-import static com.leapmotion.leap.Gesture.Type.TYPE_SCREEN_TAP;
 import static com.leapmotion.leap.Gesture.Type.TYPE_SWIPE;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
@@ -41,8 +38,8 @@ class SampleListener extends Listener {
     private final Ventana ventana;
     
     private int frames_ultimo_gesto;
-    private int estado_salida;
-    private int contador_salida;
+    private Integer estado_salida;
+    private Integer contador_salida;
     
     private int frames_gesto_salida;
     private boolean palmadaDetectada = false;
@@ -81,8 +78,12 @@ class SampleListener extends Listener {
     //Gesto customizado para salirse de la app
     private void gestoSalir(Frame frame){
         contador_salida++;
-        
-        if(contador_salida > 100){
+        /*
+        System.out.println("Estado: "+Integer.toString(estado_salida) + "\tContador salida: "
+                + Integer.toString(contador_salida) + "\tFingers count: "
+                + Integer.toString(frame.fingers().count())
+         );*/
+        if(contador_salida > 50){
             switch(estado_salida){
                 case 0:
                     if(frame.fingers().count() == 1){
@@ -90,6 +91,7 @@ class SampleListener extends Listener {
                         contador_salida = 0;
                     }
                     else{
+                        
                         estado_salida = 0;
                         contador_salida = 0;
                     }
@@ -100,11 +102,13 @@ class SampleListener extends Listener {
                         estado_salida = 2;
                         contador_salida = 0;
                     }
-                    else{
-                        estado_salida = 0;
-                        contador_salida = 0;
+                    else {
+                        if(frame.fingers().count() != 1){
+                   
+                            estado_salida = 0;
+                            contador_salida = 0;
+                        }
                     }
-                    
                     break;
                 case 2:
                     if(frame.fingers().count() == 3){
@@ -112,8 +116,11 @@ class SampleListener extends Listener {
                         contador_salida = 0;
                     }
                     else{
-                        estado_salida = 0;
-                        contador_salida = 0;
+                        if(frame.fingers().count() != 2){
+                   
+                            estado_salida = 0;
+                            contador_salida = 0;
+                        }
                     }
                     
                     break;
@@ -123,8 +130,11 @@ class SampleListener extends Listener {
                         contador_salida = 0;
                     }
                     else{
-                        estado_salida = 0;
-                        contador_salida = 0;
+                        if(frame.fingers().count() != 3){
+                   
+                            estado_salida = 0;
+                            contador_salida = 0;
+                        }
                     }
                     
                     break;
@@ -134,8 +144,11 @@ class SampleListener extends Listener {
                         contador_salida = 0;
                     }
                     else{
-                        estado_salida = 0;
-                        contador_salida = 0;
+                        if(frame.fingers().count() != 4){
+                   
+                            estado_salida = 0;
+                            contador_salida = 0;
+                        }
                     }
                     
                     break;
@@ -146,8 +159,11 @@ class SampleListener extends Listener {
                         contador_salida = 0;
                     }
                     else{
-                        estado_salida = 0;
-                        contador_salida = 0;
+                        if(frame.fingers().count() != 5){
+                   
+                            estado_salida = 0;
+                            contador_salida = 0;
+                        }
                     }
                     
                     break;
@@ -169,7 +185,7 @@ class SampleListener extends Listener {
         //Gesto customizado para salirse de la app
         gestoSalir(frame);
         //Feedback de lo que va detectando Leap cada 60 frames
-        /*
+        
         if(count % 60 == 0){
             int s = count / 60;
             
@@ -211,7 +227,7 @@ class SampleListener extends Listener {
                     }
             }        
         }
-        */
+        
         // La lista contiene objetos de tipo Gesture, debemos convertir
             // ese objeto a la instancia de la subclase.
             // No se puede hacer Type Casting, usamos los constructores

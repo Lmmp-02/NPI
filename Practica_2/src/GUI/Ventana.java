@@ -21,6 +21,9 @@ import javax.swing.*;
 import java.util.List;
 
 import p2_npi.Caminos;
+import qr_scanner.Horario;
+//import qr_scanner.LeerCodigoQR;
+
 
 /**
  *
@@ -44,6 +47,8 @@ public class Ventana extends javax.swing.JFrame {
     private Localizacion_Profesorado localizacion_profes;
     private Menu_Docencia menu_docencia;
     private Menu_Tramites menu_tramites;
+    private JuegoTrivia juego_trivia;
+    private LecturaQR lectorQR;
     
     private int estado;
     
@@ -55,7 +60,7 @@ public class Ventana extends javax.swing.JFrame {
         //this.setExtendedState(Ventana.MAXIMIZED_BOTH);
         
         ajustarIconoBoton(boton_home, "../Images/casa.png");
-        ajustarIconoBoton(boton_ayuda, "../Images/chat.png");
+        ajustarIconoBoton(boton_ayuda, "../Images/gamepad.png");
         ajustarIconoBoton(boton_anterior, "../Images/anterior.png");
         ajustarIconoBoton(boton_siguiente, "../Images/siguiente.png");
         
@@ -72,7 +77,8 @@ public class Ventana extends javax.swing.JFrame {
         localizacion_profes = new Localizacion_Profesorado(this);
         confirmacion_pago = new Confirmacion_Pago(this);
         menu_docencia = new Menu_Docencia(this);
-        menu_tramites = new Menu_Tramites(this);
+        menu_tramites = new Menu_Tramites(this);        
+        lectorQR = new LecturaQR(this);
 
         //Activamos el cursor personalizado
         this.set_cursor_personalizado();
@@ -228,8 +234,22 @@ public class Ventana extends javax.swing.JFrame {
         sel_clases.cambioComboxCaja(estado);
     }
     
+    public void botonDocenciaQR(){
+
+        muestraPanel(lectorQR);
+        estado = 24;
+    }
+    
     public void botonLocalizacionEspaciosComunesPulsado(){
         //Por implementar - Ir a menu_seleccion_espacios_comunes (estado 5)
+        String[] fotos = new String[4];
+        String[] textos = new String[4];
+
+        for (int i = 0; i < 4; i++) {
+            fotos[i] = "./recursos/comunes/fotos/" + i+ ".jpg";
+            textos[i] = "./recursos/comunes/textos/" +i+ ".txt";
+        }
+        sel_espacios_comunes.cargaImagenes(fotos,textos);
         muestraPanel(sel_espacios_comunes);
         estado = 3; 
     }
@@ -255,6 +275,12 @@ public class Ventana extends javax.swing.JFrame {
     
     public void gestoSwipeLeft(){
         anterior();
+    }
+    
+    public void botonJuego(){
+        juego_trivia = new JuegoTrivia(this);
+        muestraPanel(juego_trivia);
+        estado = 60;
     }
     
     public void gestoSwipeUp(){
@@ -310,6 +336,10 @@ public class Ventana extends javax.swing.JFrame {
     
     //Método de transición cuando se haga swipe a la izquierda
     public void anterior(){
+        if(juego_trivia != null){
+            juego_trivia.finalizarJuego();
+            juego_trivia = null;
+        }
         System.out.println("Anterior --> Estado " + estado );
         switch(estado){
             case 0: //Menu inicio
@@ -330,6 +360,9 @@ public class Ventana extends javax.swing.JFrame {
                 estado = 22;
                 sel_clases.cambioComboxCaja(estado);
                 break;
+            case 24:
+                muestraPanel(menu_docencia);
+                estado= 13;
             case 3: //Seleccion espacios comunes
                 muestraPanel(menu_localizacion);
                 estado = 1;
@@ -389,12 +422,25 @@ public class Ventana extends javax.swing.JFrame {
                 muestraPanel(menu_inicio);
                 estado = 0;
                 break;
+                //Fin juego trivia
+            case 60:
+                muestraPanel(menu_inicio);
+                if(juego_trivia != null){
+                    juego_trivia.finalizarJuego();
+                    juego_trivia = null;
+                }
+                estado = 0;
+                break;
         }
         System.out.println(" es " + estado +"\n");
     }
     
     //Método de transición cuando se haga swipe a la derecha
     public void siguiente(){
+        if(juego_trivia != null){
+        juego_trivia.finalizarJuego();
+        juego_trivia = null;
+        }
         System.out.println("Siguiente --> Estado " + estado );
         switch(estado){
             case 21:
@@ -426,9 +472,12 @@ public class Ventana extends javax.swing.JFrame {
                 estado = 41;
                 break;
             case 3: //Seleccion espacios comunes
-                muestraPanel(carrusel_ruta);
-                estado = 42;
+                muestraPanel(menu_localizacion);
+                estado = 1;
                 break;
+            case 24:
+                muestraPanel(menu_docencia);
+                estado=13;
             case 41: //Carrusel ruta desde clases-despachos
                 muestraPanel(confirmacion_fin);
                 estado = 51;
@@ -469,12 +518,24 @@ public class Ventana extends javax.swing.JFrame {
                 muestraPanel(menu_inicio);
                 estado = 0;
                 break;
+            case 60:
+                muestraPanel(menu_inicio);
+                if(juego_trivia != null){
+                    juego_trivia.finalizarJuego();
+                    juego_trivia = null;
+                    }
+                estado = 0;
+                break;
         }
         System.out.println(" es " + estado +"\n");
     }
    
     //Método de transición al estado inicial
     public void reinicio(){
+        if(juego_trivia != null){
+        juego_trivia.finalizarJuego();
+        juego_trivia = null;
+        }
         muestraPanel(menu_inicio);
         estado = 0;           
     }
@@ -670,6 +731,7 @@ public class Ventana extends javax.swing.JFrame {
 
     private void boton_ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ayudaActionPerformed
         // TODO add your handling code here:
+        botonJuego();
     }//GEN-LAST:event_boton_ayudaActionPerformed
 
     /**
