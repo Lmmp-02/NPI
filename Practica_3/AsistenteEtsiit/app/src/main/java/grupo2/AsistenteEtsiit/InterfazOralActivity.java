@@ -114,13 +114,6 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
             //Creamos usuario en Kommunicate
             KMUser kmuser = new KMUser();
             kmuser.setUserId(uid);  // You can set any unique user ID
-            //user.setDisplayName(<DISPLAY_NAME>); // Pass the display name of the user
-
-            Map<String, String> metadata = new HashMap<>();
-            metadata.put("Department" , "Mobility"); // This is an example of updating metadata.
-            metadata.put("Designation" , "Software Engineer II"); // This is an example of updating metadata.
-
-            kmuser.setMetadata(metadata);
 
             //Inicio de sesión del usuario
             Kommunicate.login(this, kmuser, new KMLoginHandler() {
@@ -230,22 +223,14 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
             // Obtener los valores de $origen y $destino
             String origen = matcher_localizacion.group(1);
             String destino = matcher_localizacion.group(2);
+
             // Llamamos a la funcion de localizacion correspondiente
-            if(msg.matches(".*texto\\.$")){
-                //Por texto
-                //Necesito la funcion que las devuelve :)
-                //No estoy muy seguro de si se podrá implementar desde aqui, puede que necesitemos derivarlo
-                //al webhook
-                Toast.makeText(this, "Texto por implementar", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                //Por interfaz interactiva
-                Intent intent = new Intent(InterfazOralActivity.this, MuestraRutaActivity.class);
-                intent.putExtra("origen", origen);
-                intent.putExtra("destino", destino);
-                Toast.makeText(this, "Origen: " + origen + "\tDestino: " + destino, Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-            }
+            Intent intent = new Intent(InterfazOralActivity.this, MuestraRutaActivity.class);
+            intent.putExtra("origen", origen);
+            intent.putExtra("destino", destino);
+            Toast.makeText(this, "Origen: " + origen + "\tDestino: " + destino, Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+
         }
         // Si el bot pide leer QR para comedor
         else if(msg.equals("Activando lector de QR...")) {
@@ -269,7 +254,6 @@ public class InterfazOralActivity extends AppCompatActivity implements KmPluginE
             Toast.makeText(this,"Salida de interfaz oral", Toast.LENGTH_SHORT).show();
             Kommunicate.closeConversationScreen(InterfazOralActivity.this);
             finish();
-
         }
         else{
             //Toast.makeText(this,"No encontrada accion especial", Toast.LENGTH_SHORT).show();

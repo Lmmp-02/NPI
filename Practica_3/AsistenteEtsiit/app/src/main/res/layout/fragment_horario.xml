@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HorarioFragment">
+
+
+    <Button
+        android:id="@+id/fh_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="@string/fh_buscar_horario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/fh_imagen"
+        android:layout_width="369dp"
+        android:layout_height="404dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="fitCenter"
+        android:src="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fh_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/fh_grado_curso_cuatrimestre"
+        android:textColor="@color/etsiit"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/fh_buscar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <NumberPicker
+        android:id="@+id/fh_np_grado"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/fh_tv"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <NumberPicker
+        android:id="@+id/fh_np_curso"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/fh_tv"
+        app:layout_constraintEnd_toStartOf="@+id/fh_np_cuatri"
+        app:layout_constraintStart_toEndOf="@+id/fh_np_grado" />
+
+    <NumberPicker
+        android:id="@+id/fh_np_cuatri"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/fh_tv"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

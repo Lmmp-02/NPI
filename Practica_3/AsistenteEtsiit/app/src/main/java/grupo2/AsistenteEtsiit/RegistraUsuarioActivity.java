@@ -210,6 +210,12 @@ public class RegistraUsuarioActivity extends AppCompatActivity {
             nuevasOpciones.add("4IS");
             nuevasOpciones.add("4IC");
             nuevasOpciones.add("4SI");
+            nuevasOpciones.add("3B");
+            nuevasOpciones.add("3A");
+            nuevasOpciones.add("2B");
+            nuevasOpciones.add("2A");
+            nuevasOpciones.add("1B");
+            nuevasOpciones.add("1A");
         } else{
             nuevasOpciones.add("4A");
             nuevasOpciones.add("4B");
