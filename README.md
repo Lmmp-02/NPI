@@ -37,7 +37,7 @@ Esta práctica consiste en un proyecto implementado en Java con NetBeans. Dispon
 
 Inicialmente, Ventana muestra la clase Menu\_Inicio, que ofrece una vista con diferentes botones de los diferentes submenús de la aplicación. Al pulsar cada uno de ellos, se muestra el submenú de cada sección. En nuestro caso, hemos desarrollado dos secciones de forma completa: Localización (tanto de clases y despachos como de espacios comunes) y Comedor (donde se muestran los menús y se da la posibilidad de pagarlos usando la aplicación de Android de la siguiente práctica).
 
-<span>![</span><span>Portada aplicación Leap</span><span>]</span><span>(</span><span>https://raw.githubusercontent.com/Lmmp-02/NPI/readme_assets/portada.jpg</span><span>)</span>
+<span>![</span><span>Portada aplicación Leap</span><span>]</span><span>(</span><span>https://raw.github.com/Lmmp-02/NPI/readme_assets/portada.jpg</span><span>)</span>
 
 ### LeapMotion
 El mecanismo de manejo de la aplicación se basa en la detección de manos con Leap Motion. Con el mismo, realizamos las siguientes tareas:
@@ -56,14 +56,14 @@ La aplicación del Leap hace uso de la webcam enseñando por pantalla, mediante 
 
 A continuación, en la pantalla aparece el horario correspondiente al código QR escaneado.
 
-<span>![</span><span>Menú Docencia</span><span>]</span><span>(</span><span>https://raw.githubusercontent.com/Lmmp-02/NPI/readme_assets/docencia.jpg</span><span>)</span>
+<span>![</span><span>Menú Docencia</span><span>]</span><span>(</span><span>https://raw.github.com/Lmmp-02/NPI/readme_assets/docencia.jpg</span><span>)</span>
 
 
 ### Trámites
 
 En esta sección se encuentran únicamente tres botones, cada uno simbolizando distintas tareas disponibles: solicitudes genéricas, obtención de certificados académicos y gestión de citas en la secretaría. Todas estas operaciones se efectúan mediante la plataforma electrónica de la universidad.
 
-<span>![</span><span>Menú Trámites</span><span>]</span><span>(</span><span>https://raw.githubusercontent.com/Lmmp-02/NPI/readme_assets/tramites.jpg</span><span>)</span>
+<span>![</span><span>Menú Trámites</span><span>]</span><span>(</span><span>https://raw.github.com/Lmmp-02/NPI/readme_assets/tramites.jpg</span><span>)</span>
 
 ### Profesorado
 
