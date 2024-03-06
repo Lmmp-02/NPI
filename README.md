@@ -182,3 +182,79 @@ El funcionamiento del selector de servicios externos es realmente muy similar al
 Un *uri* es una cadena de caracteres que identifica un recurso en un sistema de manera única. Aplicado a las localizaciones se incluyen en él el protocolo o formato utilizado, las coordenadas de la localización, y el nombre de ésta. En nuestro caso no incluimos coordenadas ya que Maps es capaz de obtenerlas mediante el nombre (que normalmente incluye la dirección).
 
 <span>![</span><span>Servicios Externos</span><span>]</span><span>(</span><span>https://raw.githubusercontent.com/Lmmp-02/NPI/readme_assets/servext.jpg}</span><span>)</span>
+
+## Interfaz oral
+
+### Introducción
+La aplicación anterior cuenta con un asistente de voz virtual, al que hemos llamado *WaluigiBot*. Para su implementación, hemos usado la plataforma DialogFlow ES de Google, apoyada por un *webhook* que puede acceder a la información que hemos guardado en nuestra base de datos de Firebase. Para conectar el bot de DialogFlow con nuestra aplicación, utilizamos la interfaz de la plataforma *Kommunicate*.
+
+En esta sección, vamos a indagar en la implementación de este sistema.
+
+### Integración con la app
+
+Tal y como hemos comentado, hemos empleado la interfaz y la API de *Kommunicate* para la integración de *WaluigiBot* en la aplicación. La clase *InterfazOralActivity* es la encargada de ello. Cuando el usuario pulsa en el menú principal la opción del asistente, se sigue el siguiente flujo de acción:
+
+- La aplicación muestra una pantalla de carga de la interfaz oral.
+- Si el usuario no ha dado permisos para usar el micrófono a la aplicación, se le piden. En caso de que no los dé, la interfaz oral deshabilita la opción de usar el micrófono, de forma que el usuario solo puede comunicarse empleando un chat de texto. 
+- Creamos la interfaz oral empleando la API de \textit{Kommunicate}.
+    - Conectamos la aplicación con nuestro bot llamando a la función \textit{Kommunicate.init} y especificando el id de nuestro bot. Además, habilitamos sus opciones de TTS y STT para que, efectivamente, tengamos una interfaz oral.
+    - Creamos un usuario de \textit{Kommunicate} para nuestro usuario actual. Este usuario comparte la misma ID que la autenticación de Firebase, de forma que podemos identificar fácilmente al usuario en el chat de voz.
+    - Iniciamos sesión con dicho usuario, y creamos una conversación con el bot si no existe. En caso de tener ya una, la abrimos.
+    - 
+El resultado de los anteriores pasos es la interfaz que se puede ver en la siguiente imagen. Cabe destacar que los colores que emplea la interfaz han sido modificados para que combinen mejor con el estilo de la app, usando para ello el archivo *applozic-settings.json*.
+
+<span>![</span><span>Vista de la interfaz oral. En la esquina inferior derecha, tenemos el botón para activar el \textit{Speech To Text}, representado por el micrófono.</span><span>]</span><span>(</span><span>https://raw.githubusercontent.com/Lmmp-02/NPI/readme_assets/interfaz-kommunicate.jpeg}</span><span>)</span>
+
+### Webhook
+DialogFlow ES ofrece un estupendo modelo de reconocimiento de \textit{intents}, pero tiene bastantes limitaciones cuando la respuesta que se espera del bot cambia mucho según los parámetros que se le pasan al bot. Es por esto que nos hemos visto empujados a implementar un \textit{webhook}
+
+Un \textit{webhook} es un servidor externo que ayuda a DialogFlow a atender aquellas peticiones más complejas, o que necesiten consultar información de la base de datos de Firebase. DialogFlow permite configurar ciertos \textit{intents} para que, en vez de manejarlos por sí mismo, mande la información de la petición a nuestro servidor en formato JSON, y allí nos encarguemos de gestionar la petición y responder de forma adecuada. Este mecanismo tiene también la ventaja de permitir la consulta de datos en nuestra base de datos de Firebase, compartiéndola con la aplicación Android.\\
+
+Para montar el servidor, hemos empleado la plataforma \textit{Glitch}, que nos permite montar dicho servidor. El lenguaje que usaremos en el mismo será \textit{Javascript}, en conjunción con el framework \textit{express}. Nuestro servidor posee dos archivos principales: 
+
+- *package.json*: En él, se especifican los recursos que se utilizan en el servidor, de forma que al iniciarse se descargan las dependencias ahí presentes. De entre estos recursos, podemos destacar la librería de \textit{dialogflow-fulfillment}, que nos permitirá enviar respuestas y contextos de vuelta a DialogFlow.- - *server.js*: Aquí se implementa la lógica del servidor.
+
+DialogFlow envía a la información al servidor mediante el puerto 3000, con peticiones POST en formato JSON. De dicho JSON podemos obtener toda la información referente al \textit{intent} activo, los parámetros detectados y los diferentes contextos activos. Por tanto, nuestro archivo \textit{server.js} escucha dicho puerto, e implementa las funciones de manejo de peticiones dentro de la sección de POST.
+
+### Funcionalidades
+
+En esta sección, vamos a realizar un recorrido por todas las funcionalidades que hemos implementado en nuestra interfaz oral.
+
+#### Consultas sobre profesores
+En primer lugar, el bot es capaz de responder consultas simples sobre cierto profesor. Concretamente, pueden formularse las siguientes peticiones:
+
+- ConsultaDespacho/ConsultaDespacho\_Contexto: Permite obtener el despacho de cierto profesor. El primero requiere que se especifique el profesor de forma explícita, mientras que el segundo toma del contexto de la conversación dicha información. Idealmente, las dos siguientes funcionalidades deberían tener también una versión "Contexto", pero hemos carecido del tiempo suficiente para extender esta funcionalidad a ellas. Además, una vez especificado el despacho, el asistente ofrece al usuario ir a dicha localización, pasando opcionalmente a la función de localización que veremos más adelante.
+- ConsultaProfesor\_Asignatura: Permite obtener las asignaturas que da cierto profesor, especificándole el mismo. Para ello, una vez obtiene el profesor, realiza una consulta en la BBDD para ver qué asignaturas imparte, y se las muestra al usuario.
+- ConsultaAsignatura\_Profesores: Permite obtener los profesores que imparten cierta asignatura, indicada por el usuario.
+
+#### Redirección a función de localización
+Nuestra interfaz oral también es capaz de captar origen y destino del usuario, para posteriormente llamar a la función de localización de la aplicación de Android con dichos parámetros. Para ello, implementamos una serie de intents dedicados a captar el origen y destino de diferentes maneras y en cualquier orden, tal y como se puede ver en la figura \ref{fig:io_grafolocalizacion}.
+
+<span>![</span><span>Grafo de flujo de los posibles diálogos para obtener origen y destino del usuario. Los cuadrados representan los contextos activos en cada momento, mientras que las flechas indican las transiciones posibles entre estados a través de diferentes \textit{intents}, indicados por los nombres sobre las flechas.</span><span>]</span><span>(</span><span>https://raw.githubusercontent.com/Lmmp-02/NPI/readme_assets/interfazoral_grafolocalizacion.jpeg}</span><span>)</span>
+
+En esta figura, vemos que en la mayoría de flechas tenemos dos versiones: una para localizaciones normales y otras para despachos. A estas últimas se les comunica que se quiere ir al despacho de cierto profesor, y la interfaz oral se encarga de encontrar el despacho mediante consulta a la base de datos. También vemos que existe la opción de decir dos localizaciones base en un único \textit{intent}, de forma que es el propio DialogFlow el que tiene que distinguir cuál de ellas es el origen y cuál de ellas es el destino. A veces confunde ambas si la frase está formulada de manera extraña, pero suele distinguirlas bien en la mayoría de casos.
+
+Una vez se obtiene toda la información del usuario y el mismo confirma que la ruta es correcta, redirigimos al usuario a la función de localización implementada anteriormente. Para hacer esto, se implementa un \textit{listener} de los mensajes que llegan del bot en nuestra aplicación. Si dicho mensaje coincide con cierta sintaxis, se reconocen automáticamente el origen y el destino, y la aplicación pasa a mostrar la ruta. Una vez se terminan las indicaciones, el programa vuelve a abrir la interfaz oral para seguir la conversación.
+
+#### \subsubsection{Redirección a pago de comedores}
+
+De forma similar al apartado anterior, también se puede emplear la interfaz oral para acceder a los diferentes métodos de pago del comedor que hemos implementado: tanto QR como NFC.
+
+<span>![</span><span>Grafo de flujo de los posibles diálogos para el pago del comedor.</span><span>]</span><span>(</span><span>https://raw.githubusercontent.com/Lmmp-02/NPI/readme_assets/interfazoral_grafopago.jpeg}</span><span>)</span>
+
+En la figura \ref{fig:io_grafopago}, podemos ver que un usuario puede acceder de manera directa a ambas funcionalidades, mientras que si no se concreta el método de pago, \textit{WaluigiBot} pregunta al usuario por cuál de ellos prefiere. \textit{PagoComedor\_Vacio\_Ayuda} informa al usuario de los tipos de pago disponibles en la aplicación.
+
+#### Consulta de horarios
+Un estudiante puede preguntar a la interfaz sobre su horario, pudiendo obtener información sobre qué clase tiene cierto día a cierta hora. En este caso de uso de la interfaz se utiliza mucha información contextual, como el día y hora actuales (si no se especifican), o el curso y grado del usuario (si el mismo está registrado, consultándose en la base de datos).
+
+Las conversaciones en este caso comienzan con el usuario pidiendo la clase que le toca ahora, o cierto día a cierta hora. El bot es capaz de reconocer correctamente las palabras 'hoy' y 'mañana' como días. Posteriormente, el bot puede seguir los siguientes flujos:
+
+- Si el usuario no se ha registrado en la aplicación y ha accedido como anónimo, le pediremos el grado y curso del que desea obtener la información. El contexto en este caso será 'PreguntaCurso', y una vez se cumplimenten los campos se seguirá el flujo de la conversación.
+- Si conocemos el grado y curso del usuario, pero este no se encuentra en la base de datos, el bot se disculpa diciendo que no puede consultar el horario del alumno, y preguntando si puede ayudarlo en otra cosa.
+- Si obtenemos el horario pero vemos que a dicha hora hay varias clases a la vez (grupos reducidos de prácticas), el bot pregunta al usuario el grupo de prácticas, guardando en el contexto 'PreguntaSubgrupo' las alternativas encontradas. Una vez el usuario especifique el grupo, se pasará al siguiente (y último) caso.
+- Finalmente, si el bot conoce la clase que le toca al estudiante, le informa tanto de la asignatura como del aula donde se imparte, ofreciendo al usuario ayuda para ir hasta allí.
+
+#### Consultas de menús del comedor
+Finalmente, el bot puede informar de qué hay para comer en los menús del comedor en cualquier día de la semana. También distingue entre menú general o vegetariano, preguntando al usuario cuál quiere en caso de no especificarlo.
+
+Tambien se incluye información sobre los horarios de la cafetería y el comedor los cuales pueden ser consultados por el usuario.
