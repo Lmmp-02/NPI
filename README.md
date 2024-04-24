@@ -211,7 +211,8 @@ Un *webhook* es un servidor externo que ayuda a DialogFlow a atender aquellas pe
 
 Para montar el servidor, hemos empleado la plataforma *Glitch*, que nos permite montar dicho servidor. El lenguaje que usaremos en el mismo será *Javascript*, en conjunción con el framework *express*. Nuestro servidor posee dos archivos principales: 
 
-- *package.json*: En él, se especifican los recursos que se utilizan en el servidor, de forma que al iniciarse se descargan las dependencias ahí presentes. De entre estos recursos, podemos destacar la librería de *dialogflow-fulfillment*, que nos permitirá enviar respuestas y contextos de vuelta a DialogFlow.- - *server.js*: Aquí se implementa la lógica del servidor.
+- *package.json*: En él, se especifican los recursos que se utilizan en el servidor, de forma que al iniciarse se descargan las dependencias ahí presentes. De entre estos recursos, podemos destacar la librería de *dialogflow-fulfillment*, que nos permitirá enviar respuestas y contextos de vuelta a DialogFlow.
+- *server.js*: Aquí se implementa la lógica del servidor.
 
 DialogFlow envía a la información al servidor mediante el puerto 3000, con peticiones POST en formato JSON. De dicho JSON podemos obtener toda la información referente al *intent* activo, los parámetros detectados y los diferentes contextos activos. Por tanto, nuestro archivo *server.js* escucha dicho puerto, e implementa las funciones de manejo de peticiones dentro de la sección de POST.
 
